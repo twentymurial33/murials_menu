@@ -12,7 +12,7 @@ async function fetchItems() {
 function AddMenu() {
   const { data, error, isError, isLoading } = useQuery(
     "foodItems",
-    async () => await fetchItems()
+    () => fetchItems()
   );
   if (isLoading) {
     return <div>Loading...</div>;
