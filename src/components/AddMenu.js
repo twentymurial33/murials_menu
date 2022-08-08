@@ -3,16 +3,22 @@ import axios from "axios";
 
 async function fetchItems() {
   const result = await axios.get("https://demo5940257.mockable.io/menu_items");
-  return result.data;
+  if (!result.ok) {
+    throw new Error("Network response was not ok");
+  }
+  return result.json;
 }
 
 function AddMenu() {
-  const { data, error, isError, isLoading } = useQuery("foodItems", fetchItems);
+  const { data, error, isError, isLoading } = useQuery(
+    "foodItems",
+    async () => await fetchItems()
+  );
   if (isLoading) {
     return <div>Loading...</div>;
   }
   if (isError) {
-    return <div>Error! {error.message}</div>;
+    return <div>Error! {error}</div>;
   }
 
   return (
