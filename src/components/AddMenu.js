@@ -10,9 +10,8 @@ async function fetchItems() {
 }
 
 function AddMenu() {
-  const { data, error, isError, isLoading } = useQuery(
-    "foodItems",
-    () => fetchItems()
+  const { data, error, isError, isLoading } = useQuery("foodItems", () =>
+    fetchItems()
   );
   if (isLoading) {
     return <div>Loading...</div>;

@@ -1,5 +1,6 @@
 import Listing from "./pages/Listing";
 import Filtering from "./pages/Filtering";
+import Main from "./pages/Main";
 import React, { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Listing />} />
           <Route path="/filter" element={<Filtering />} />
+          <Route path="/Main" element={<Main />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

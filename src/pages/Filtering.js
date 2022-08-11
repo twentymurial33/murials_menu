@@ -1,29 +1,41 @@
 import React from "react";
-import Layout from "../components/Layout";
+import axios from "axios";
 import { useQuery } from "react-query";
+import Layout from "../components/Layout";
 
-function Filtering() {
-  const { isLoading, error, data } = useQuery("menu_items", () => {
-    console.log('Fetch call started');
-    return fetch("https://demo5940257.mockable.io/menu_items").then(async (response) => {
-      console.log('fetch call happened; server responded')
-      const result = await response.json()
-      // If the line below is never called, it means the .json() call is failing because the server isn't 
-         returning JSON; likely because of a non-200 response.
-      console.log({result})
-      return result
-    )
-  );
-  if (isLoading) return "Loading.";
-  if (error) return "Error has occurred: " + error.message;
+const Filtering = () => {
+  const { isLoading, data } = useQuery("posts", () => {
+    return axios.get("https://jsonplaceholder.typicode.com/posts?_limit=10");
+  });
+
+  if (isLoading) {
+    return <h2>Loading....</h2>;
+  }
+  console.log(data);
   return (
-    <div>
-      <Layout>
-        <h1>{data.img}</h1>
-        <p>{data.title}</p>
-        <p>{data.author}</p>
-      </Layout>
-    </div>
+    <>
+      <Layout />
+      <h2>Results</h2>
+      {data?.data.map((post) => {
+        return <div key={post.title}>{post.title}</div>;
+      })}
+    </>
   );
-}
+};
 export default Filtering;
+
+//   const Filtering = async () => {
+//   const { data, status } = await axios.get(
+//     "https://jsonplaceholder.typicode.com/posts?_limit=10"
+//   );
+//   console.log(data);
+
+//   return (
+//     <div>
+//       <Layout />
+//       <div>{status === "success" && <div>{data}</div>}</div>
+//     </div>
+//   );
+// };
+
+// export default Filtering;
