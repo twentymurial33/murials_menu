@@ -8,7 +8,7 @@ import CardMedia from "@mui/material/CardMedia";
 import CssBaseline from "@mui/material/CssBaseline";
 import Grid from "@mui/material/Grid";
 import Container from "@mui/material/Container";
-import AddMenu from "../components/AddMenu";
+
 import "../App.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 
@@ -47,7 +47,6 @@ function Listing() {
                       alt="random"
                     />
                     <CardContent sx={{ flexGrow: 1 }}>
-                      <AddMenu />
                       <Button variant="contained" color="success">
                         Click to Order
                       </Button>
