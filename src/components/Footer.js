@@ -1,7 +1,24 @@
-import React from "react";
+import * as React from "react";
+import Box from "@mui/material/Box";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 
-function Footer() {
-  return <div></div>;
+export default function SimpleBottomNavigation() {
+  const [value, setValue] = React.useState(0);
+
+  return (
+    <Box sx={{ width: 500 }}>
+      <BottomNavigation
+        showLabels
+        value={value}
+        onChange={(event, newValue) => {
+          setValue(newValue);
+        }}
+      >
+        <BottomNavigationAction label="Recents" />
+        <BottomNavigationAction label="Favorites" />
+        <BottomNavigationAction label="Nearby" />
+      </BottomNavigation>
+    </Box>
+  );
 }
-
-export default Footer;
