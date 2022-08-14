@@ -11,8 +11,8 @@ export default function App() {
   // return <div>
   return (
     <div>
-      {data.data.map((data) => (
-        <div>{data.title}</div>
+      {data.menuItems.map((menuItem) => (
+        <div>{menuItem.title}</div>
       ))}
     </div>
   );
