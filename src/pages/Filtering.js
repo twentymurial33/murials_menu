@@ -1,5 +1,7 @@
 import axios from "axios";
 import { useQuery } from "react-query";
+import Layout from "../components/Layout";
+import "../index.css";
 
 export default function App() {
   const { isLoading, data, error } = useQuery(["posts"], () =>
@@ -11,10 +13,11 @@ export default function App() {
   // return <div>
   return (
     <div>
+      <Layout />
       {data.data.map((data) => (
         <div>
-          {data.title}||
-          {data.author}
+          {data.title}
+          {/* {data.author} */}
           <img src={data.img} alt="" />
         </div>
       ))}
