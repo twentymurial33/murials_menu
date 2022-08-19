@@ -1,10 +1,14 @@
 import axios from "axios";
 import { useQuery } from "react-query";
+import { useState } from "react";
 import Layout from "../components/Layout";
-import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
+import TextField from "@mui/material/TextField";
 import "../index.css";
 
 export default function App() {
+  const [searchQuery, setSearchQuery] = useState("");
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("https://demo5940257.mockable.io/menu_items")
   );
@@ -12,19 +16,24 @@ export default function App() {
   if (isLoading) return <h2> isLoading </h2>;
   console.log(data);
 
-  function handleClick() {}
-
   return (
     <div>
       <Layout />
-      <Button onClick={handleClick} style={{ marginLeft: "400px" }}>
-        <input className="search" placeholder="Search" type="text" />
-      </Button>
-
+      <form>
+        <TextField
+          id="search-bar"
+          className="text"
+          onInput={(e) => {
+            setSearchQuery(e.target.value);
+          }}
+        />
+        <IconButton>
+          <SearchIcon style={{ fill: "blue" }} />
+        </IconButton>
+      </form>
+      <div>{searchQuery}</div>
       {data.data.map((data) => (
         <div>
-          {/* {data.title} */}
-
           <img src={data.img} alt="" />
         </div>
       ))}
