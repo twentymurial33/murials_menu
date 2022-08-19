@@ -2,9 +2,21 @@ img {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
-  width: 200px;
+  width: 500px;
+  height: 400px;
+  display: flex;
+
+  align-items: center;
 }
 
 body {
   background-color: blanchedalmond;
+}
+
+.search {
+  display: inline;
+  align-items: center;
+  padding-right: 50px;
+  text-align: center;
+  margin: auto;
 }

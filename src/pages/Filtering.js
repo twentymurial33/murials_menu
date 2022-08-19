@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import Layout from "../components/Layout";
+import Button from "@mui/material/Button";
 import "../index.css";
 
 export default function App() {
@@ -10,14 +11,20 @@ export default function App() {
   if (error) return <h2>Error </h2>;
   if (isLoading) return <h2> isLoading </h2>;
   console.log(data);
-  // return <div>
+
+  function handleClick() {}
+
   return (
     <div>
       <Layout />
+      <Button onClick={handleClick} style={{ marginLeft: "400px" }}>
+        <input className="search" placeholder="Search" type="text" />
+      </Button>
+
       {data.data.map((data) => (
         <div>
-          {data.title}
-          {/* {data.author} */}
+          {/* {data.title} */}
+
           <img src={data.img} alt="" />
         </div>
       ))}
