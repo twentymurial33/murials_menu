@@ -1,0 +1,25 @@
+img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 500px;
+  height: 400px;
+  display: flex;
+  align-self: "center";
+}
+
+body {
+  background-color: blanchedalmond;
+}
+
+form {
+  display: inline;
+  align-items: center;
+  padding-right: 100px;
+  text-align: center;
+  margin: auto;
+}
+
+.text {
+  margin-top: 20px;
+}
