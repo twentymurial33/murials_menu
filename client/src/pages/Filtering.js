@@ -21,7 +21,7 @@ function App() {
     setNewSearch(e.target.value);
   };
 
-  const filtered = !search
+  const filteredMenuItems = !search
     ? data.data
     : data.data.filter((data) =>
         data.title.toLowerCase().includes(search.toLowerCase())
@@ -40,10 +40,10 @@ function App() {
         <SearchIcon style={{ fill: "blue", marginTop: "20px" }} />
       </IconButton>
       <ul className="list">
-        {filtered.map((data) => {
+        {filteredMenuItems.map((data) => {
           return (
             <p key={data.id}>
-              <img src={data.img}></img>
+              <img src={data.img} alt="images"></img>
             </p>
           );
         })}
