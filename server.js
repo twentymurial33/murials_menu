@@ -45,8 +45,8 @@ app.post("/menu_items", (req, res, next) => {
 });
 
 //Delete by ID Method
-// app.delete('/delete/:id', (req, res) => {
-//     res.send('Delete by ID API')
-// })
+app.delete("/delete/:id", (req, res) => {
+  res.send("Delete by ID API");
+});
 
 app.listen(5000, () => console.log("Server Started..."));
