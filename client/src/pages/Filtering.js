@@ -8,10 +8,10 @@ import "../index.css";
 
 //Search Component- Read in CRUD
 
-function App() {
+function Filtering() {
   const [search, setNewSearch] = useState("");
   const { isLoading, data, error } = useQuery(["posts"], () =>
-    axios("https://demo5940257.mockable.io/menu_items")
+    axios("http://localhost:5000/menu_items")
   );
   if (error) return <h2>Error </h2>;
   if (isLoading) return <h2> isLoading </h2>;
@@ -51,4 +51,4 @@ function App() {
     </div>
   );
 }
-export default App;
+export default Filtering;
