@@ -1,10 +1,21 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
+import styled from "styled-components";
 import Layout from "../components/Layout";
-import IconButton from "@mui/material/IconButton";
-import SearchIcon from "@mui/icons-material/Search";
 import "../index.css";
+
+const Input = styled.input`
+  font-size: 18px;
+  padding: 10px;
+  margin: 10px;
+  background: white;
+  border: none;
+  border-radius: 3px;
+  ::placeholder {
+    color: black;
+  }
+`;
 
 //Search Component- Read in CRUD
 
@@ -28,17 +39,14 @@ function Filtering() {
       );
 
   return (
-    <div className="app">
+    <div>
       <Layout />
-      <input
+      <Input
         className="search"
         placeholder="Search..."
         value={search}
         onChange={handleSetSearch}
       />
-      <IconButton type="submit" aria-label="search">
-        <SearchIcon style={{ fill: "blue", marginTop: "20px" }} />
-      </IconButton>
       <ul className="list">
         {filteredMenuItems.map((data) => {
           return (
