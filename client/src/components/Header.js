@@ -4,12 +4,19 @@ import styled from "styled-components";
 // import Container from "@mui/material/Container";
 import "../App.css";
 
-const StyledContainer = styled(Container)`
- h1 {
-    font-size: 1.5em;
-    text-align: center;
+const Container = styled.h1`
+ 
+  font-size: 1.5em;
+  text-align: center;
   }
 `;
+
+// const Container = styled.container`
+//   h1 {
+//     font-size: 1.5em;
+//     text-align: center;
+//   }
+// `;
 
 function Header() {
   return (
