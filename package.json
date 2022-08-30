@@ -461,7 +461,6 @@
     "node-forge": "^1.3.1",
     "node-int64": "^0.4.0",
     "node-releases": "^2.0.6",
-    "nodemon": "^2.0.19",
     "nopt": "^1.0.10",
     "normalize-path": "^3.0.0",
     "normalize-range": "^0.1.2",
