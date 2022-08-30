@@ -1,9 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+
 app.use(cors());
 
-//new get endpoint
 app.get("/menu_items", function (req, res) {
   res.send([
     {

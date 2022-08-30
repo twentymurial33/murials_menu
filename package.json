@@ -4,6 +4,7 @@
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "server.js",
   "dependencies": {
+    "@prisma/client": "^4.2.1",
     "abab": "^2.0.6",
     "abbrev": "^1.1.1",
     "accepts": "^1.3.8",
@@ -460,7 +461,6 @@
     "node-forge": "^1.3.1",
     "node-int64": "^0.4.0",
     "node-releases": "^2.0.6",
-    "nodemon": "^2.0.19",
     "nopt": "^1.0.10",
     "normalize-path": "^3.0.0",
     "normalize-range": "^0.1.2",
@@ -811,9 +811,12 @@
     "yocto-queue": "^0.1.0"
   },
   "devDependencies": {
+    "@types/node": "^18.7.13",
     "concurrently": "^4.1.0",
     "nodemon": "^1.18.11",
-    "prisma": "^4.2.1"
+    "prisma": "^4.2.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.2"
   },
   "scripts": {
     "start": "node server.js",
