@@ -1,10 +1,18 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
 
 app.use(cors());
 
-app.get("/menu_items", function (req, res) {
+// app.get("/menu_items", function (req, res) {
+//   const users = prisma.user.findMany();
+//   console.log({ users });
+// });
+
+app.get("/menu_items", (req, res) => {
   res.send([
     {
       img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
@@ -39,14 +47,16 @@ app.get("/menu_items", function (req, res) {
   ]);
 });
 
-//Post Method
 app.post("/menu_items", (req, res, next) => {
   res.send(JSON.stringify(req.body));
 });
 
-//Delete by ID Method
-app.delete("/delete/:id", (req, res) => {
+app.delete("/menu_items/:id", (req, res) => {
   res.send("Delete by ID API");
+});
+
+app.patch("/menu_items", (req, res) => {
+  res.send("Api is working");
 });
 
 app.listen(5000, () => console.log("Server Started..."));
