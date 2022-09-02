@@ -1,18 +1,32 @@
-// const { PrismaClient } = require("@prisma/client");
+const { PrismaClient } = require("@prisma/client");
 
-// const prisma = new PrismaClient();
+const prisma = new PrismaClient();
 
-// // A `main` function so that you can use async/await
-// async function main() {
-//   const users = await prisma.user.findMany();
+async function main() {
+  await prisma.$connect();
 
-//   console.log({ users });
-// }
+  await prisma.food.create({
+    data: {
+      title: "Sushi",
+      author: "Ted",
+    },
+  });
 
-// main()
-//   .catch((e) => {
-//     throw e;
-//   })
-//   .finally(async () => {
-//     await prisma.$disconnect();
-//   });
+  await prisma.food.create({
+    data: {
+      title: "Lava Cake",
+      author: "Chef Andy",
+    },
+  });
+
+  await prisma.food.create({
+    data: {
+      title: "Testing Testing",
+      author: "Testing ",
+    },
+  });
+
+  const food = await prisma.food.findMany();
+
+  console.dir(food, { depth: Infinity });
+}

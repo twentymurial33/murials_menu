@@ -1,16 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { PrismaClient } = require("@prisma/client");
-
-const prisma = new PrismaClient();
 
 app.use(cors());
-
-// app.get("/menu_items", function (req, res) {
-//   const users = prisma.user.findMany();
-//   console.log({ users });
-// });
 
 app.get("/menu_items", (req, res) => {
   res.send([
