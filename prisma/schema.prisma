@@ -1,17 +1,15 @@
 datasource db {
-    provider = "mongodb"
+    provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
 generator client {
-    provider        = "prisma-client-js"
-    previewFeatures = ["mongodb"]
+    provider = "prisma-client-js"
 }
 
-model food {
-
-    id     String @id @default(auto()) @map("_id") @db.ObjectId
-    img    String
+model Food {
+    id     Int    @id @default(autoincrement())
     title  String
+    img    String
     author String
 }
