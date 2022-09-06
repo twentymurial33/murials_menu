@@ -6,6 +6,7 @@ const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
 app.use(cors());
+app.use(express.json());
 
 app.get("/menu_items", (req, res) => {
   res.send([
@@ -44,6 +45,8 @@ app.get("/menu_items", (req, res) => {
 
 app.post("/food", async (req, res) => {
   const food = await prisma.food.create({ data: req.body });
+  // console.log(req.body);
+  // const food = "food";
   res.json(food);
 });
 
