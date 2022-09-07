@@ -52,7 +52,7 @@ app.post("/food", async (req, res) => {
 
 app.delete("/food/:id", (req, res) => {
   const deletedFoodItem = prisma.food.deleteMany({});
-  res.send("API is deleting");
+  res.send(deletedFoodItem);
 });
 
 app.patch("/menu_items", (req, res) => {
