@@ -9,7 +9,7 @@ generator client {
 
 model Food {
     id     Int    @id @default(autoincrement())
-    title  String
-    img    String
+    title  String @unique
+    img    String @unique
     author String
 }

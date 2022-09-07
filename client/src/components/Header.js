@@ -3,11 +3,9 @@ import AppBar from "@mui/material/AppBar";
 import styled from "styled-components";
 import "../App.css";
 
-const Container = styled.header`
-  h1 {
-    font-size: 1.5em;
-    text-align: center;
-  }
+const Container = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
 `;
 
 function Header() {

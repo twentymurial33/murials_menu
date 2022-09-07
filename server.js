@@ -51,12 +51,21 @@ app.post("/food", async (req, res) => {
 });
 
 app.delete("/food/:id", (req, res) => {
-  const deletedFoodItem = prisma.food.deleteMany({});
+  const deletedFoodItem = prisma.food.delete({
+    where: {
+      title: "Mushrooms",
+    },
+  });
   res.send(deletedFoodItem);
 });
 
-app.patch("/menu_items", (req, res) => {
-  res.send("Api is working");
+//patch only modifies a subset of fields, switched to put
+app.put("/food", (req, res) => {
+  const foodItem = prisma.food.update({
+    where: { id: 3 },
+    data: { title: "food" },
+  });
+  res.send(foodItem);
 });
 
 app.listen(5000, () => console.log("Server Started..."));
