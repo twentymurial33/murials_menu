@@ -49,7 +49,7 @@ app.post("/food", async (req, res) => {
 });
 
 app.delete("/food/:id", async (req, res) => {
-  const { id } = req.body;
+  const { id } = req.params;
   const deletedFood = await prisma.food.delete({
     where: {
       id,
