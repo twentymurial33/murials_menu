@@ -45,27 +45,26 @@ app.get("/menu_items", (req, res) => {
 
 app.post("/food", async (req, res) => {
   const food = await prisma.food.create({ data: req.body });
-  // console.log(req.body);
-  // const food = "food";
   res.json(food);
 });
 
-app.delete("/food/:id", (req, res) => {
-  const deletedFoodItem = prisma.food.delete({
+app.delete("/food/:id", async (req, res) => {
+  const { id } = req.body;
+  const deletedFood = await prisma.food.delete({
     where: {
-      title: "Mushrooms",
+      id,
     },
   });
-  res.send(deletedFoodItem);
+  res.json(deletedFood);
 });
 
-//patch only modifies a subset of fields, switched to put
-app.put("/food", (req, res) => {
-  const foodItem = prisma.food.update({
-    where: { id: 3 },
-    data: { title: "food" },
+app.put("/food/:id", async (req, res) => {
+  const { id } = req.params;
+  const foodItem = await prisma.food.update({
+    where: { id: Number(id) },
+    data: { img: "potato" },
   });
-  res.send(foodItem);
+  res.json(foodItem);
 });
 
 app.listen(5000, () => console.log("Server Started..."));
