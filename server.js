@@ -60,11 +60,14 @@ app.delete("/food/:id", async (req, res) => {
 });
 
 app.put("/food/:id", async (req, res) => {
-  const { id, img } = req.params;
+  const { img, author, title } = req.body;
+  const { id } = req.params;
   const foodItem = await prisma.food.update({
     where: { id: Number(id) },
     data: {
       img,
+      author,
+      title,
     },
   });
   res.json(foodItem);
