@@ -48,21 +48,24 @@ app.post("/food", async (req, res) => {
   res.json(food);
 });
 
+//bad request
 app.delete("/food/:id", async (req, res) => {
   const { id } = req.params;
   const deletedFood = await prisma.food.delete({
     where: {
-      id,
+      id: Number(id),
     },
   });
   res.json(deletedFood);
 });
 
 app.put("/food/:id", async (req, res) => {
-  const { id } = req.params;
+  const { id, img } = req.params;
   const foodItem = await prisma.food.update({
     where: { id: Number(id) },
-    data: { img: "potato" },
+    data: {
+      img,
+    },
   });
   res.json(foodItem);
 });
