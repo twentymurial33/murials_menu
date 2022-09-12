@@ -1,10 +1,14 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
 
 app.use(cors());
+app.use(express.json());
 
-app.get("/menu_items", function (req, res) {
+app.get("/menu_items", (req, res) => {
   res.send([
     {
       img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
@@ -39,14 +43,34 @@ app.get("/menu_items", function (req, res) {
   ]);
 });
 
-//Post Method
-app.post("/menu_items", (req, res, next) => {
-  res.send(JSON.stringify(req.body));
+app.post("/food", async (req, res) => {
+  const food = await prisma.food.create({ data: req.body });
+  res.json(food);
 });
 
-//Delete by ID Method
-app.delete("/delete/:id", (req, res) => {
-  res.send("Delete by ID API");
+//bad request
+app.delete("/food/:id", async (req, res) => {
+  const { id } = req.params;
+  const deletedFood = await prisma.food.delete({
+    where: {
+      id: Number(id),
+    },
+  });
+  res.json(deletedFood);
+});
+
+app.put("/food/:id", async (req, res) => {
+  const { img, author, title } = req.body;
+  const { id } = req.params;
+  const foodItem = await prisma.food.update({
+    where: { id: Number(id) },
+    data: {
+      img,
+      author,
+      title,
+    },
+  });
+  res.json(foodItem);
 });
 
 app.listen(5000, () => console.log("Server Started..."));

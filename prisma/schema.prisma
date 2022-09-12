@@ -1,5 +1,5 @@
 datasource db {
-    provider = "sqlite"
+    provider = "postgresql"
     url      = env("DATABASE_URL")
 }
 
@@ -7,8 +7,9 @@ generator client {
     provider = "prisma-client-js"
 }
 
-model User {
-    id    Int     @id @default(autoincrement())
-    email String  @unique
-    name  String?
+model Food {
+    id     Int    @id @default(autoincrement())
+    title  String @unique
+    img    String @unique
+    author String
 }
