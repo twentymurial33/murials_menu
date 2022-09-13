@@ -22,11 +22,7 @@ function AddFood() {
           </button>
         </div>
       </div>
-      <div className>
-        {/* {foods?.map((food, i) => (
-          <FoodCard food={food} key={i} />
-        ))} */}
-      </div>
+      <div className></div>
     </div>
   );
 }
