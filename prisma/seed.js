@@ -8,7 +8,7 @@ async function main() {
       { id: 22, title: "sausage", img: "pinkpurple", author: "lenovo" },
     ],
   });
-  console.log(insertResult.count);
+  console.info(`The prisma database was seeded with ${insertResult.count} items.`);
 }
 
 main()
