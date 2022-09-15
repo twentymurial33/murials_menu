@@ -1,11 +1,11 @@
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import styled from "styled-components";
-import "../App.css";
 
 const Container = styled.h1`
   font-size: 1.5em;
   text-align: center;
+  color: red;
 `;
 
 function Header() {

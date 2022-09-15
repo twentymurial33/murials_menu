@@ -17,6 +17,12 @@ const Input = styled.input`
   }
 `;
 
+const Image = styled.img`
+  width: 46%;
+  float: left;
+  margin-right: 10px;
+`;
+
 //Search Component- Read in CRUD
 
 function Filtering() {
@@ -51,7 +57,7 @@ function Filtering() {
         {filteredMenuItems.map((data) => {
           return (
             <p key={data.id}>
-              <img src={data.img} alt="images"></img>
+              <Image src={data.img} alt="images" />
             </p>
           );
         })}
