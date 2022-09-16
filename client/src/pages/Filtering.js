@@ -18,8 +18,7 @@ const Input = styled.input`
 `;
 
 const Image = styled.img`
-  width: 46%;
-  float: left;
+  display: flex;
   margin-right: 10px;
 `;
 

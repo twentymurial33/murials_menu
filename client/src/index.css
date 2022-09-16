@@ -7,19 +7,18 @@ img {
   display: flex;
   align-self: "center";
 }
+.list {
+  display: flex;
+  flex-wrap: wrap;
+}
 
 body {
   background-color: grey;
 }
-
 form {
   display: inline;
   align-items: center;
   padding-right: 100px;
   text-align: center;
   margin: auto;
-}
-
-.text {
-  margin-top: 20px;
 }
