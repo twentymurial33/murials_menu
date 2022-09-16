@@ -1,4 +1,3 @@
-import AddFood from "./pages/AddFood";
 import Filtering from "./pages/Filtering";
 import React, { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -11,7 +10,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Filtering />} />
-          <Route path="/add" element={<AddFood />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
