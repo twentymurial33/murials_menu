@@ -5,23 +5,6 @@ import styled from "styled-components";
 import Layout from "../components/Layout";
 import "../index.css";
 
-const Input = styled.input`
-  font-size: 18px;
-  padding: 10px;
-  margin: 10px;
-  background: white;
-  border: none;
-  border-radius: 3px;
-  ::placeholder {
-    color: black;
-  }
-`;
-
-const Image = styled.img`
-  display: flex;
-  margin-right: 10px;
-`;
-
 //Search Component- Read in CRUD
 
 function Filtering() {
@@ -56,7 +39,7 @@ function Filtering() {
         {filteredMenuItems.map((data) => {
           return (
             <p key={data.id}>
-              <Image src={data.img} alt="images" />
+              <img src={data.img} alt="images" />
             </p>
           );
         })}
@@ -64,4 +47,32 @@ function Filtering() {
     </div>
   );
 }
+
+const Input = styled.div`
+input{
+  font-size: 18px;
+  padding: 10px;
+  margin: 10px;
+  background: white;
+  border: none;
+  border-radius: 3px;
+  ::placeholder {
+    color: black;
+  }
+  img {
+  display: flex;
+  margin-right: 10px;
+  border:1px solid #ddd;
+  border-radius:4px;
+  display:flex;
+  padding:5px;
+  align-self:center;
+}
+  ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+  
+`;
+
 export default Filtering;
