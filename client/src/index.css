@@ -1,17 +1,6 @@
 img {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 500px;
-  height: 400px;
-  display: flex;
-  align-self: "center";
+  max-width: 50%;
 }
-.list {
-  display: flex;
-  flex-wrap: wrap;
-}
-
 body {
   background-color: grey;
 }

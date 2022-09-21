@@ -56,7 +56,6 @@ app.post("/food", async (req, res) => {
   res.json(food);
 });
 
-//bad request
 app.delete("/food/:id", async (req, res) => {
   const { id } = req.params;
   const deletedFood = await prisma.food.delete({
