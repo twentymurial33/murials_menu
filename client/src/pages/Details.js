@@ -7,7 +7,7 @@ import "../index.css";
 
 //Search Component- Read in CRUD
 
-function Filtering() {
+function Details() {
   const [search, setNewSearch] = useState("");
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
@@ -40,6 +40,7 @@ function Filtering() {
           return (
             <p key={data.id}>
               <img src={data.img} alt="images" />
+              <textarea>Details</textarea>
             </p>
           );
         })}
@@ -60,19 +61,22 @@ input{
     color: black;
   }
   img {
-  display: flex;
+  display:flex;
+  flex: 33.33%;
+  padding: 5px;
+  box-sizing: border-box;
   margin-right: 10px;
   border:1px solid #ddd;
   border-radius:4px;
-  display:flex;
-  padding:5px;
   align-self:center;
 }
   ul {
   display: flex;
   flex-wrap: wrap;
 }
+
+
   
 `;
 
-export default Filtering;
+export default Details;
