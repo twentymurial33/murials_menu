@@ -2,10 +2,8 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
 import styled from "styled-components";
-import Layout from "../components/Layout";
-import "../index.css";
 
-//Search Component- Read in CRUD
+import "../index.css";
 
 function Details() {
   const [search, setNewSearch] = useState("");
@@ -28,29 +26,39 @@ function Details() {
 
   return (
     <div>
-      <Layout />
-      <Input
-        className="search"
-        placeholder="Search..."
-        value={search}
-        onChange={handleSetSearch}
-      />
-      <ul className="list">
-        {filteredMenuItems.map((data) => {
-          return (
-            <p key={data.id}>
-              <img src={data.img} alt="images" />
-              <textarea>Details</textarea>
-            </p>
-          );
-        })}
-      </ul>
+      <Container>
+        <input
+          className="search"
+          placeholder="Search..."
+          value={search}
+          onChange={handleSetSearch}
+        />
+        <ul className="list">
+          {filteredMenuItems.map((data) => {
+            return (
+              <p key={data.id}>
+                <img src={data.img} alt="images" />
+                <textarea>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat. Duis aute
+                  irure dolor in reprehenderit in voluptate velit esse cillum
+                  dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+                  cupidatat non proident, sunt in culpa qui officia deserunt
+                  mollit anim id est laborum.
+                </textarea>
+              </p>
+            );
+          })}
+        </ul>
+      </Container>
     </div>
   );
 }
 
-const Input = styled.div`
-input{
+const Container = styled.div`
+  input{
   font-size: 18px;
   padding: 10px;
   margin: 10px;
@@ -60,21 +68,11 @@ input{
   ::placeholder {
     color: black;
   }
-  img {
-  display:flex;
-  flex: 33.33%;
-  padding: 5px;
-  box-sizing: border-box;
-  margin-right: 10px;
-  border:1px solid #ddd;
-  border-radius:4px;
-  align-self:center;
-}
-  ul {
-  display: flex;
-  flex-wrap: wrap;
-}
 
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
   
 `;

@@ -32,6 +32,9 @@ const images = [
   },
 ];
 
+function onClick(e) {
+  window.location.href = "/details";
+}
 function Landing() {
   return (
     <>
@@ -42,6 +45,7 @@ function Landing() {
         {images.map((image) => (
           <ImageButton
             focusRipple
+            onClick={onClick}
             key={image.title}
             style={{
               width: image.width,
