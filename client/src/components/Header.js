@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 
 function Header() {
   return (
-    <AppBar postion="static">
+    <AppBar position="static">
       <Container maxWidth="xl">
         <h1 style={{ textAlign: "center" }}>Murial's Restaurant</h1>
       </Container>
