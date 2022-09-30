@@ -1,5 +1,5 @@
-import Filtering from "./pages/Filtering";
-import Listing from "./pages/Listing";
+import Landing from "./pages/Landing";
+import Details from "./pages/Details";
 import React, { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -10,8 +10,8 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Filtering />} />
-          <Route exact path="/list" element={<Listing />} />
+          <Route exact path="/" element={<Landing />} />
+          <Route exact path="/details" element={<Details />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>
