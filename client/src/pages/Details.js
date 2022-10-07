@@ -76,14 +76,5 @@ const Container = styled.div`
 
   
 `;
-//added this here but not really sure what its doing--- found in docs
-export async function getServerSideProps() {
-  // Fetch data from external API
-  const res = await fetch(`/api/food`);
-  const feed = await res.json();
-
-  // Pass data to the page via props
-  return { props: { feed } };
-}
 
 export default Details;
