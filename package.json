@@ -825,8 +825,7 @@
     "typescript": "^4.8.2"
   },
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
+    "server": "npm run dev --prefix server",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },

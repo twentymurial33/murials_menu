@@ -2,7 +2,6 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
 import styled from "styled-components";
-
 import "../index.css";
 
 function Details({ feed }) {
