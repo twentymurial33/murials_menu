@@ -1,4 +1,4 @@
-import prisma from "../../../lib/prisma";
+import prisma from "../../client/src/lib/util";
 
 export default async function handle(req, res) {
   const { img, author, title } = req.body;
