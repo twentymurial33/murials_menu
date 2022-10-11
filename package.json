@@ -2,7 +2,7 @@
   "name": "murials_menu",
   "version": "1.0.0",
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "server.js",
+  "main": "index.js",
   "dependencies": {
     "@prisma/client": "^4.2.1",
     "prisma": {
@@ -825,8 +825,8 @@
     "typescript": "^4.8.2"
   },
   "scripts": {
-    "start": "node server.js",
-    "server": "nodemon server.js",
+    "start": "node index.js",
+    "server": "nodemon server/index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
   },

@@ -2,10 +2,9 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
 import styled from "styled-components";
-
 import "../index.css";
 
-function Details() {
+function Details({ feed }) {
   const [search, setNewSearch] = useState("");
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
