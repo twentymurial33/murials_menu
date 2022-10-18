@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
 
@@ -6,15 +6,17 @@ import Layout from "../components/Layout";
 function AddFood() {
   const [food, setFood] = useState("");
   const url = "http://localhost:3000/api/food";
-  axios.put(url).then((response) => {
-    setFood(response.data);
-    console.log(response);
-  });
+
+  useEffect(() => {
+    axios.put(url).then((response) => {
+      setFood(response.data);
+    });
+  }, [url]);
 
   return (
     <div>
       <Layout />
-      <h1>Add the Food !</h1>
+      <h1>{food.title}</h1>
     </div>
   );
 }
