@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Layout from "../components/Layout";
 
-//Put Endpoint
+//Post Endpoint -require body
 function AddFood() {
   const [food, setFood] = useState("");
-  const url = "http://localhost:3000/api/food";
+  const url = "http://localhost:5000/food";
 
   useEffect(() => {
-    axios.put(url).then((response) => {
-      setFood(response.data);
-    });
+    axios
+      .post(url, { title: "title", img: "img", author: "author" })
+      .then((response) => {
+        setFood(response.data);
+      });
   }, [url]);
 
   return (

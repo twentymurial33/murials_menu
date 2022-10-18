@@ -6,7 +6,7 @@ function Header() {
   return (
     <AppBar position="static" style={{ height: "80px" }}>
       <Container maxWidth="xl">
-        <h1 style={{ textAlign: "center" }}>Murial's Restaurant</h1>
+        <h1 className="u-text--center">Murial's Restaurant</h1>
       </Container>
     </AppBar>
   );

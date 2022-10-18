@@ -8,6 +8,7 @@ import styled from "styled-components";
 import "../index.css";
 
 function Details() {
+  //change the response value to list in DB
   const [search, setNewSearch] = useState("");
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")

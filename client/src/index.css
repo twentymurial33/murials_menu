@@ -11,3 +11,11 @@ form {
   text-align: center;
   margin: auto;
 }
+
+.u-hidden {
+  display: none !important;
+}
+
+.u-text--center {
+  text-align: center !important;
+}
