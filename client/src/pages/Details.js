@@ -2,11 +2,12 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+import DeleteIcon from "@mui/icons-material/Delete";
 import styled from "styled-components";
 import "../index.css";
 
-function Details({ feed }) {
+function Details() {
   const [search, setNewSearch] = useState("");
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
@@ -24,7 +25,10 @@ function Details({ feed }) {
     : data.data.filter((data) =>
         data.title.toLowerCase().includes(search.toLowerCase())
       );
-
+  function deleteFood(title) {
+    const newData = data.data.filter((data) => data.title !== title);
+    console.log(newData);
+  }
   return (
     <div>
       <Container>
@@ -60,7 +64,13 @@ function Details({ feed }) {
                     occaecat cupidatat non proident, sunt in culpa qui officia
                     deserunt mollit anim id est laborum.
                   </p>{" "}
-                  <Paper />
+                  <Button
+                    variant="outlined"
+                    startIcon={<DeleteIcon />}
+                    onClick={() => deleteFood(data.title)}
+                  >
+                    Delete
+                  </Button>
                 </Box>
               </p>
             );
