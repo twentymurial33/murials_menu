@@ -18,7 +18,14 @@ function AddFood() {
   return (
     <div>
       <Layout />
-      <h1>{food.title}</h1>
+      {Array.from(food).map((data) => {
+        return (
+          <>
+            <h1>{food.title}</h1>
+            <h2>{food.author}</h2>
+          </>
+        );
+      })}
     </div>
   );
 }
