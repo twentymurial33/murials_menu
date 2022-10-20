@@ -26,10 +26,20 @@ function Details() {
     : data.data.filter((data) =>
         data.title.toLowerCase().includes(search.toLowerCase())
       );
-  function deleteFood(title) {
-    const newData = data.data.filter((data) => data.title !== title);
-    console.log(newData);
+  // function deleteFood(title) {
+  //   const newData = data.data.filter((data) => data.title !== title);
+  //   console.log(newData);
+  // }
+
+  function deleteRow(id, e) {
+    axios.delete(`http://localhost:5000/food/${id}`).then((res) => {
+      console.log(res);
+      console.log(res.data);
+      const newFood = data.data.filter((data) => data.id !== id);
+      console.log(newFood);
+    });
   }
+
   return (
     <div>
       <Container>
@@ -68,7 +78,7 @@ function Details() {
                   <Button
                     variant="outlined"
                     startIcon={<DeleteIcon />}
-                    onClick={() => deleteFood(data.title)}
+                    onClick={() => deleteRow(data.title)}
                   >
                     Delete
                   </Button>

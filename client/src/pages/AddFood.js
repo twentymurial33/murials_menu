@@ -22,6 +22,7 @@ function AddFood() {
         return (
           <>
             <h1>{food.title}</h1>
+            <h1>{food.img}</h1>
             <h2>{food.author}</h2>
           </>
         );
