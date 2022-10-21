@@ -35,10 +35,12 @@ const images = [
 function onClick(e) {
   window.location.href = "/details";
 }
+
 function Landing() {
   return (
     <>
       <Layout />
+
       <Box
         sx={{ display: "flex", flexWrap: "wrap", minWidth: 300, width: "100%" }}
       >
