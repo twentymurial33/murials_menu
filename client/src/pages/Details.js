@@ -7,15 +7,15 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import styled from "styled-components";
 import "../index.css";
 
-function Details() {
+function Details({ food }) {
   //change the response value to list in DB
   const [search, setNewSearch] = useState("");
+  const [foodList, setProductList] = useState(food);
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
   );
   if (error) return <h2>Error </h2>;
   if (isLoading) return <h2> isLoading </h2>;
-  console.log(data);
 
   const handleSetSearch = (e) => {
     setNewSearch(e.target.value);
@@ -26,19 +26,16 @@ function Details() {
     : data.data.filter((data) =>
         data.title.toLowerCase().includes(search.toLowerCase())
       );
-  // function deleteFood(title) {
-  //   const newData = data.data.filter((data) => data.title !== title);
-  //   console.log(newData);
-  // }
 
-  function deleteRow(id, e) {
-    axios.delete(`http://localhost:5000/food/${id}`).then((res) => {
+  const handleDelete = async (id) => {
+    try {
+      const res = await axios.delete("http://localhost:5000/food/" + id);
       console.log(res);
-      console.log(res.data);
-      const newFood = data.data.filter((data) => data.id !== id);
-      console.log(newFood);
-    });
-  }
+      setProductList(foodList.filter((data) => data._id !== id));
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div>
@@ -57,12 +54,18 @@ function Details() {
                 <Box
                   lg={{
                     display: "flex",
+
                     flexWrap: "wrap",
                     "& > :not(style)": {
                       m: 1,
                       width: 128,
                       height: 128,
                     },
+                  }}
+                  style={{
+                    color: "white",
+                    backgroundColor: "black",
+                    width: "720px",
                   }}
                 >
                   <p>
@@ -78,7 +81,14 @@ function Details() {
                   <Button
                     variant="outlined"
                     startIcon={<DeleteIcon />}
-                    onClick={() => deleteRow(data.title)}
+                    style={{
+                      color: "white",
+                      backgroundColor: "red",
+                      padding: "10px",
+                      cursor: "pointer",
+                      borderRadius: "5px",
+                    }}
+                    onClick={() => handleDelete(data._id)}
                   >
                     Delete
                   </Button>
@@ -108,6 +118,8 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
   }
+
+
 
   
 `;
