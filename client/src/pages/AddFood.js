@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import CardHeader from "@material-ui/core/CardHeader";
+import Card from "@material-ui/core/Card";
 import Layout from "../components/Layout";
+import Avatar from "@material-ui/core/Avatar";
 
 //Post Endpoint -require body
 function AddFood() {
@@ -18,15 +21,16 @@ function AddFood() {
   return (
     <div>
       <Layout />
-      {Array.from(food).map((data) => {
-        return (
-          <>
-            <h1>{food.title}</h1>
-            <h1>{food.img}</h1>
-            <h2>{food.author}</h2>
-          </>
-        );
-      })}
+      <Card>
+        {Array.from(food).map((data) => {
+          return (
+            <>
+              <CardHeader avatar={<Avatar aria-label="recipe">R</Avatar>} />
+              <p key={food.id}></p>
+            </>
+          );
+        })}
+      </Card>
     </div>
   );
 }
