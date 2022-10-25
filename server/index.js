@@ -43,17 +43,17 @@ app.get("/menu_items", (req, res) => {
   ]);
 });
 
-app.get("/food", async (req, res) => {
-  const { img, author, title } = req.body;
-  const getFood = await prisma.food.create({
-    data: {
-      img,
-      author,
-      title,
-    },
-  });
-  res.json(getFood);
-});
+// app.get("/food", async (req, res) => {
+//   const { img, author, title } = req.body;
+//   const getFood = await prisma.food.create({
+//     data: {
+//       img,
+//       author,
+//       title,
+//     },
+//   });
+//   res.json(getFood);
+// });
 
 app.post("/food", async (req, res) => {
   const { img, author, title } = req.body;
