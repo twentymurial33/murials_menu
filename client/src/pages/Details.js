@@ -9,7 +9,6 @@ import "../index.css";
 
 function Details() {
   const [search, setNewSearch] = useState("");
-  const [foodItem, setFoodItem] = useState("");
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
   );
@@ -30,7 +29,6 @@ function Details() {
   const handleDelete = async (id) => {
     try {
       const foodItems = await axios.delete("http://localhost:5000/food/" + id);
-      setFoodItem.filter((foodItems) => foodItems.id !== id);
       console.log(foodItems);
     } catch (error) {
       console.log(error);
@@ -89,7 +87,7 @@ function Details() {
                         cursor: "pointer",
                         borderRadius: "5px",
                       }}
-                      onClick={() => handleDelete(foodItem.id)}
+                      onClick={() => handleDelete(data.id)}
                     >
                       Delete
                     </Button>
