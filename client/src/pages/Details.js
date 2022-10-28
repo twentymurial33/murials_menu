@@ -24,7 +24,6 @@ function Details() {
     : data.data.filter((data) =>
         data.title.toLowerCase().includes(search.toLowerCase())
       );
-  console.log(data);
 
   const handleDelete = async (id) => {
     try {
