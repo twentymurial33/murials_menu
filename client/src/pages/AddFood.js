@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CardHeader from "@material-ui/core/CardHeader";
-import Card from "@material-ui/core/Card";
+import Card from "@mui/material/Card";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
 import Layout from "../components/Layout";
-import Avatar from "@material-ui/core/Avatar";
 
-//Post Endpoint -require body
 function AddFood() {
   const [food, setFood] = useState("");
   const url = "http://localhost:5000/food";
@@ -19,19 +18,20 @@ function AddFood() {
   }, [url]);
 
   return (
-    <div>
+    <>
       <Layout />
-      <Card>
-        {Array.from(food).map((data) => {
-          return (
-            <>
-              <CardHeader avatar={<Avatar aria-label="recipe">R</Avatar>} />
-              <p key={food.id}></p>
-            </>
-          );
-        })}
-      </Card>
-    </div>
+      <Fab
+        color="secondary"
+        aria-label="add"
+        style={{ marginTop: "20px", marginBottom: "20px" }}
+      >
+        <AddIcon />
+      </Fab>
+      {Array.from(food).map((data) => {
+        return <Card>{food.id}</Card>;
+      })}
+    </>
   );
 }
+
 export default AddFood;
