@@ -8,14 +8,12 @@ import styled from "styled-components";
 import "../index.css";
 
 function Details() {
-  //change the response value to list in DB
   const [search, setNewSearch] = useState("");
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
   );
   if (error) return <h2>Error </h2>;
   if (isLoading) return <h2> isLoading </h2>;
-  console.log(data);
 
   const handleSetSearch = (e) => {
     setNewSearch(e.target.value);
@@ -26,19 +24,15 @@ function Details() {
     : data.data.filter((data) =>
         data.title.toLowerCase().includes(search.toLowerCase())
       );
-  // function deleteFood(title) {
-  //   const newData = data.data.filter((data) => data.title !== title);
-  //   console.log(newData);
-  // }
 
-  function deleteRow(id, e) {
-    axios.delete(`http://localhost:5000/food/${id}`).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      const newFood = data.data.filter((data) => data.id !== id);
-      console.log(newFood);
-    });
-  }
+  const handleDelete = async (id) => {
+    try {
+      const foodItems = await axios.delete("http://localhost:5000/food/" + id);
+      console.log(foodItems);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div>
@@ -52,38 +46,53 @@ function Details() {
         <ul className="list">
           {filteredMenuItems.map((data) => {
             return (
-              <p key={data.id}>
-                <img src={data.img} alt="images" />
-                <Box
-                  lg={{
-                    display: "flex",
-                    flexWrap: "wrap",
-                    "& > :not(style)": {
-                      m: 1,
-                      width: 128,
-                      height: 128,
-                    },
-                  }}
-                >
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                  </p>{" "}
-                  <Button
-                    variant="outlined"
-                    startIcon={<DeleteIcon />}
-                    onClick={() => deleteRow(data.title)}
+              <>
+                <p key={data.id}>
+                  <img src={data.img} alt="images" />
+                  <Box
+                    lg={{
+                      display: "flex",
+
+                      flexWrap: "wrap",
+                      "& > :not(style)": {
+                        m: 1,
+                        width: 128,
+                        height: 128,
+                      },
+                    }}
+                    style={{
+                      color: "white",
+                      backgroundColor: "black",
+                      width: "720px",
+                    }}
                   >
-                    Delete
-                  </Button>
-                </Box>
-              </p>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                      sed do eiusmod tempor incididunt ut labore et dolore magna
+                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                      Duis aute irure dolor in reprehenderit in voluptate velit
+                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
+                      sint occaecat cupidatat non proident, sunt in culpa qui
+                      officia deserunt mollit anim id est laborum.
+                    </p>{" "}
+                    <Button
+                      variant="outlined"
+                      startIcon={<DeleteIcon />}
+                      style={{
+                        color: "white",
+                        backgroundColor: "red",
+                        padding: "10px",
+                        cursor: "pointer",
+                        borderRadius: "5px",
+                      }}
+                      onClick={() => handleDelete(data.id)}
+                    >
+                      Delete
+                    </Button>
+                  </Box>
+                </p>
+              </>
             );
           })}
         </ul>
@@ -108,6 +117,8 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
   }
+
+
 
   
 `;

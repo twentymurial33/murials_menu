@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Card from "@mui/material/Card";
+import Fab from "@mui/material/Fab";
+import AddIcon from "@mui/icons-material/Add";
 import Layout from "../components/Layout";
 
-//Post Endpoint -require body
 function AddFood() {
   const [food, setFood] = useState("");
   const url = "http://localhost:5000/food";
@@ -16,18 +18,20 @@ function AddFood() {
   }, [url]);
 
   return (
-    <div>
+    <>
       <Layout />
+      <Fab
+        color="secondary"
+        aria-label="add"
+        style={{ marginTop: "20px", marginBottom: "20px" }}
+      >
+        <AddIcon />
+      </Fab>
       {Array.from(food).map((data) => {
-        return (
-          <>
-            <h1>{food.title}</h1>
-            <h1>{food.img}</h1>
-            <h2>{food.author}</h2>
-          </>
-        );
+        return <Card>{food.id}</Card>;
       })}
-    </div>
+    </>
   );
 }
+
 export default AddFood;
