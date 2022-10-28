@@ -30,7 +30,7 @@ function Details() {
       const foodItems = await axios.delete("http://localhost:5000/food/" + id);
       console.log(foodItems);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
