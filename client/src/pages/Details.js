@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useQuery } from "react-query";
+import { useQuery, useMutation } from "react-query";
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -9,6 +9,7 @@ import "../index.css";
 
 function Details() {
   const [search, setNewSearch] = useState("");
+  const [mutate] = useMutation(createFoodItem, {});
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
   );
@@ -33,6 +34,8 @@ function Details() {
       console.error(error);
     }
   };
+
+  function createFoodItem() {}
 
   return (
     <div>
