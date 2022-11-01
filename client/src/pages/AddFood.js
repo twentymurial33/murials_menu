@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useMutation } from "react-query";
 import axios from "axios";
-import Card from "@mui/material/Card";
+import Box from "@mui/material/Box";
 import Fab from "@mui/material/Fab";
-import AddIcon from "@mui/icons-material/Add";
 import Layout from "../components/Layout";
+import TextField from "@mui/material/TextField";
 
 function AddFood() {
   const [food, setFood] = useState("");
@@ -17,20 +18,67 @@ function AddFood() {
       });
   }, [url]);
 
+  //working with mutation but need to revisit - entirely not working
+  const mutation = useMutation(AddFood, {
+    onSuccess: () => {
+      setFood("");
+    },
+  });
+
+  //working with mutation but need to revisit - entirely not working
+  function handleSubmit(e) {
+    e.preventDefault();
+    mutation.mutate();
+  }
   return (
-    <>
+    <div>
       <Layout />
       <Fab
         color="secondary"
         aria-label="add"
-        style={{ marginTop: "20px", marginBottom: "20px" }}
+        onSubmit={handleSubmit}
+        style={{ marginTop: "30px", marginBottom: "30px", marginRight: "30px" }}
       >
-        <AddIcon />
+        Add
       </Fab>
-      {Array.from(food).map((data) => {
-        return <Card>{food.id}</Card>;
-      })}
-    </>
+      <TextField
+        style={{
+          backgroundColor: "white",
+          width: "300px",
+          height: "200px",
+          marginTop: "30px",
+        }}
+      >
+        <ul className="list">
+          {Array.from(food).map((data) => {
+            return (
+              <>
+                <p key={food.id}>
+                  <img src={food.img} alt="images" />
+                  <Box
+                    lg={{
+                      display: "flex",
+
+                      flexWrap: "wrap",
+                      "& > :not(style)": {
+                        m: 1,
+                        width: 128,
+                        height: 128,
+                      },
+                    }}
+                    style={{
+                      color: "white",
+                      backgroundColor: "black",
+                      width: "720px",
+                    }}
+                  ></Box>
+                </p>
+              </>
+            );
+          })}
+        </ul>
+      </TextField>
+    </div>
   );
 }
 
