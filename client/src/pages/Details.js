@@ -3,7 +3,6 @@ import { useQuery } from "react-query";
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-// import { useMutation } from "react-query";
 import DeleteIcon from "@mui/icons-material/Delete";
 import styled from "styled-components";
 import "../index.css";
@@ -118,10 +117,6 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
   }
-
-
-
-  
 `;
 
 export default Details;
