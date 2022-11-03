@@ -31,27 +31,25 @@ function AddFood() {
   return (
     <div className="form">
       <Layout />
-      <Button variant="contained" onClick={handleSubmit}>
-        Go
-      </Button>
-      <Form>
-        <form onSubmit={handleChange}>
-          <label>
-            Food Name:
-            <input type="text" name="name" />
-          </label>
-          <label>
-            Food Author:
-            <input type="text" name="name" />
-          </label>
-          <label>
-            Food Image:
-            <input type="text" name="name" />
-          </label>
-          <input type="submit" value="Submit" />
-          <input type="submit" value="Error" />
-        </form>
+      <h1>Add Food Items</h1>
+      <Form onSubmit={handleChange}>
+        <label>
+          Food Name:
+          <input type="text" name="name" />
+        </label>
+        <label>
+          Food Author:
+          <input type="text" name="name" />
+        </label>
+        <label>
+          Food Image:
+          <input type="text" name="name" />
+        </label>
       </Form>
+      <Button variant="contained" onClick={handleSubmit}>
+        Submit
+      </Button>
+      <Button variant="contained">Clear</Button>
       <ul className="list">
         {Array.from(food).map((data) => {
           return (
@@ -85,33 +83,24 @@ function AddFood() {
 }
 
 const Form = styled.form`
-  input{
-  font-size: 18px;
-  padding: 10px;
-  margin: 10px;
-  background: white;
-  border: none;
-  border-radius: 3px;
-  ::placeholder {
-    color: black;
-  }
-
-  ul {
+  input {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+    padding-left: 30px;
   }
 
-form{
-  display: block;
-    width: 100%;
-    padding: .5rem .8rem .5rem .8rem;
-    margin: .9vw 0 ;
-    border:0;
-    border-radius: 5px;
-    font-size: 20px;
-}
+  Button {
+    margin: 5px;
+  }
 
-  
+  Form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
 `;
 
 export default AddFood;
