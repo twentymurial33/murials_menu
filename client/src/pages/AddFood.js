@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useMutation } from "react-query";
 import axios from "axios";
-import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
 import styled from "styled-components";
@@ -31,53 +30,27 @@ function AddFood() {
   return (
     <div className="form">
       <Layout />
-      <h1>Add Food Items</h1>
       <Form onSubmit={handleChange}>
-        <label>
-          Food Name:
-          <input type="text" name="name" />
-        </label>
-        <label>
-          Food Author:
-          <input type="text" name="name" />
-        </label>
-        <label>
-          Food Image:
-          <input type="text" name="name" />
-        </label>
+        <h2>Add a New Food Item </h2>
+        <label>Food Name:</label>
+        <input
+          type="text"
+          required
+          value={food}
+          onChange={(e) => setFood(e.target.value)}
+        />
+        <label>Food Description:</label>
+        <textarea></textarea>
+        <label>Food author:</label>
+        <select>
+          <option value="murial">murial</option>
+          <option value="brent">brent</option>
+        </select>
+        <Button variant="contained" onClick={handleSubmit}>
+          Submit
+        </Button>
+        <Button variant="contained">Clear</Button>
       </Form>
-      <Button variant="contained" onClick={handleSubmit}>
-        Submit
-      </Button>
-      <Button variant="contained">Clear</Button>
-      <ul className="list">
-        {Array.from(food).map((data) => {
-          return (
-            <>
-              <p key={food.id}>
-                <img src={food.img} alt="images" />
-                <Box
-                  lg={{
-                    display: "flex",
-
-                    flexWrap: "wrap",
-                    "& > :not(style)": {
-                      m: 1,
-                      width: 128,
-                      height: 128,
-                    },
-                  }}
-                  style={{
-                    color: "white",
-                    backgroundColor: "black",
-                    width: "720px",
-                  }}
-                ></Box>
-              </p>
-            </>
-          );
-        })}
-      </ul>
     </div>
   );
 }
@@ -90,16 +63,42 @@ const Form = styled.form`
     height: 10vh;
     padding-left: 30px;
   }
+  h2 {
+    font-size: 20px;
+    color: black;
+    margin-bottom: 30px;
+  }
+
+  textarea {
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: block;
+  }
 
   Button {
     margin: 5px;
+    background: #f1356d;
+    color: #fff;
+    border: 0;
+    padding: 8px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  select {
+    padding: 6px 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    box-sizing: border-box;
+    display: block;
   }
 
   Form {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
   }
 `;
 
