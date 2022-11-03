@@ -8,8 +8,9 @@ generator client {
 }
 
 model Food {
-    id     Int    @id @default(autoincrement())
-    title  String @unique
-    img    String @unique
-    author String
+    id         Int       @id @default(autoincrement())
+    title      String    @unique
+    img        String    @unique
+    author     String
+    created_at DateTime? @default(now())
 }
