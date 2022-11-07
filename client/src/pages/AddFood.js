@@ -8,11 +8,10 @@ import { useForm } from "react-hook-form";
 
 function AddFood() {
   const [food, setFood] = useState("");
-  // const {
-  //   watch,
-  //   formState: { errors },
-  // } = useForm();
-  // const onSubmit = (data) => console.log(data);
+  const {
+    register,
+    formState: { errors },
+  } = useForm();
   const url = "http://localhost:5000/food";
 
   const mutation = useMutation({
@@ -40,7 +39,16 @@ function AddFood() {
       <Form onSubmit={handleSubmit}>
         <h2>Add a New Food Item </h2>
         <label>Food Name</label>
-        <input type="text" name="food" onChange={handleChange} value={food} />
+        <input
+          type="text"
+          name="food"
+          {...register("food")}
+          onChange={handleChange}
+          value={food}
+        />
+        {errors.foodName?.type === "required" && (
+          <p role="alert">Food name is required</p>
+        )}
         <label>Food Description</label>
         <textarea></textarea>
         <label>Food author</label>
