@@ -5,13 +5,19 @@ import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 function AddFood() {
   const [food, setFood] = useState("");
   const {
     register,
+    handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
+  const onSubmit = (data) => console.log(data);
+  console.log(watch("example"));
   const url = "http://localhost:5000/food";
 
   const mutation = useMutation({
@@ -24,7 +30,7 @@ function AddFood() {
     },
   });
 
-  function handleSubmit(e) {
+  function onSubmit(e) {
     e.preventDefault();
     mutation.mutate(url, { title: "title", img: "img", author: "author" });
   }
@@ -36,7 +42,7 @@ function AddFood() {
   return (
     <div className="form">
       <Layout />
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={onSubmit}>
         <h2>Add a New Food Item </h2>
         <label>Food Name</label>
         <input
