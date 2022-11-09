@@ -9,12 +9,13 @@ import "../index.css";
 
 function Details() {
   const [search, setNewSearch] = useState("");
+
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
   );
   if (error) return <h2>Error </h2>;
   if (isLoading) return <h2> isLoading </h2>;
-
+  console.log(data);
   const handleSetSearch = (e) => {
     setNewSearch(e.target.value);
   };
@@ -28,7 +29,6 @@ function Details() {
   const handleDelete = async (id) => {
     try {
       const foodItems = await axios.delete("http://localhost:5000/food/" + id);
-      console.log(foodItems);
     } catch (error) {
       console.error(error);
     }
@@ -117,8 +117,6 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
   }
-
-
 
   
 `;
