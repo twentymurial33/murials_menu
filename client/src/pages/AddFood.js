@@ -23,7 +23,7 @@ function AddFood() {
   const mutation = useMutation({
     mutationFn: (newFood) => {
       return axios
-        .post(url, { title: "title", img: "img", author: "author" })
+        .post(url, newFood)
         .then((response) => {
           setFood(response.data);
         });
