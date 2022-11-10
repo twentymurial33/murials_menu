@@ -11,10 +11,12 @@ import * as yup from "yup";
 function AddFood() {
   const [food, setFood] = useState("");
   const [data, setData] = useState("");
+
   const schema = yup
     .object({
-      foodName: yup.string().required(),
-      id: yup.number().positive().integer().required(),
+      title: yup.string().required(),
+      img: yup.string().required(),
+      author: yup.string().required(),
     })
     .required();
   const { register, handleSubmit } = useForm({
@@ -40,6 +42,10 @@ function AddFood() {
     setFood(e.target.value);
     console.log(e);
   }
+
+  function handleButtonClick() {
+    // reset();
+  }
   return (
     <div className="form">
       <Layout />
@@ -54,18 +60,20 @@ function AddFood() {
           onChange={handleChange}
         />
         <label>Food Type</label>
-        <select {...register("category", { required: true })}>
+        <select {...register("author", { required: true })}>
           <option value="Breakfast">Breakfast.</option>
           <option value="Lunch">Lunch</option>
           <option value="Dinner">Dinner</option>
         </select>
         <label>Food Description</label>
-        <textarea {...register("aboutYou")} placeholder="About food" />
+        <textarea {...register("title")} placeholder="About food" />
         <p>{data}</p>
         <Button variant="contained" onClick={handleForm}>
           Submit
         </Button>
-        <Button variant="contained">Clear</Button>
+        <Button variant="contained" onChange={handleButtonClick}>
+          Reset
+        </Button>
       </Form>
     </div>
   );
