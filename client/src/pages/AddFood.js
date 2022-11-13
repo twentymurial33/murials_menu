@@ -19,7 +19,7 @@ function AddFood() {
       author: yup.string().required(),
     })
     .required();
-  const { register, handleSubmit } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     resolver: yupResolver(schema),
   });
 
@@ -43,9 +43,9 @@ function AddFood() {
     console.log(e);
   }
 
-  function handleButtonClick() {
-    // reset();
-  }
+  // function handleButtonClick() {
+  //   // reset();
+  // }
   return (
     <div className="form">
       <Layout />
@@ -71,8 +71,13 @@ function AddFood() {
         <Button variant="contained" onClick={handleForm}>
           Submit
         </Button>
-        <Button variant="contained" onChange={handleButtonClick}>
-          Reset
+        <Button
+          variant="contained"
+          onClick={() => {
+            reset();
+          }}
+        >
+          Reset Button
         </Button>
       </Form>
     </div>
