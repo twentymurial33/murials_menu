@@ -10,15 +10,19 @@ import * as yup from "yup";
 
 function AddFood() {
   const [food, setFood] = useState("");
-  const {
-    register,
-    handleSubmit,
-    watch,
-    reset,
-    formState: { errors },
-  } = useForm();
-  const onSubmit = (data) => console.log(data);
-  console.log(watch("example"));
+  const [data, setData] = useState("");
+
+  const schema = yup
+    .object({
+      title: yup.string().required(),
+      img: yup.string().required(),
+      author: yup.string().required(),
+    })
+    .required();
+  const { register, handleSubmit, reset } = useForm({
+    resolver: yupResolver(schema),
+  });
+
   const url = "http://localhost:5000/food";
 
   const mutation = useMutation({
@@ -29,7 +33,7 @@ function AddFood() {
     },
   });
 
-  function onSubmit(e) {
+  function handleForm(e) {
     e.preventDefault();
     mutation.mutate(url, { title: "title", img: "img", author: "author" });
   }
@@ -38,30 +42,32 @@ function AddFood() {
     setFood(e.target.value);
     console.log(e);
   }
+
+  function handleButtonClick() {
+    // reset();
+  }
   return (
     <div className="form">
       <Layout />
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
         <h2>Add a New Food Item </h2>
         <label>Food Name</label>
         <input
           type="text"
-          name="food"
-          {...register("food")}
+          {...register("foodName")}
+          placeholder="Food name"
           onChange={handleChange}
-          value={food}
         />
-        {errors.foodName?.type === "required" && (
-          <p role="alert">Food name is required</p>
-        )}
-        <label>Food Description</label>
-        <textarea></textarea>
-        <label>Food author</label>
-        <select>
-          <option value="murial">murial</option>
-          <option value="brent">brent</option>
+        <label>Food Type</label>
+        <select {...register("author", { required: true })}>
+          <option value="Breakfast">Breakfast.</option>
+          <option value="Lunch">Lunch</option>
+          <option value="Dinner">Dinner</option>
         </select>
-        <Button variant="contained" onClick={handleSubmit}>
+        <label>Food Description</label>
+        <textarea {...register("title")} placeholder="About food" />
+        <p>{data}</p>
+        <Button variant="contained" onClick={handleForm}>
           Submit
         </Button>
         <Button
@@ -82,7 +88,7 @@ const Form = styled.form`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 60px;
+    height: 120px;
     padding-left: 50px;
   }
   h2 {
@@ -96,7 +102,7 @@ const Form = styled.form`
     margin: 10px 0;
     border: 1px solid #ddd;
     box-sizing: border-box;
-    height: 100px;
+    height: 120px;
     display: block;
   }
 
@@ -105,9 +111,19 @@ const Form = styled.form`
     background: #f1356d;
     color: #fff;
     border: 0;
-    padding: 8px;
-    border-radius: 8px;
+    padding: 20px;
+    border-radius: 10px;
     cursor: pointer;
+  }
+  label {
+    line-height: 2;
+    text-align: left;
+    display: block;
+    margin-bottom: 13px;
+    margin-top: 20px;
+    color: white;
+    font-size: 14px;
+    font-weight: 200;
   }
 
   select {
