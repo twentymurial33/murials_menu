@@ -14,6 +14,7 @@ function AddFood() {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => console.log(data);
@@ -22,11 +23,9 @@ function AddFood() {
 
   const mutation = useMutation({
     mutationFn: (newFood) => {
-      return axios
-        .post(url, newFood)
-        .then((response) => {
-          setFood(response.data);
-        });
+      return axios.post(url, newFood).then((response) => {
+        setFood(response.data);
+      });
     },
   });
 
@@ -65,7 +64,14 @@ function AddFood() {
         <Button variant="contained" onClick={handleSubmit}>
           Submit
         </Button>
-        <Button variant="contained">Clear</Button>
+        <Button
+          variant="contained"
+          onClick={() => {
+            reset();
+          }}
+        >
+          Reset Button
+        </Button>
       </Form>
     </div>
   );
