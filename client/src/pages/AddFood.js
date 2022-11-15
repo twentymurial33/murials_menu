@@ -56,7 +56,6 @@ function AddFood() {
           type="text"
           {...register("foodName")}
           placeholder="Food name"
-          value={food}
           onChange={handleChange}
         />
         <label>Food Type</label>
