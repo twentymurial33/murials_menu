@@ -42,7 +42,12 @@ function Landing() {
       <Layout />
 
       <Box
-        sx={{ display: "flex", flexWrap: "wrap", minWidth: 300, width: "100%" }}
+        sx={{
+          display: "flex",
+          minWidth: 300,
+          width: "100%",
+          paddingTop: "160px",
+        }}
       >
         {images.map((image) => (
           <ImageButton

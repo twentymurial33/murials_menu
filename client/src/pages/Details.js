@@ -3,6 +3,7 @@ import { useQuery } from "react-query";
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+
 import DeleteIcon from "@mui/icons-material/Delete";
 import styled from "styled-components";
 import "../index.css";
@@ -104,7 +105,8 @@ function Details() {
 const Container = styled.div`
   input{
   font-size: 18px;
-  padding: 10px;
+ padding:10px;
+
   margin: 10px;
   background: white;
   border: none;
