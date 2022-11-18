@@ -9,7 +9,7 @@ import "../index.css";
 
 function Details() {
   const [search, setNewSearch] = useState("");
-
+  const [popup, setPopup] = useState({ show: false, id: null });
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
   );
@@ -31,6 +31,27 @@ function Details() {
       const foodItems = await axios.delete("http://localhost:5000/food/" + id);
     } catch (error) {
       console.error(error);
+    }
+    setPopup({
+      show: true,
+      id,
+    });
+  };
+
+  const handleDeleteFalse = () => {
+    setPopup({
+      show: false,
+      id: null,
+    });
+  };
+
+  const handleDeleteTrue = () => {
+    if (popup.show && popup.id) {
+      setNewSearch(filteredMenuItems);
+      setPopup({
+        show: false,
+        id: null,
+      });
     }
   };
 
@@ -76,20 +97,24 @@ function Details() {
                       sint occaecat cupidatat non proident, sunt in culpa qui
                       officia deserunt mollit anim id est laborum.
                     </p>{" "}
-                    <Button
-                      variant="outlined"
-                      startIcon={<DeleteIcon />}
-                      style={{
-                        color: "white",
-                        backgroundColor: "red",
-                        padding: "10px",
-                        cursor: "pointer",
-                        borderRadius: "5px",
-                      }}
-                      onClick={() => handleDelete(data.id)}
-                    >
-                      Delete
-                    </Button>
+                    {popup.show && (
+                      <Button
+                        variant="outlined"
+                        startIcon={<DeleteIcon />}
+                        style={{
+                          color: "white",
+                          backgroundColor: "red",
+                          padding: "10px",
+                          cursor: "pointer",
+                          borderRadius: "5px",
+                        }}
+                        onClick={() => handleDelete(data.id)}
+                        handleDeleteTrue={handleDeleteTrue}
+                        handleDeleteFalse={handleDeleteFalse}
+                      >
+                        Delete
+                      </Button>
+                    )}
                   </Box>
                 </p>
               </>

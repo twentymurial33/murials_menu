@@ -76,7 +76,7 @@ function AddFood() {
             reset();
           }}
         >
-          Reset Button
+          Clear
         </Button>
       </Form>
     </div>
