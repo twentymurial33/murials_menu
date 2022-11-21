@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
 import styled from "styled-components";
+import "../index.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -44,7 +45,7 @@ function AddFood() {
   }
 
   return (
-    <div className="form" style={{ paddingLeft: "620px", paddingTop: "60px" }}>
+    <div className="form">
       <Layout />
       <Form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
         <label>Food Name</label>
