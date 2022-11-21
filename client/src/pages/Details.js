@@ -2,8 +2,6 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import DeleteIcon from "@mui/icons-material/Delete";
 import styled from "styled-components";
 import "../index.css";
 
@@ -50,6 +48,7 @@ function Details() {
                 <p key={data.id}>
                   <img src={data.img} alt="images" />
                   <Box
+                    className="boxMenu"
                     lg={{
                       display: "flex",
 
@@ -60,36 +59,20 @@ function Details() {
                         height: 128,
                       },
                     }}
-                    style={{
-                      color: "white",
-                      backgroundColor: "black",
-                      width: "720px",
-                    }}
                   >
                     <p>
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
                       aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                       ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                      Duis aute irure dolor in reprehenderit in voluptate velit
-                      esse cillum dolore eu fugiat nulla pariatur. Excepteur
-                      sint occaecat cupidatat non proident, sunt in culpa qui
-                      officia deserunt mollit anim id est laborum.
                     </p>{" "}
-                    <Button
+                    <button
+                      className="deleteBtn"
                       variant="outlined"
-                      startIcon={<DeleteIcon />}
-                      style={{
-                        color: "white",
-                        backgroundColor: "red",
-                        padding: "10px",
-                        cursor: "pointer",
-                        borderRadius: "5px",
-                      }}
                       onClick={() => handleDelete(data.id)}
                     >
                       Delete
-                    </Button>
+                    </button>
                   </Box>
                 </p>
               </>
@@ -104,7 +87,7 @@ function Details() {
 const Container = styled.div`
   input{
   font-size: 18px;
-  padding: 10px;
+  padding:10px;
   margin: 10px;
   background: white;
   border: none;
@@ -117,8 +100,6 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
   }
-
-  
 `;
 
 export default Details;

@@ -4,6 +4,7 @@ import axios from "axios";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
 import styled from "styled-components";
+import "../index.css";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -43,14 +44,10 @@ function AddFood() {
     console.log(e);
   }
 
-  function handleButtonClick() {
-    // reset();
-  }
   return (
     <div className="form">
       <Layout />
       <Form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
-        <h2>Add a New Food Item </h2>
         <label>Food Name</label>
         <input
           type="text"
@@ -88,13 +85,14 @@ const Form = styled.form`
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 120px;
+    height: 140px;
     padding-left: 50px;
   }
   h2 {
     font-size: 20px;
-    color: black;
+    color: white;
     margin-bottom: 30px;
+    text-align: center;
   }
 
   textarea {
@@ -102,7 +100,7 @@ const Form = styled.form`
     margin: 10px 0;
     border: 1px solid #ddd;
     box-sizing: border-box;
-    height: 120px;
+    height: 140px;
     display: block;
   }
 
@@ -122,7 +120,7 @@ const Form = styled.form`
     margin-bottom: 13px;
     margin-top: 20px;
     color: white;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 200;
   }
 
