@@ -34,9 +34,13 @@ const Container = styled.div`
     color: white;
   }
   section {
-    backgroundcolor: white;
+    color: white;
     text-align: center;
     align: center;
   }
+  Link {
+    color: white;
+  }
 `;
+
 export default Header;
