@@ -3,6 +3,7 @@ import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import styled from "styled-components";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
@@ -86,6 +87,20 @@ function Details() {
                     >
                       Delete
                     </button>
+                    <Dialog
+                      onClose={handleClose}
+                      aria-labelledby="customized-dialog-title"
+                      open={open}
+                    >
+                      <DialogContent dividers>
+                        <Typography gutterBottom>Confirm Deletion</Typography>
+                      </DialogContent>
+                      <DialogActions>
+                        <Button autoFocus onClick={handleClose}>
+                          Delete
+                        </Button>
+                      </DialogActions>
+                    </Dialog>
                   </Box>
                 </p>
               </>
