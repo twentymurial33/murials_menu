@@ -19,3 +19,23 @@ form {
 .u-text--center {
   text-align: center !important;
 }
+
+.deleteBtn {
+  margin: 5px;
+  background-color: red;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.boxMenu {
+  color: white;
+  background: black;
+  width: 720px;
+}
+
+.form {
+  padding-left: 620px;
+  padding-top: 60px;
+}
