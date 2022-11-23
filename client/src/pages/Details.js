@@ -14,6 +14,7 @@ import "../index.css";
 
 function Details() {
   const [search, setNewSearch] = useState("");
+  const [counter, setCounter] = useState(0);
   const [open, setOpen] = useState(false);
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
@@ -50,6 +51,20 @@ function Details() {
     setOpen("");
   };
 
+  //const increase
+
+  const increaseCounter = () => {
+    setCounter((count) => count + 1);
+  };
+
+  const decreaseCounter = () => {
+    setCounter((count) => count - 1);
+  };
+
+  const reset = () => {
+    setCounter(0);
+  };
+
   return (
     <div>
       <Container>
@@ -65,6 +80,19 @@ function Details() {
               <>
                 <p key={data.id}>
                   <img src={data.img} alt="images" />
+                  <h4>Food Calories</h4>
+                  <span className="counter__output">{counter}</span>
+                  <div className="btn__container">
+                    <button className="control__btn" onClick={increaseCounter}>
+                      +
+                    </button>
+                    <button className="control__btn" onClick={decreaseCounter}>
+                      -
+                    </button>
+                    <button className="reset" onClick={reset}>
+                      Reset
+                    </button>
+                  </div>
                   <Box
                     className="boxMenu"
                     lg={{
