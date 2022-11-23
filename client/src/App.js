@@ -1,6 +1,7 @@
 import Landing from "./pages/Landing";
 import Details from "./pages/Details";
 import AddFood from "./pages/AddFood";
+import Calories from "./pages/Calories";
 import React, { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
 // import { ReactQueryDevtools } from "react-query-devtools";
@@ -16,6 +17,7 @@ function App() {
             <Route exact path="/" element={<Landing />} />
             <Route exact path="/details" element={<Details />} />
             <Route exact path="/add" element={<AddFood />} />
+            <Route exact path="/calories" element={<Calories />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

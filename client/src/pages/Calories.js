@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 
-export default function calorieCounter() {
+export default function Calories() {
   const [counter, setCounter] = useState(0);
 
   //increase counter
