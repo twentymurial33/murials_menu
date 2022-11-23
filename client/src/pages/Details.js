@@ -46,7 +46,7 @@ function Details() {
   };
 
   const reset = () => {
-    setCounter();
+    setCounter(0);
   };
 
   return (
