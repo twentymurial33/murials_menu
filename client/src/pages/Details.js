@@ -6,6 +6,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import Dialog from "@mui/material/Dialog";
+import Divider from "@mui/material/Divider";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Typography from "@mui/material/Typography";
@@ -43,6 +44,10 @@ function Details() {
   };
   const handleClose = () => {
     setOpen(false);
+  };
+
+  const handleClick = () => {
+    setOpen("");
   };
 
   return (
@@ -92,11 +97,28 @@ function Details() {
                       aria-labelledby="customized-dialog-title"
                       open={open}
                     >
+                      <h1>Delete</h1>
+                      <Divider />
                       <DialogContent dividers>
-                        <Typography gutterBottom>Confirm Deletion</Typography>
+                        <Typography gutterBottom>
+                          Are you sure you want to Delete this Item?
+                        </Typography>
                       </DialogContent>
+                      <Divider />
                       <DialogActions>
-                        <Button autoFocus onClick={handleClose}>
+                        <Button
+                          variant="outlined"
+                          autoFocus
+                          onClick={handleClick}
+                        >
+                          Clear
+                        </Button>
+
+                        <Button
+                          variant="contained"
+                          autoFocus
+                          onClick={handleClose}
+                        >
                           Delete
                         </Button>
                       </DialogActions>
