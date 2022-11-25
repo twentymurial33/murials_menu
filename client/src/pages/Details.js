@@ -33,8 +33,6 @@ function Details() {
     }
   };
 
-  //const increase
-
   const increaseCounter = () => {
     setCounter((count) => count + 1);
   };
