@@ -8,6 +8,7 @@ import "../index.css";
 function Details() {
   const [search, setNewSearch] = useState("");
   const [counter, setCounter] = useState(0);
+  const [isEditing, setEditing] = useState(false);
 
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
@@ -44,6 +45,16 @@ function Details() {
   const reset = () => {
     setCounter(0);
   };
+
+  function editFood(id, newName) {
+    const editedFoodList = data.map((data) => {
+      if (id === data.id) {
+        return { name: newName };
+      }
+      return data;
+    });
+    setEditing(editedFoodList);
+  }
 
   return (
     <div>
@@ -98,6 +109,13 @@ function Details() {
                       onClick={() => handleDelete(data.id)}
                     >
                       Delete
+                    </button>
+                    <button
+                      variant="outlined"
+                      className="deleteBtn"
+                      onClick={() => isEditing(true)}
+                    >
+                      Edit
                     </button>
                   </Box>
                 </p>
