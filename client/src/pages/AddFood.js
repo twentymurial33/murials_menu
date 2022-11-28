@@ -57,7 +57,7 @@ function AddFood() {
         />
         <label>Food Type</label>
         <select {...register("author", { required: true })}>
-          <option value="Breakfast">Breakfast.</option>
+          <option value="Breakfast">Breakfast</option>
           <option value="Lunch">Lunch</option>
           <option value="Dinner">Dinner</option>
         </select>
