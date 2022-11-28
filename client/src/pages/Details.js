@@ -8,7 +8,7 @@ import "../index.css";
 function Details() {
   const [search, setNewSearch] = useState("");
   const [counter, setCounter] = useState(0);
-  const [isEditing, setEditing] = useState(false);
+  const [updateState, setUpdateState] = useState(-1);
 
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
@@ -46,14 +46,20 @@ function Details() {
     setCounter(0);
   };
 
-  function editFood(id, newName) {
-    const editedFoodList = data.map((data) => {
-      if (id === data.id) {
-        return { name: newName };
-      }
-      return data;
-    });
-    setEditing(editedFoodList);
+  const editedMenuItems = !updateState
+    ? data.data
+    : data.data.filter((data) => (
+        <button
+          variant="outlined"
+          className="deleteBtn"
+          onClick={() => handleSubmit(data.id)}
+        >
+          Edit
+        </button>
+      ));
+
+  function handleSubmit(id) {
+    setUpdateState(id);
   }
 
   return (
@@ -113,7 +119,7 @@ function Details() {
                     <button
                       variant="outlined"
                       className="deleteBtn"
-                      onClick={() => isEditing(true)}
+                      onClick={() => handleSubmit(data.id)}
                     >
                       Edit
                     </button>
