@@ -47,11 +47,14 @@ function Details() {
     setOpen(false);
   };
 
-  const handleClick = () => {
-    setOpen("");
-  };
+  function handleCancel() {
+    setOpen(false);
+  }
 
-  //const increase
+  function handleConfirm(id) {
+    setOpen(false);
+    handleDelete(id);
+  }
 
   const increaseCounter = () => {
     setCounter((count) => count + 1);
@@ -77,78 +80,75 @@ function Details() {
         <ul className="list">
           {filteredMenuItems.map((data) => {
             return (
-              <>
-                <p key={data.id}>
-                  <img src={data.img} alt="images" />
-                  <h4>Food Calories</h4>
-                  <span className="counter__output">{counter}</span>
-                  <div className="btn__container">
-                    <button className="control__btn" onClick={increaseCounter}>
-                      +
-                    </button>
-                    <button className="control__btn" onClick={decreaseCounter}>
-                      -
-                    </button>
-                    <button className="reset" onClick={reset}>
-                      Reset
-                    </button>
-                  </div>
-                  <Box
-                    className="boxMenu"
-                    lg={{
-                      display: "flex",
+              <div key={data.id}>
+                <img src={data.img} alt="images" />
+                <h4>Food Calories</h4>
+                <span className="counter__output">{counter}</span>
+                <div className="btn__container">
+                  <button className="control__btn" onClick={increaseCounter}>
+                    +
+                  </button>
+                  <button className="control__btn" onClick={decreaseCounter}>
+                    -
+                  </button>
+                  <button className="reset" onClick={reset}>
+                    Reset
+                  </button>
+                </div>
+                <Box
+                  className="boxMenu"
+                  lg={{
+                    display: "flex",
 
-                      flexWrap: "wrap",
-                      "& > :not(style)": {
-                        m: 1,
-                        width: 128,
-                        height: 128,
-                      },
-                    }}
+                    flexWrap: "wrap",
+                    "& > :not(style)": {
+                      m: 1,
+                      width: 128,
+                      height: 128,
+                    },
+                  }}
+                >
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>{" "}
+                  <button
+                    className="deleteBtn"
+                    variant="outlined"
+                    onClick={handleClickOpen}
                   >
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                      sed do eiusmod tempor incididunt ut labore et dolore magna
-                      aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                      ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </p>{" "}
-                    <button
-                      className="deleteBtn"
-                      variant="outlined"
-                      onClick={handleClickOpen}
-                    >
-                      Delete
-                    </button>
-                    <Dialog
-                      onClose={handleClose}
-                      aria-labelledby="customized-dialog-title"
-                      open={open}
-                    >
-                      <h1>Delete</h1>
-                      <Divider />
-                      <DialogContent dividers>
-                        <Typography gutterBottom>
-                          Are you sure you want to Delete this Item?
-                        </Typography>
-                      </DialogContent>
-                      <Divider />
-                      <DialogActions>
-                        <Button variant="outlined" onClick={handleClick}>
-                          Clear
-                        </Button>
+                    Delete
+                  </button>
+                  <Dialog
+                    onClose={handleClose}
+                    aria-labelledby="customized-dialog-title"
+                    open={open}
+                  >
+                    <h1>Delete</h1>
+                    <Divider />
+                    <DialogContent dividers>
+                      <Typography gutterBottom>
+                        Are you sure you want to Delete this Item?
+                      </Typography>
+                    </DialogContent>
+                    <Divider />
+                    <DialogActions>
+                      <Button variant="outlined" onClick={handleCancel}>
+                        Clear
+                      </Button>
 
-                        <Button
-                          variant="contained"
-                          onClick={() => handleDelete(data.id)}
-                          onClick={handleClose}
-                        >
-                          Delete
-                        </Button>
-                      </DialogActions>
-                    </Dialog>
-                  </Box>
-                </p>
-              </>
+                      <Button
+                        variant="contained"
+                        onClick={() => handleConfirm(data.id)}
+                      >
+                        Delete
+                      </Button>
+                    </DialogActions>
+                  </Dialog>
+                </Box>
+              </div>
             );
           })}
         </ul>
