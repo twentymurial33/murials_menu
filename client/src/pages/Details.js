@@ -115,7 +115,6 @@ function Details() {
                     <button
                       className="deleteBtn"
                       variant="outlined"
-                      onClick={() => handleDelete(data.id)}
                       onClick={handleClickOpen}
                     >
                       Delete
@@ -134,17 +133,13 @@ function Details() {
                       </DialogContent>
                       <Divider />
                       <DialogActions>
-                        <Button
-                          variant="outlined"
-                          autoFocus
-                          onClick={handleClick}
-                        >
+                        <Button variant="outlined" onClick={handleClick}>
                           Clear
                         </Button>
 
                         <Button
                           variant="contained"
-                          autoFocus
+                          onClick={() => handleDelete(data.id)}
                           onClick={handleClose}
                         >
                           Delete
