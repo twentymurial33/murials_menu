@@ -16,7 +16,7 @@ function Details() {
   const [search, setNewSearch] = useState("");
   const [counter, setCounter] = useState(0);
   const [open, setOpen] = useState(false);
-  const [updateState, setUpdateState] = useState(-1);
+  const [editing, setEditing] = useState(false);
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
   );
@@ -69,10 +69,15 @@ function Details() {
     setCounter(0);
   };
 
-  function handleSubmit(id) {
-    setUpdateState(id);
+  function isEditing() {
+    console.log("edit mode activated");
+    setEditing(true);
   }
 
+  let viewMode = {};
+  let editMode = {};
+
+  // wire conditional rendeing here !
   return (
     <div>
       <Container>
@@ -129,7 +134,7 @@ function Details() {
                   <button
                     variant="outlined"
                     className="deleteBtn"
-                    onClick={() => handleSubmit(data.id)}
+                    onDoubleClick={isEditing}
                   >
                     Edit
                   </button>
