@@ -6,10 +6,12 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import Dialog from "@mui/material/Dialog";
+import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Typography from "@mui/material/Typography";
+import EditForm from "./EditForm";
 import "../index.css";
 
 function Details() {
@@ -69,15 +71,18 @@ function Details() {
     setCounter(0);
   };
 
-  function isEditing() {
+  function isEditing(id) {
     console.log("edit mode activated");
-    setEditing(true);
+    setEditing(id);
   }
 
-  let viewMode = {};
-  let editMode = {};
+  const editItem = (id) => {
+    const newEditItem = data.find(() => {
+      return data.id === id;
+    });
+    console.log(newEditItem);
+  };
 
-  // wire conditional rendeing here !
   return (
     <div>
       <Container>
@@ -121,8 +126,7 @@ function Details() {
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    aliqua.
                   </p>{" "}
                   <button
                     className="deleteBtn"
@@ -132,11 +136,11 @@ function Details() {
                     Delete
                   </button>
                   <button
+                    className="editBtn"
                     variant="outlined"
-                    className="deleteBtn"
-                    onDoubleClick={isEditing}
+                    onClick={isEditing}
                   >
-                    Edit
+                    <EditIcon />
                   </button>
                   <Dialog
                     onClose={handleClose}

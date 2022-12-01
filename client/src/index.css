@@ -21,7 +21,7 @@ form {
 }
 
 .deleteBtn {
-  margin: 5px;
+  margin: 2px;
   background-color: red;
   color: #fff;
   padding: 20px;
@@ -29,6 +29,14 @@ form {
   cursor: pointer;
 }
 
+.editBtn {
+  margin: 0px;
+  background-color: red;
+  color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  cursor: pointer;
+}
 .boxMenu {
   color: white;
   background: black;
