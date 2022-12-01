@@ -8,28 +8,15 @@ const EditForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group>
-        <Form.Control type="text" placeholder="Name *" name="name" required />
-      </Form.Group>
-      <Form.Group>
-        <Form.Control
-          type="email"
-          placeholder="Email *"
-          name="email"
-          required
-        />
-      </Form.Group>
-      <Form.Group>
-        <Form.Control
+      <Form>
+        <Form
           as="textarea"
-          placeholder="Address"
+          placeholder="Enter Food Item"
           rows={3}
           name="address"
         />
-      </Form.Group>
-      <Form.Group>
-        <Form.Control type="text" placeholder="Phone" name="phone" />
-      </Form.Group>
+      </Form>
+
       <Button variant="success" type="submit" block>
         Edit Food Item
       </Button>
