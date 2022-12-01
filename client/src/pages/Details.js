@@ -11,14 +11,14 @@ import Divider from "@mui/material/Divider";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Typography from "@mui/material/Typography";
-import EditForm from "./EditForm";
+import { useNavigate } from "react-router-dom";
 import "../index.css";
 
 function Details() {
+  const navigate = useNavigate();
   const [search, setNewSearch] = useState("");
   const [counter, setCounter] = useState(0);
   const [open, setOpen] = useState(false);
-  const [editing, setEditing] = useState(false);
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
   );
@@ -38,11 +38,15 @@ function Details() {
   const handleDelete = async (id) => {
     try {
       const foodItems = await axios.delete("http://localhost:5000/food/" + id);
+      console.log(foodItems);
     } catch (error) {
       console.error(error);
     }
   };
 
+  const navigateToEdit = () => {
+    navigate("/edit");
+  };
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -69,18 +73,6 @@ function Details() {
 
   const reset = () => {
     setCounter(0);
-  };
-
-  function isEditing(id) {
-    console.log("edit mode activated");
-    setEditing(id);
-  }
-
-  const editItem = (id) => {
-    const newEditItem = data.find(() => {
-      return data.id === id;
-    });
-    console.log(newEditItem);
   };
 
   return (
@@ -138,7 +130,7 @@ function Details() {
                   <button
                     className="editBtn"
                     variant="outlined"
-                    onClick={isEditing}
+                    onClick={navigateToEdit}
                   >
                     <EditIcon />
                   </button>
