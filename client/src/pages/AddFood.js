@@ -39,22 +39,19 @@ function AddFood() {
     mutation.mutate(url, { title: "title", img: "img", author: "author" });
   }
 
-  function handleChange(e) {
-    setFood(e.target.value);
-    console.log(e);
+  function handleChange(event) {
+    setFood(event.target.value);
+    console.log(event);
   }
 
   return (
     <div className="form">
       <Layout />
-      <Form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
-        <label>Food Name</label>
-        <input
-          type="text"
-          {...register("foodName")}
-          value={food}
-          onChange={handleChange}
-        />
+      <Form onSubmit={handleSubmit((data) => setData(data))}>
+        <label>Food Title</label>
+        <input type="text" value={food} onChange={handleChange} />
+        <label>Food Author</label>
+        <input type="text" value={food} onChange={handleChange} />
         <label>Food Type</label>
         <select {...register("author", { required: true })}>
           <option value="Breakfast">Breakfast</option>
@@ -62,11 +59,17 @@ function AddFood() {
           <option value="Dinner">Dinner</option>
         </select>
         <label>Food Description</label>
-        <textarea {...register("title")} placeholder="About food" />
-        <p>{data}</p>
-        <Button variant="contained" onClick={handleForm}>
+        <textarea
+          {...register("title")}
+          value={food}
+          placeholder="About food"
+          onChange={handleChange}
+        />
+
+        <Button variant="contained" onClick={() => handleForm()}>
           Submit
         </Button>
+        <p>{data}</p>
         <Button
           variant="contained"
           onClick={() => {
