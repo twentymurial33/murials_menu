@@ -12,6 +12,9 @@ import * as yup from "yup";
 function AddFood() {
   const [food, setFood] = useState("");
   const [data, setData] = useState("");
+  const [title, setTitle] = useState("");
+  const [author, setAuthor] = useState("");
+  const [img, setImage] = useState("");
 
   const schema = yup
     .object({
@@ -35,23 +38,32 @@ function AddFood() {
   });
 
   function handleForm(e) {
-    e.preventDefault();
     mutation.mutate(url, { title: "title", img: "img", author: "author" });
   }
 
-  function handleChange(event) {
-    setFood(event.target.value);
-    console.log(event);
-  }
+  // function handleChange(event) {
+  //   setFood(event.target.value);
+  //   console.log(event);
+  // }
 
   return (
     <div className="form">
       <Layout />
-      <Form onSubmit={handleSubmit((data) => setData(data))}>
+      <Form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
         <label>Food Title</label>
-        <input type="text" value={food} onChange={handleChange} />
+        <input
+          type="text"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
         <label>Food Author</label>
-        <input type="text" value={food} onChange={handleChange} />
+
+        <input
+          type="text"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
+        />
+
         <label>Food Type</label>
         <select {...register("author", { required: true })}>
           <option value="Breakfast">Breakfast</option>
@@ -59,25 +71,13 @@ function AddFood() {
           <option value="Dinner">Dinner</option>
         </select>
         <label>Food Description</label>
-        <textarea
-          {...register("title")}
-          value={food}
-          placeholder="About food"
-          onChange={handleChange}
-        />
+        <textarea value={img} onChange={(e) => setImage(e.target.value)} />
 
         <Button variant="contained" onClick={() => handleForm()}>
           Submit
         </Button>
         <p>{data}</p>
-        <Button
-          variant="contained"
-          onClick={() => {
-            reset();
-          }}
-        >
-          Reset Button
-        </Button>
+        <Button onClick={() => reset()}>Reset Button</Button>
       </Form>
     </div>
   );
