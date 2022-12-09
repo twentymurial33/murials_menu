@@ -22,17 +22,11 @@ export default function EditForm() {
     });
   };
 
-  function isEditing(id) {
-    console.log("edit mode activated");
-    setEditing(id);
-  }
-
-  //   //   const editItem = (id) => {
-  //   //     const newEditItem = data.find(() => {
-  //   //       return data.id === id;
-  //   //     });
-  //   //     console.log(newEditItem);
-  //   //   };
+  // currently in progress
+  // function isEditing() {
+  //   console.log("edit mode activated");
+  //   setEditing();
+  // }
 
   return (
     <ThemeProvider theme={theme}>
@@ -81,7 +75,7 @@ export default function EditForm() {
               type="submit"
               fullWidth
               variant="contained"
-              onClick={isEditing}
+              onClick
               sx={{ mt: 3, mb: 2 }}
             >
               Save
