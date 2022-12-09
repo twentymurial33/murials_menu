@@ -41,11 +41,6 @@ function AddFood() {
     mutation.mutate(url, { title: "title", img: "img", author: "author" });
   }
 
-  // function handleChange(event) {
-  //   setFood(event.target.value);
-  //   console.log(event);
-  // }
-
   return (
     <div className="form">
       <Layout />
@@ -72,8 +67,12 @@ function AddFood() {
         </select>
         <label>Food Description</label>
         <textarea value={img} onChange={(e) => setImage(e.target.value)} />
-
-        <Button variant="contained" onClick={() => handleForm()}>
+        <Button
+          variant="contained"
+          onClick={() =>
+            handleForm({ Title: title, Author: author, Image: img })
+          }
+        >
           Submit
         </Button>
         <p>{data}</p>
