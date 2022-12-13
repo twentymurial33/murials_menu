@@ -6,13 +6,16 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import Dialog from "@mui/material/Dialog";
+import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
 import "../index.css";
 
 function Details() {
+  const navigate = useNavigate();
   const [search, setNewSearch] = useState("");
   const [counter, setCounter] = useState(0);
   const [open, setOpen] = useState(false);
@@ -35,11 +38,15 @@ function Details() {
   const handleDelete = async (id) => {
     try {
       const foodItems = await axios.delete("http://localhost:5000/food/" + id);
+      console.log(foodItems);
     } catch (error) {
       console.error(error);
     }
   };
 
+  const navigateToEdit = () => {
+    navigate("/edit");
+  };
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -111,8 +118,7 @@ function Details() {
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    aliqua.
                   </p>{" "}
                   <button
                     className="deleteBtn"
@@ -120,6 +126,13 @@ function Details() {
                     onClick={handleClickOpen}
                   >
                     Delete
+                  </button>
+                  <button
+                    className="editBtn"
+                    variant="outlined"
+                    onClick={navigateToEdit}
+                  >
+                    <EditIcon />
                   </button>
                   <Dialog
                     onClose={handleClose}
