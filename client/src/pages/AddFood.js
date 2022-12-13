@@ -1,17 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useMutation } from "react-query";
-import axios from "axios";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import "../index.css";
 import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
 function AddFood() {
-  const [food, setFood] = useState("");
-  const [data, setData] = useState("");
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
   const [img, setImg] = useState("");
@@ -44,24 +40,21 @@ function AddFood() {
         console.log(response);
         return await response.json();
       }
-      // return fetch.post(url, newFood, config).then((response) => {
-      //   setFood(response.data);
-      // });
     },
   });
 
   function handleForm(data) {
-    // e.preventDefault();
-    //pass the data
     console.log(data);
-
     mutation.mutate({
       title: data.title,
       img: data.img,
       author: data.author,
     });
   }
-  // add reset to clear form without button - do nothing and send user back to the landing page
+
+  useEffect(() => {
+    reset();
+  }, []);
 
   return (
     <div className="form">
@@ -76,7 +69,6 @@ function AddFood() {
           onChange={(e) => setTitle(e.target.value)}
         />
         <label>Food Author</label>
-
         <input
           type="text"
           {...register("author")}
@@ -84,6 +76,7 @@ function AddFood() {
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
         />
+        <label>Food Image</label>
         <input
           type="text"
           {...register("img")}
@@ -91,18 +84,13 @@ function AddFood() {
           value={img}
           onChange={(e) => setImg(e.target.value)}
         />
-        <label>Food Type</label>
-        <select {...register("mealchoice", { required: true })}>
-          <option value="Breakfast">Breakfast</option>
-          <option value="Lunch">Lunch</option>
-          <option value="Dinner">Dinner</option>
-        </select>
-        <label>Food Description</label>
-        <textarea value={img} onChange={(e) => setImg(e.target.value)} />
         <Button variant="contained" type="submit">
           Submit
         </Button>
-        <p>{data}</p>
+
+        <Button type="button" onClick={() => reset()}>
+          Reset
+        </Button>
       </Form>
     </div>
   );
@@ -110,11 +98,14 @@ function AddFood() {
 
 const Form = styled.form`
   input {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 140px;
-    padding-left: 50px;
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid white;
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    font-size: 14px;
   }
   h2 {
     font-size: 20px;
@@ -148,8 +139,9 @@ const Form = styled.form`
     margin-bottom: 13px;
     margin-top: 20px;
     color: white;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: 200;
+    text-align: center;
   }
 
   select {

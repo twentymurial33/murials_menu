@@ -44,6 +44,11 @@ form {
 }
 
 .form {
-  padding-left: 620px;
   padding-top: 60px;
+  background: #1e081a;
+  max-width: 700px;
+  align-items: center;
+  padding-right: 100px;
+  margin-top: 140px;
+  margin-left: 240px;
 }
