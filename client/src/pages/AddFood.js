@@ -14,7 +14,7 @@ function AddFood() {
   const [data, setData] = useState("");
   const [title, setTitle] = useState("");
   const [author, setAuthor] = useState("");
-  const [img, setImage] = useState("");
+  const [img, setImg] = useState("");
 
   const schema = yup
     .object({
@@ -24,30 +24,54 @@ function AddFood() {
     })
     .required();
   const { register, handleSubmit, reset } = useForm({
-    resolver: yupResolver(schema),
+    resolver: null,
   });
 
   const url = "http://localhost:5000/food";
 
   const mutation = useMutation({
-    mutationFn: (newFood) => {
-      return axios.post(url, newFood).then((response) => {
-        setFood(response.data);
-      });
+    mutationFn: async (newFood) => {
+      console.log(newFood);
+      const config = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newFood),
+      };
+      const response = await fetch(url, config);
+      if (response.ok) {
+        console.log(response);
+        return await response.json();
+      }
+      // return fetch.post(url, newFood, config).then((response) => {
+      //   setFood(response.data);
+      // });
     },
   });
 
-  function handleForm(e) {
-    mutation.mutate(url, { title: "title", img: "img", author: "author" });
+  function handleForm(data) {
+    // e.preventDefault();
+    //pass the data
+    console.log(data);
+
+    mutation.mutate({
+      title: data.title,
+      img: data.img,
+      author: data.author,
+    });
   }
+  // add reset to clear form without button - do nothing and send user back to the landing page
 
   return (
     <div className="form">
       <Layout />
-      <Form onSubmit={handleSubmit((data) => setData(JSON.stringify(data)))}>
+      <Form onSubmit={handleSubmit((data) => handleForm(data))}>
         <label>Food Title</label>
         <input
           type="text"
+          name="title"
+          {...register("title")}
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
@@ -55,28 +79,30 @@ function AddFood() {
 
         <input
           type="text"
+          {...register("author")}
+          name="author"
           value={author}
           onChange={(e) => setAuthor(e.target.value)}
         />
-
+        <input
+          type="text"
+          {...register("img")}
+          name="img"
+          value={img}
+          onChange={(e) => setImg(e.target.value)}
+        />
         <label>Food Type</label>
-        <select {...register("author", { required: true })}>
+        <select {...register("mealchoice", { required: true })}>
           <option value="Breakfast">Breakfast</option>
           <option value="Lunch">Lunch</option>
           <option value="Dinner">Dinner</option>
         </select>
         <label>Food Description</label>
-        <textarea value={img} onChange={(e) => setImage(e.target.value)} />
-        <Button
-          variant="contained"
-          onClick={() =>
-            handleForm({ Title: title, Author: author, Image: img })
-          }
-        >
+        <textarea value={img} onChange={(e) => setImg(e.target.value)} />
+        <Button variant="contained" type="submit">
           Submit
         </Button>
         <p>{data}</p>
-        <Button onClick={() => reset()}>Reset Button</Button>
       </Form>
     </div>
   );
