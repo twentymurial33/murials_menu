@@ -4,13 +4,6 @@ img {
 body {
   background-color: grey;
 }
-form {
-  display: inline;
-  align-items: center;
-  padding-right: 100px;
-  text-align: center;
-  margin: auto;
-}
 
 .u-hidden {
   display: none !important;
@@ -41,14 +34,4 @@ form {
   color: white;
   background: black;
   width: 720px;
-}
-
-.form {
-  padding-top: 60px;
-  background: #1e081a;
-  max-width: 700px;
-  align-items: center;
-  padding-right: 100px;
-  margin-top: 140px;
-  margin-left: 240px;
 }

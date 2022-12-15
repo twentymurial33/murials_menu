@@ -44,7 +44,6 @@ function AddFood() {
   });
 
   function handleForm(data) {
-    console.log(data);
     mutation.mutate({
       title: data.title,
       img: data.img,
@@ -54,40 +53,21 @@ function AddFood() {
 
   useEffect(() => {
     reset();
-  }, []);
+  }, [reset]);
 
   return (
     <div className="form">
       <Layout />
       <Form onSubmit={handleSubmit((data) => handleForm(data))}>
         <label>Food Title</label>
-        <input
-          type="text"
-          name="title"
-          {...register("title")}
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
+        <input type="text" {...register("title")} />
         <label>Food Author</label>
-        <input
-          type="text"
-          {...register("author")}
-          name="author"
-          value={author}
-          onChange={(e) => setAuthor(e.target.value)}
-        />
+        <input type="text" {...register("author")} />
         <label>Food Image</label>
-        <input
-          type="text"
-          {...register("img")}
-          name="img"
-          value={img}
-          onChange={(e) => setImg(e.target.value)}
-        />
+        <input type="text" {...register("img")} />
         <Button variant="contained" type="submit">
           Submit
         </Button>
-
         <Button type="button" onClick={() => reset()}>
           Reset
         </Button>
@@ -100,11 +80,12 @@ const Form = styled.form`
   input {
     display: block;
     box-sizing: border-box;
-    width: 100%;
+    background: #1e081a;
+    width: 60%;
     border-radius: 4px;
     border: 1px solid white;
-    padding: 10px 15px;
-    margin-bottom: 10px;
+    padding: 28px 10px;
+    margin-bottom: 0px;
     font-size: 14px;
   }
   h2 {
@@ -112,15 +93,6 @@ const Form = styled.form`
     color: white;
     margin-bottom: 30px;
     text-align: center;
-  }
-
-  textarea {
-    padding: 6px 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    box-sizing: border-box;
-    height: 140px;
-    display: block;
   }
 
   Button {
@@ -137,24 +109,10 @@ const Form = styled.form`
     text-align: left;
     display: block;
     margin-bottom: 13px;
-    margin-top: 20px;
+    margin-top: 60px;
     color: white;
     font-size: 14px;
     font-weight: 200;
-    text-align: center;
-  }
-
-  select {
-    padding: 6px 10px;
-    margin: 10px 0;
-    border: 1px solid #ddd;
-    box-sizing: border-box;
-    display: block;
-  }
-
-  Form {
-    max-width: 400px;
-    margin: 0 auto;
     text-align: center;
   }
 `;
