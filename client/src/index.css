@@ -4,13 +4,6 @@ img {
 body {
   background-color: grey;
 }
-form {
-  display: inline;
-  align-items: center;
-  padding-right: 100px;
-  text-align: center;
-  margin: auto;
-}
 
 .u-hidden {
   display: none !important;
@@ -41,9 +34,4 @@ form {
   color: white;
   background: black;
   width: 720px;
-}
-
-.form {
-  padding-left: 620px;
-  padding-top: 60px;
 }

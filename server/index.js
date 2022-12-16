@@ -15,6 +15,7 @@ app.get("/menu_items", async (req, res) => {
 
 app.post("/food", async (req, res) => {
   const { img, author, title } = req.body;
+  console.log(req.body);
   const food = await prisma.food.create({
     data: {
       img,
