@@ -22,11 +22,10 @@ export default function EditForm() {
     });
   };
 
-  // currently in progress
-  // function isEditing() {
-  //   console.log("edit mode activated");
-  //   setEditing();
-  // }
+  function isEditing() {
+    console.log("edit mode activated");
+    setEditing();
+  }
 
   return (
     <ThemeProvider theme={theme}>
