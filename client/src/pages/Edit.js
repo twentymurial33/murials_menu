@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Edit() {
+  const navigate = useNavigate();
   const [editFood, setEditFood] = useState({
     foodName: "",
     foodAuthor: "",
@@ -13,6 +16,7 @@ function Edit() {
     const editFoodId = async () => {
       const reqdata = await fetch("http://localhost:5000/food");
       const response = reqdata.json();
+      console.log(response);
     };
     editFoodId();
   }, []);
@@ -23,6 +27,12 @@ function Edit() {
 
   const FormHandle = (e) => {
     e.preventDefault();
+    const res = axios.post("http://localhost:5000/food", editFood);
+    console.log(res);
+  };
+
+  const navigateToEdit = () => {
+    navigate("/details");
   };
 
   return (
@@ -62,8 +72,12 @@ function Edit() {
               <Button variant="contained" type="submit">
                 Updated Item
               </Button>
-              <Button variant="contained" type="submit">
-                Return To Home
+              <Button
+                variant="contained"
+                type="submit"
+                onClick={navigateToEdit}
+              >
+                Return To Details Page
               </Button>
             </div>
           </form>
