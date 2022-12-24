@@ -47,7 +47,7 @@ function Edit() {
                 type="text"
                 name="foodName"
                 value={editFood.foodName}
-                onChange={(e) => onInputChange(e)}
+                onChange={onInputChange}
               />
             </div>
             <div>
