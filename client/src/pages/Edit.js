@@ -40,7 +40,7 @@ function Edit() {
       <Container>
         <h1>Updated Food Items!</h1>
         <div>
-          <form onSubmit={(e) => FormHandle(e)}>
+          <form onSubmit={FormHandle}>
             <div>
               <label>Food Name</label>
               <input
