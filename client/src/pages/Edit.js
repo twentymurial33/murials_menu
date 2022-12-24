@@ -56,7 +56,7 @@ function Edit() {
                 type="text"
                 name="foodAuthor"
                 value={editFood.foodAuthor}
-                onChange={(e) => onInputChange(e)}
+                onChange={onInputChange}
               />
             </div>
             <div>
