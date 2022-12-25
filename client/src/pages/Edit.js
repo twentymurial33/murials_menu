@@ -87,7 +87,7 @@ function Edit() {
                 type="text"
                 name="img"
                 value={editFood.img}
-                onChange={(e) => onInputChange(e)}
+                onChange={onInputChange}
               />
             </div>
             <div className="container text-center">
