@@ -14,8 +14,17 @@ function Edit() {
 
   useEffect(() => {
     const editFoodId = async () => {
-      const reqdata = await fetch("http://localhost:5000/food");
-      const response = reqdata.json();
+      const response = await fetch("http://localhost:5000/food");
+      const result = {
+        data: null,
+        error: null,
+      };
+      if (response.ok) {
+        result.data = await response.json();
+      } else {
+        result.error = await response.text();
+      }
+      return result;
       console.log(response);
     };
     editFoodId();
