@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 
 function Edit() {
   const navigate = useNavigate();
