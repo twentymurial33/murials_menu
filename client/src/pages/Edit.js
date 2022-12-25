@@ -27,7 +27,21 @@ function Edit() {
 
   const FormHandle = (e) => {
     e.preventDefault();
-    const res = axios.post("http://localhost:5000/food", editFood);
+    const response = await fetch("http://localhost:5000/food", {
+      method: 'POST',
+      body: JSON.stringify(editFood),
+      Content-Type: 'application/json',
+    });
+      const result = {
+        data: null,
+        error: null,
+      };
+      if (response.ok) {
+        result.data = await response.json();
+      } else {
+        result.error = await response.text();
+      }
+      return result;
     console.log(res);
   };
 
