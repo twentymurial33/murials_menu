@@ -1,10 +1,9 @@
 import Landing from "./pages/Landing";
 import Details from "./pages/Details";
 import AddFood from "./pages/AddFood";
-import EditForm from "./pages/EditForm";
+import Edit from "./pages/Edit";
 import React, { BrowserRouter, Routes, Route } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "react-query";
-// import { ReactQueryDevtools } from "react-query-devtools";
 
 const queryClient = new QueryClient();
 
@@ -17,11 +16,10 @@ function App() {
             <Route exact path="/" element={<Landing />} />
             <Route exact path="/details" element={<Details />} />
             <Route exact path="/add" element={<AddFood />} />
-            <Route exact path="/edit" element={<EditForm />} />
+            <Route exact path="/edit" element={<Edit />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </>
   );
 }
