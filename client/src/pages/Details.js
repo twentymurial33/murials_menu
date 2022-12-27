@@ -44,8 +44,9 @@ function Details() {
     }
   };
 
-  const navigateToEdit = () => {
-    navigate("/edit");
+  //using URL as state
+  const navigateToEdit = (id) => {
+    navigate(`/edit/${id}`);
   };
   const handleClickOpen = () => {
     setOpen(true);
@@ -130,7 +131,7 @@ function Details() {
                   <button
                     className="editBtn"
                     variant="outlined"
-                    onClick={navigateToEdit}
+                    onClick={() => navigateToEdit(data.id)}
                   >
                     <EditIcon />
                   </button>

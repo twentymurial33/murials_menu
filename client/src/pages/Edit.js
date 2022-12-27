@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Edit() {
   const navigate = useNavigate();
+  const { id } = useParams();
   const [editFood, setEditFood] = useState({
     foodName: "",
     foodAuthor: "",
@@ -13,18 +14,17 @@ function Edit() {
 
   useEffect(() => {
     const editFoodId = async () => {
-      const response = await fetch("http://localhost:5000/food");
+      const response = await fetch("http://localhost:5000/menu_items"); //change endpoint to hit 1 entry not all
       const result = {
         data: null,
         error: null,
       };
       if (response.ok) {
-        result.data = await response.json();
+        result.data = response.json();
       } else {
-        result.error = await response.text();
+        result.error = response.text();
       }
       return result;
-      console.log(response);
     };
     editFoodId();
   }, []);
@@ -33,24 +33,26 @@ function Edit() {
     setEditFood({ ...editFood, [e.target.name]: e.target.value });
   };
 
-  const FormHandle = (e) => {
+  const FormHandle = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/food", {
-      method: 'POST',
+    const response = await fetch(`http://localhost:5000/food/${id}`, {
+      method: "PUT",
       body: JSON.stringify(editFood),
-      Content-Type: 'application/json',
+      headers: {
+        "Content-Type": "application/json",
+      },
     });
-      const result = {
-        data: null,
-        error: null,
-      };
-      if (response.ok) {
-        result.data = await response.json();
-      } else {
-        result.error = await response.text();
-      }
-      return result;
-    console.log(res);
+    const result = {
+      data: null,
+      error: null,
+    };
+    if (response.ok) {
+      result.data = await response.json();
+    } else {
+      console.log(response);
+      result.error = await response.text();
+    }
+    return result;
   };
 
   const navigateToEdit = () => {
@@ -120,6 +122,5 @@ const Container = styled.div`
   ::placeholder {
     color: black;
   }
-
 `;
 export default Edit;
