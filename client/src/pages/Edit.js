@@ -2,9 +2,12 @@ import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Edit() {
   const navigate = useNavigate();
+  const notify = () => toast("Successfully Updated!");
   const { id } = useParams();
   const [editFood, setEditFood] = useState({
     foodName: "",
@@ -93,9 +96,10 @@ function Edit() {
               />
             </div>
             <div className="container text-center">
-              <Button variant="contained" type="submit">
+              <Button variant="contained" type="submit" onClick={notify}>
                 Updated Item
               </Button>
+              <ToastContainer />
               <Button
                 variant="contained"
                 type="submit"
