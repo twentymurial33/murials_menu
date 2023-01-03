@@ -102,8 +102,8 @@ function Edit() {
                   <Button
                     variant="contained"
                     type="submit"
+                    onClick={() => setEdited(!edited)}
                     onClick={notify}
-                    // onClick={() => setEdited(!edited)}
                   >
                     Updated Item
                   </Button>
