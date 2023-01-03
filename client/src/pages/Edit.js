@@ -6,6 +6,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Edit() {
+  const [edited, setEdited] = useState(true);
   const navigate = useNavigate();
   const notify = () => toast("Successfully Updated!");
   const { id } = useParams();
@@ -96,17 +97,29 @@ function Edit() {
               />
             </div>
             <div className="container text-center">
-              <Button variant="contained" type="submit" onClick={notify}>
-                Updated Item
-              </Button>
-              <ToastContainer />
-              <Button
-                variant="contained"
-                type="submit"
-                onClick={navigateToEdit}
-              >
-                Return To Details Page
-              </Button>
+              {edited ? (
+                <>
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    onClick={notify}
+                    // onClick={() => setEdited(!edited)}
+                  >
+                    Updated Item
+                  </Button>
+                  <ToastContainer />
+                </>
+              ) : (
+                <div>
+                  <Button
+                    variant="contained"
+                    type="submit"
+                    onClick={navigateToEdit}
+                  >
+                    Return To Details Page
+                  </Button>
+                </div>
+              )}
             </div>
           </form>
         </div>
