@@ -13,6 +13,15 @@ app.get("/menu_items", async (req, res) => {
   res.json(getFood);
 });
 
+app.get("/menu_items", async (req, res) => {
+  const getFoodItem = await prisma.food.findOne({
+    where: {
+      id: Number(id),
+    },
+  });
+  res.json(getFoodItem);
+});
+
 app.post("/food", async (req, res) => {
   const { img, author, title } = req.body;
   console.log(req.body);

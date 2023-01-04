@@ -35,22 +35,21 @@ function Edit() {
 
   const FormHandle = (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:5000/food", {
-      method: 'POST',
+    const response = fetch("http://localhost:5000/food", {
+      method: "POST",
       body: JSON.stringify(editFood),
-      Content-Type: 'application/json',
+      ContentType: "application/json",
     });
-      const result = {
-        data: null,
-        error: null,
-      };
-      if (response.ok) {
-        result.data = await response.json();
-      } else {
-        result.error = await response.text();
-      }
-      return result;
-    console.log(res);
+    const result = {
+      data: null,
+      error: null,
+    };
+    if (response.ok) {
+      result.data = response.json();
+    } else {
+      result.error = response.text();
+    }
+    return result;
   };
 
   const navigateToEdit = () => {
@@ -120,6 +119,5 @@ const Container = styled.div`
   ::placeholder {
     color: black;
   }
-
 `;
 export default Edit;
