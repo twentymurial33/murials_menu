@@ -13,8 +13,9 @@ app.get("/menu_items", async (req, res) => {
   res.json(getFood);
 });
 
-app.get("/menu_items", async (req, res) => {
-  const getFoodItem = await prisma.food.findOne({
+app.get("/food/:id", async (req, res) => {
+  const { id } = req.params;
+  const getFoodItem = await prisma.food.findUnique({
     where: {
       id: Number(id),
     },
