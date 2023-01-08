@@ -18,7 +18,7 @@ function Edit() {
 
   useEffect(() => {
     const editFoodId = async () => {
-      const response = await fetch("http://localhost:5000/menu_items"); //change endpoint to hit 1 entry not all
+      const response = await fetch(`http://localhost:5000/menu_item/${id}`); //change endpoint to hit 1 entry not all
       const result = {
         data: null,
         error: null,
@@ -31,7 +31,7 @@ function Edit() {
       return result;
     };
     editFoodId();
-  }, []);
+  }, [id]);
 
   const onInputChange = (e) => {
     setEditFood({ ...editFood, [e.target.name]: e.target.value });
@@ -109,7 +109,8 @@ function Edit() {
                   </Button>
                   <ToastContainer />
                 </>
-              ) : (
+              ) : null}
+              {!edited ? (
                 <div>
                   <Button
                     variant="contained"
@@ -119,7 +120,7 @@ function Edit() {
                     Return To Details Page
                   </Button>
                 </div>
-              )}
+              ) : null}
             </div>
           </form>
         </div>
