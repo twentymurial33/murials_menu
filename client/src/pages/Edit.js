@@ -23,6 +23,7 @@ function Edit() {
         data: null,
         error: null,
       };
+      console.log(result);
       if (response.ok) {
         result.data = response.json();
       } else {
@@ -30,6 +31,7 @@ function Edit() {
       }
       return result;
     };
+
     editFoodId();
   }, [id]);
 
@@ -126,6 +128,14 @@ function Edit() {
               ) : null}
             </div>
           </form>
+
+          <div className="cart">
+            <ul>
+              {/* {data.map((data) => (
+                <li key={id}>{title}</li>
+              ))} */}
+            </ul>
+          </div>
         </div>
       </Container>
     </div>
@@ -142,6 +152,13 @@ const Container = styled.div`
   border-radius: 3px;
   ::placeholder {
     color: black;
+  }
+
+  Button{
+    display:flex;
+   margin:30px;
+    padding: 40px;
+    border-radius: 10px;
   }
 `;
 export default Edit;
