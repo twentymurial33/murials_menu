@@ -108,17 +108,20 @@ function Edit() {
                     Updated Item
                   </Button>
                   <ToastContainer />
+                  <div>
+                    <Button
+                      variant="contained"
+                      type="submit"
+                      onClick={navigateToEdit}
+                    >
+                      Return To Details Page
+                    </Button>
+                  </div>
                 </>
               ) : null}
               {!edited ? (
                 <div>
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    onClick={navigateToEdit}
-                  >
-                    Return To Details Page
-                  </Button>
+                  <h1>Error Message</h1>
                 </div>
               ) : null}
             </div>
