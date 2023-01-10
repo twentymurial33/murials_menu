@@ -120,12 +120,11 @@ function Edit() {
                     </Button>
                   </div>
                 </>
-              ) : null}
-              {!edited ? (
+              ) : (
                 <div>
                   <h1>Error Message</h1>
                 </div>
-              ) : null}
+              )}
             </div>
           </form>
 
