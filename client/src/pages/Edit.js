@@ -6,33 +6,34 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Edit() {
-  const [edited, setEdited] = useState(true);
   const navigate = useNavigate();
   const notify = () => toast("Successfully Updated!");
   const { id } = useParams();
   const [editFood, setEditFood] = useState({
-    foodName: "",
-    foodAuthor: "",
+    title: "",
+    author: "",
     img: "",
   });
 
   useEffect(() => {
     const editFoodId = async () => {
-      const response = await fetch(`http://localhost:5000/menu_item/${id}`); //change endpoint to hit 1 entry not all
+      const response = await fetch(`http://localhost:5000/menu_items/${id}`); //change endpoint to hit 1 entry not all
       const result = {
         data: null,
         error: null,
       };
-      console.log(result);
+
       if (response.ok) {
-        result.data = response.json();
+        result.data = await response.json();
       } else {
-        result.error = response.text();
+        result.error = await response.text();
       }
-      return result;
+      console.log(result.data);
+      setEditFood(result.data);
     };
 
-    editFoodId();
+    const foodResult = editFoodId();
+    console.log(foodResult);
   }, [id]);
 
   const onInputChange = (e) => {
@@ -54,6 +55,8 @@ function Edit() {
     };
     if (response.ok) {
       result.data = await response.json();
+      //this is where success happens yay!!!!!!!
+      //spot to trigger notify toast
     } else {
       console.log(response);
       result.error = await response.text();
@@ -72,25 +75,25 @@ function Edit() {
         <div>
           <form onSubmit={FormHandle}>
             <div>
-              <label>Food Name</label>
+              <label>Title</label>
               <input
                 type="text"
-                name="foodName"
-                value={editFood.foodName}
+                name="title"
+                value={editFood.title}
                 onChange={onInputChange}
               />
             </div>
             <div>
-              <label>Food Author</label>
+              <label>Author</label>
               <input
                 type="text"
-                name="foodAuthor"
-                value={editFood.foodAuthor}
+                name="author"
+                value={editFood.author}
                 onChange={onInputChange}
               />
             </div>
             <div>
-              <label>Food Image</label>
+              <label>Image</label>
               <input
                 type="text"
                 name="img"
@@ -99,42 +102,21 @@ function Edit() {
               />
             </div>
             <div className="container text-center">
-              {edited ? (
-                <>
-                  <Button
-                    variant="contained"
-                    type="submit"
-                    onClick={() => setEdited(!edited)}
-                    onClick={notify}
-                  >
-                    Updated Item
-                  </Button>
-                  <ToastContainer />
-                  <div>
-                    <Button
-                      variant="contained"
-                      type="submit"
-                      onClick={navigateToEdit}
-                    >
-                      Return To Details Page
-                    </Button>
-                  </div>
-                </>
-              ) : (
-                <div>
-                  <h1>Error Message</h1>
-                </div>
-              )}
+              <Button variant="contained" type="submit">
+                Update Item
+              </Button>
+              <ToastContainer />
+              <div>
+                <Button
+                  variant="contained"
+                  type="button"
+                  onClick={navigateToEdit}
+                >
+                  Return To Details Page
+                </Button>
+              </div>
             </div>
           </form>
-
-          <div className="cart">
-            <ul>
-              {/* {data.map((data) => (
-                <li key={id}>{title}</li>
-              ))} */}
-            </ul>
-          </div>
         </div>
       </Container>
     </div>
