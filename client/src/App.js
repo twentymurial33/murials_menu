@@ -16,7 +16,7 @@ function App() {
             <Route exact path="/" element={<Landing />} />
             <Route exact path="/details" element={<Details />} />
             <Route exact path="/add" element={<AddFood />} />
-            <Route exact path="/edit" element={<Edit />} />
+            <Route exact path="/edit/:id" element={<Edit />} />
           </Routes>
         </BrowserRouter>
       </QueryClientProvider>

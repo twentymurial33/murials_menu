@@ -8,11 +8,24 @@ const prisma = new PrismaClient();
 app.use(cors());
 app.use(express.json());
 
+//endpoint to get Many
 app.get("/menu_items", async (req, res) => {
   const getFood = await prisma.food.findMany();
   res.json(getFood);
 });
 
+//Add server endpoint to GET a single food item
+app.get("/menu_item/:id", async (req, res) => {
+  const { id } = req.params;
+  const getFoodItem = await prisma.food.findUnique({
+    where: {
+      id: Number(id),
+    },
+  });
+  res.json(getFoodItem);
+});
+
+//Post menthod
 app.post("/food", async (req, res) => {
   const { img, author, title } = req.body;
   console.log(req.body);
@@ -26,6 +39,7 @@ app.post("/food", async (req, res) => {
   res.json(food);
 });
 
+//delete method
 app.delete("/food/:id", async (req, res) => {
   const { id } = req.params;
   const deletedFood = await prisma.food.delete({
@@ -36,6 +50,7 @@ app.delete("/food/:id", async (req, res) => {
   res.json(deletedFood);
 });
 
+//put method
 app.put("/food/:id", async (req, res) => {
   const { img, author, title } = req.body;
   const { id } = req.params;
