@@ -7,7 +7,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Edit() {
   const navigate = useNavigate();
-  const notify = () => toast("Successfully Updated!");
   const { id } = useParams();
   const [editFood, setEditFood] = useState({
     title: "",
@@ -55,8 +54,7 @@ function Edit() {
     };
     if (response.ok) {
       result.data = await response.json();
-      //this is where success happens yay!!!!!!!
-      //spot to trigger notify toast
+      toast.success("Success!");
     } else {
       console.log(response);
       result.error = await response.text();
@@ -109,7 +107,7 @@ function Edit() {
               <div>
                 <Button
                   variant="contained"
-                  type="button"
+                  color="success"
                   onClick={navigateToEdit}
                 >
                   Return To Details Page
@@ -135,11 +133,8 @@ const Container = styled.div`
     color: black;
   }
 
-  Button{
-    display:flex;
-   margin:30px;
-    padding: 40px;
-    border-radius: 10px;
+  h1{
+    text-align:center;
   }
 `;
 export default Edit;
