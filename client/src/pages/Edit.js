@@ -92,7 +92,7 @@ function Edit() {
               />
             </div>
             <div>
-              <label>Food_Image</label>
+              <label>Food Image</label>
               <input
                 type="text"
                 name="img"
