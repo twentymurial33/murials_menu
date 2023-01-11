@@ -83,7 +83,7 @@ function Edit() {
               />
             </div>
             <div>
-              <label>Food_Author</label>
+              <label>Food Author</label>
               <input
                 type="text"
                 name="author"
