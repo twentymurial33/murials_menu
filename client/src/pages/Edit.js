@@ -105,8 +105,7 @@ function Edit() {
             </Button>
             <ToastContainer />
             <Button
-              variant="contained"
-              color="success"
+              variant="outlined"
               onClick={navigateToEdit}
             >
               Details Page
