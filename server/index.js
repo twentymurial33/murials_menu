@@ -15,7 +15,7 @@ app.get("/menu_items", async (req, res) => {
 });
 
 //Add server endpoint to GET a single food item
-app.get("/menu_item/:id", async (req, res) => {
+app.get("/menu_items/:id", async (req, res) => {
   const { id } = req.params;
   const getFoodItem = await prisma.food.findUnique({
     where: {
