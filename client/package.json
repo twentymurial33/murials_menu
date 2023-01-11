@@ -53,5 +53,8 @@
       "last 1 safari version"
     ],
     "proxy": "http://localhost:5000"
+  },
+  "devDependencies": {
+    "vitest": "^0.27.0"
   }
 }
