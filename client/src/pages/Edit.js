@@ -74,7 +74,7 @@ function Edit() {
         <div>
           <form onSubmit={FormHandle}>
             <div>
-              <label>Food_Title</label>
+              <label>Food Title</label>
               <input
                 type="text"
                 name="title"
