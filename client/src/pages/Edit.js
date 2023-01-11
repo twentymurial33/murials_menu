@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { editFood } from "../util/EditFood";
 
 function Edit() {
   const navigate = useNavigate();
@@ -104,10 +105,7 @@ function Edit() {
               Update Item
             </Button>
             <ToastContainer />
-            <Button
-              variant="outlined"
-              onClick={navigateToEdit}
-            >
+            <Button variant="outlined" onClick={navigateToEdit}>
               Details Page
             </Button>
           </form>

@@ -3,6 +3,5 @@ export const editFood = () => {
     data: null,
     error: null,
   };
-
   console.log(result.data);
 };
