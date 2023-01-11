@@ -108,7 +108,7 @@ function Edit() {
               color="success"
               onClick={navigateToEdit}
             >
-              Return To Details Page
+              Details Page
             </Button>
           </form>
         </div>
