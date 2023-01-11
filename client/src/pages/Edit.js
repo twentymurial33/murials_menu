@@ -67,13 +67,13 @@ function Edit() {
   };
 
   return (
-    <div>
+    <>
       <Container>
         <h1>Updated Food Items!</h1>
         <div>
           <form onSubmit={FormHandle}>
             <div>
-              <label>Title</label>
+              <label>Food_Title</label>
               <input
                 type="text"
                 name="title"
@@ -82,7 +82,7 @@ function Edit() {
               />
             </div>
             <div>
-              <label>Author</label>
+              <label>Food_Author</label>
               <input
                 type="text"
                 name="author"
@@ -91,7 +91,7 @@ function Edit() {
               />
             </div>
             <div>
-              <label>Image</label>
+              <label>Food_Image</label>
               <input
                 type="text"
                 name="img"
@@ -99,42 +99,58 @@ function Edit() {
                 onChange={onInputChange}
               />
             </div>
-            <div className="container text-center">
-              <Button variant="contained" type="submit">
-                Update Item
-              </Button>
-              <ToastContainer />
-              <div>
-                <Button
-                  variant="contained"
-                  color="success"
-                  onClick={navigateToEdit}
-                >
-                  Return To Details Page
-                </Button>
-              </div>
-            </div>
+            <Button variant="contained" type="submit">
+              Update Item
+            </Button>
+            <ToastContainer />
+            <Button
+              variant="contained"
+              color="success"
+              onClick={navigateToEdit}
+            >
+              Return To Details Page
+            </Button>
           </form>
         </div>
       </Container>
-    </div>
+    </>
   );
 }
 
 const Container = styled.div`
-  input{
-  font-size: 18px;
-  padding:10px;
-  margin: 10px;
-  background: white;
-  border: none;
-  border-radius: 3px;
-  ::placeholder {
+  label {
     color: black;
+    font-weight: bold;
+    display: block;
+    width: 150px;
+    float: left;
   }
 
-  h1{
-    text-align:center;
+  h1 {
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+  }
+
+  Button {
+    display: block;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 20px;
+    justify-content: center;
+    color: #fff;
+    margin: 30px;
+    cursor: pointer;
+  }
+  input {
+    display: block;
+    box-sizing: border-box;
+    width: 20%;
+    border-radius: 4px;
+    border: 1px solid white;
+    padding: 28px 10px;
+    margin-bottom: 5px;
+    font-size: 14px;
   }
 `;
 export default Edit;
