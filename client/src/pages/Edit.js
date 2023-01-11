@@ -58,7 +58,7 @@ function Edit() {
     } else {
       console.log(response);
       result.error = await response.text();
-      toast.error("Error Notification !");
+      toast.error(`Food item not saved.  Error: ${result.error}`);
     }
     return result;
   };
