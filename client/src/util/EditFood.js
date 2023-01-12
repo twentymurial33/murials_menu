@@ -1,6 +1,7 @@
-export const editFood = async (onSuccess, onError, method) => {
-  const response = await fetch(`http://localhost:5000/menu_items/`);
-  method = method || "GET";
+export const editFood = async (onSuccess, onError) => {
+  const response = await fetch(`http://localhost:5000/menu_items/`, {
+    method: "GET",
+  });
   const result = {
     data: null,
     error: null,
