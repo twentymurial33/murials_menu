@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-//import { editFood } from "../util/EditFood";
+//import { fetchFromAPI } from "../util/fetchFromAPI";
 
 function Edit() {
   const navigate = useNavigate();
