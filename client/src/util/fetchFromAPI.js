@@ -1,10 +1,5 @@
 export const queryAPI = (options) => {
-  const options = {
-    url: "http://localhost:5000/menu_items/",
-    onSuccess: (result) => console.log(result.data),
-    onError: (result) => console.log(result.error),
-    method: "GET",
-  };
+  const {url, onSuccess, onError, method} = options;
   const result = {
     data: null,
     error: null,
