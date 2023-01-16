@@ -1,4 +1,4 @@
-export const queryAPI = async (options) => {
+export const queryAPI = (options) => {
   const options = {
     url: "http://localhost:5000/menu_items/",
     onSuccess: (result) => console.log(result.data),
@@ -11,10 +11,10 @@ export const queryAPI = async (options) => {
   };
   const response = fetch(options);
   if (response.ok) {
-    result.data = await response.json();
+    result.data = response.json();
     onSuccess();
   } else {
-    result.error = await response.text();
+    result.error = response.text();
     onError();
   }
   console.log(result.data);
