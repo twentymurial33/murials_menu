@@ -17,7 +17,12 @@ function Edit() {
 
   useEffect(() => {
     const editFoodId = async () => {
-      queryAPI();
+      queryAPI({
+        url: `http://localhost:5000/menu_items/{id}`,
+        onSuccess: (result) => console.log(result.data),
+        onError: (result) => console.log(result.error),
+        method: "GET",
+      });
     };
     const foodResult = editFoodId();
     console.log(foodResult);

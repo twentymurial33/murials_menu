@@ -10,8 +10,8 @@ export const queryAPI = async (options) => {
     result.data = response.json({ message: "Payload is valid" });
     onSuccess();
   } else {
-    result.error = await response.text();
-    result.error = response.text({ message: "paylod not correct" });
+    result.error = await response.json();
+    result.error = response.json({ message: "paylod not correct" });
     onError();
   }
   console.log(result.data);
