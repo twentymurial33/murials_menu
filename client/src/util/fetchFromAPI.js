@@ -8,7 +8,7 @@ export const queryAPI = async (options) => {
   if (response.ok) {
     result.data = await response.json();
     result.data = response.json({ message: "Payload is valid" });
-    onSuccess();
+    onSuccess(result);
   } else {
     result.error = await response.json();
     result.error = response.json({ message: "paylod not correct" });
