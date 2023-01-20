@@ -17,7 +17,6 @@ function Edit() {
 
   useEffect(() => {
     const editFoodId = async () => {
-      fetch();
       queryAPI({
         url: `http://localhost:5000/menu_items/${id}`,
         onSuccess: (result) => console.log(result.data),
