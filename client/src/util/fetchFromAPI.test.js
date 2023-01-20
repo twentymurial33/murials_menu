@@ -1,3 +1,7 @@
 import { it } from "vitest";
+import { queryAPI } from "./fetchFromAPI";
 
-it("should fetch all items");
+//Mocking functions
+it("should fetch all items", () => {
+  queryAPI([]);
+});
