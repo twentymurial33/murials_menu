@@ -1,14 +1,12 @@
 import { it, expect } from "vitest";
 import { queryAPI } from "./fetchFromAPI";
 
-//Mocking functions
-it("verify if food items are edited when user clicks button", async () => {
-  queryAPI([]);
+//Mocking fetch calls
+//If the fetch call results in a 200 response, the onSuccess callback is fired
+it("should return a 200 status code", () => {
+  expect(queryAPI).toBe(200);
 });
-expect(fetch).toHaveBeenCalledWith("http://localhost:5000/menu_items", {
-  method: "GET",
-  body: JSON.stringify,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
+
+//If the fetch call results in a non-200 response the onError callback is fired
+
+//If the method is POST a body option cannot be "nullish" (as in, null or undefined) and must be serializable to JSON.
