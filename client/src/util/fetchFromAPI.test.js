@@ -3,9 +3,9 @@ import { queryAPI } from "./fetchFromAPI";
 
 //If the fetch call results in a 200 response, the onSuccess callback is fired
 test("the data is successfully fetched from the API", () => {
-  return queryAPI().then((data) => {
-    expect(data).toBe("status code 200");
-  });
+  const res = fetch(queryAPI());
+  const result = res.json();
+  expect(result.name).toBe("successful");
 });
 
 //If the fetch call results in a non-200 response the onError callback is fired
