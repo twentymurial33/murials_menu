@@ -8,12 +8,12 @@ export const queryAPI = async (options) => {
   if (response.ok) {
     result.data = await response.json();
     //trigger success toast on success
-    toast.success();
+
     onSuccess(result);
   } else {
     result.error = await response.json();
     //Trigger error toast on error
-    toast.error();
+
     onError(result);
   }
   console.log(result.data);

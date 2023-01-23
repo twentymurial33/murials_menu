@@ -2,10 +2,16 @@ import { expect, test } from "@jest/globals";
 import { queryAPI } from "./fetchFromAPI";
 
 //If the fetch call results in a 200 response, the onSuccess callback is fired
-test("the data is successfully fetched from the API", () => {
-  const res = fetch(queryAPI());
-  const result = res.json();
-  expect(result.name).toBe("successful");
+test("returns result for a 200 response", () => {
+  const onSuccess = jest.fn();
+  const onError = jest.fn();
+  return queryAPI()
+    .then(onSuccess)
+    .catch(onError)
+    .finally(() => {
+      expect(onSuccess).toHaveBeenCalled();
+      expect(onError).not.toHaveBeenCalled();
+    });
 });
 
 //If the fetch call results in a non-200 response the onError callback is fired
