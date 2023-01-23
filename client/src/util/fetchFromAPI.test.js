@@ -1,10 +1,11 @@
-import { it, expect } from "vitest";
+import { expect, test } from "@jest/globals";
 import { queryAPI } from "./fetchFromAPI";
 
-//Mocking fetch calls
 //If the fetch call results in a 200 response, the onSuccess callback is fired
-it("should return a 200 status code", () => {
-  expect(queryAPI).toBe(200);
+test("the data is successfully fetched from the API", () => {
+  return queryAPI().then((data) => {
+    expect(data).toBe("status code 200");
+  });
 });
 
 //If the fetch call results in a non-200 response the onError callback is fired
