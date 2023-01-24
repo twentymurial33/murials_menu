@@ -2,7 +2,7 @@ import { expect, test } from "@jest/globals";
 import { queryAPI } from "./fetchFromAPI";
 
 //If the fetch call results in a 200 response, the onSuccess callback is fired
-test("returns result for a 200 response", () => {
+test("should return data with a successful request", async () => {
   const onSuccess = jest.fn();
   const onError = jest.fn();
   return queryAPI()
@@ -15,5 +15,12 @@ test("returns result for a 200 response", () => {
 });
 
 //If the fetch call results in a non-200 response the onError callback is fired
+
+test("should return error as true if api error", async () => {
+  const onSuccess = jest.fn();
+  const onError = jest.fn();
+  expect(onSuccess).toBe(null);
+  expect(onError).toBe(true);
+});
 
 //If the method is POST a body option cannot be "nullish" (as in, null or undefined) and must be serializable to JSON.
