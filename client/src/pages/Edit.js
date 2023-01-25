@@ -19,8 +19,8 @@ function Edit() {
     const editFoodId = async () => {
       queryAPI({
         url: `http://localhost:5000/menu_items/${id}`,
-        onSuccess: (result) => console.log(result.data),
-        onError: (result) => console.log(result.error),
+        onSuccess: (result) => toast.success(result.data),
+        onError: (result) => toast.error(result.error),
         method: "GET",
       });
     };
