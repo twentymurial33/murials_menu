@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { queryAPI } from "../util/fetchFromAPI";
 
 function Edit() {
   const navigate = useNavigate();
@@ -16,21 +17,13 @@ function Edit() {
 
   useEffect(() => {
     const editFoodId = async () => {
-      const response = await fetch(`http://localhost:5000/menu_items/${id}`); //change endpoint to hit 1 entry not all
-      const result = {
-        data: null,
-        error: null,
-      };
-
-      if (response.ok) {
-        result.data = await response.json();
-      } else {
-        result.error = await response.text();
-      }
-      console.log(result.data);
-      setEditFood(result.data);
+      queryAPI({
+        url: `http://localhost:5000/menu_items/${id}`,
+        onSuccess: (result) => toast.success(result.data),
+        onError: (result) => toast.error(result.error),
+        method: "GET",
+      });
     };
-
     const foodResult = editFoodId();
     console.log(foodResult);
   }, [id]);
@@ -104,10 +97,7 @@ function Edit() {
               Update Item
             </Button>
             <ToastContainer />
-            <Button
-              variant="outlined"
-              onClick={navigateToEdit}
-            >
+            <Button variant="outlined" onClick={navigateToEdit}>
               Details Page
             </Button>
           </form>
