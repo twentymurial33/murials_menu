@@ -20,7 +20,7 @@ function Edit() {
       queryAPI({
         url: `http://localhost:5000/menu_items/${id}`,
         //more functionality with onSuccess Callback
-        onSuccess: (result) => toast.success(result.data),
+        onSuccess: (result) => toast.success(result.data, { timeout: 2000 }),
         onError: (result) => toast.error(result.error),
         method: "GET",
       });
@@ -48,7 +48,7 @@ function Edit() {
     };
     if (response.ok) {
       result.data = await response.json();
-      toast.success("Success!");
+      toast.success("Success!", { timeout: 2000 });
     } else {
       console.log(response);
       result.error = await response.text();
