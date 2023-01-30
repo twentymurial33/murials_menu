@@ -1,5 +1,6 @@
 import { expect, test } from "@jest/globals";
 import { queryAPI } from "./fetchFromAPI";
+import { mockAPI } from "../../../mockAPI";
 
 // fetch call results in a 200 response, the onSuccess callback is fired
 test("should return data with a successful request", async () => {
