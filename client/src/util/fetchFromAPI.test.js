@@ -1,7 +1,12 @@
-import { expect, test } from "@jest/globals";
+import { expect, test, it } from "@jest/globals";
 import { queryAPI } from "./fetchFromAPI";
-import { mockAPI } from "../../../mockAPI";
 
+it("mocks the fetch request", async () => {
+  fetch.mockResponseOnce(JSON.stringify({ foodMenu: { title: "potato" } }));
+  const response = await queryAPI();
+  expect(response).toEqual();
+  expect(fetch).toHaveBeenCalledTimes(1);
+});
 // fetch call results in a 200 response, the onSuccess callback is fired
 test("should return data with a successful request", async () => {
   queryAPI().catch((e) => {
