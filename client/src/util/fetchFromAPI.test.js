@@ -1,10 +1,14 @@
 import { expect, test, it } from "@jest/globals";
 import { queryAPI } from "./fetchFromAPI";
+//reset the fetch mock so the previous tests fon't interfere with current tests
+beforeEach(() => {
+  fetch.resetMocks();
+});
 
 it("mocks the fetch request", async () => {
   fetch.mockResponseOnce(JSON.stringify({ foodMenu: { title: "potato" } }));
   const response = await queryAPI();
-  expect(response).toEqual();
+  expect(response).toEqual({ title: "potato" });
   expect(fetch).toHaveBeenCalledTimes(1);
 });
 // fetch call results in a 200 response, the onSuccess callback is fired
