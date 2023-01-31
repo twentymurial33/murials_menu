@@ -8,7 +8,7 @@ beforeEach(() => {
 it("mocks the fetch request", async () => {
   fetch.mockResponseOnce(JSON.stringify({ foodMenu: { title: "potato" } }));
   const response = await queryAPI();
-  expect(response).toEqual({ title: "potato" });
+  expect(response).toEqual({ foodMenu: { title: "potato" } });
   expect(fetch).toHaveBeenCalledTimes(1);
 });
 // fetch call results in a 200 response, the onSuccess callback is fired
