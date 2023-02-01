@@ -1,14 +1,13 @@
-import { expect, test, it } from "@jest/globals";
-
+import { expect, test } from "@jest/globals";
 import { queryAPI } from "./fetchFromAPI";
 //reset the fetch mock so the previous tests fon't interfere with current tests
 beforeEach(() => {
   fetch.resetMocks();
 });
 
-it("mocks the fetch request", async (options) => {
+test("mocks the fetch request", async ({ options }) => {
   fetch.mockResponseOnce(JSON.stringify({ foodMenu: { title: "potato" } }));
-  const response = await queryAPI(options);
+  const response = await queryAPI({ options });
   expect(response).toEqual({ foodMenu: { title: "potato" } });
   expect(fetch).toHaveBeenCalledTimes(1);
 });
