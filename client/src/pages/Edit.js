@@ -98,7 +98,7 @@ function Edit() {
             </Button>
             <ToastContainer />
             <Button variant="outlined" onClick={navigateToEdit}>
-              Details Page
+              Back To Menu
             </Button>
           </form>
         </div>
