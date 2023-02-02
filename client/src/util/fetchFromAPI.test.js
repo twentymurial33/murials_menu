@@ -6,13 +6,13 @@ beforeEach(() => {
 });
 
 it("mocks the fetch request", async () => {
-  fetch.mockResponseOnce();
+  fetch.mockResponseOnce(JSON.stringify({ foodMenu: { title: "potato" } }));
   const response = await queryAPI({
     url: "/",
     onSuccess: jest.fn(),
     onError: jest.fn(),
   });
-  expect(response).toEqual({});
+  expect(response).toEqual({ title: "potato" });
   expect(fetch).toHaveBeenCalledTimes(1);
 });
 
