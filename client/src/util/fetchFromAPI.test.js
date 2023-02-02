@@ -5,7 +5,7 @@ beforeEach(() => {
   fetch.resetMocks();
 });
 
-test("mocks the fetch request", async ({ options }) => {
+test("mocks the fetch request", async () => {
   fetch.mockResponseOnce(JSON.stringify({ foodMenu: { title: "potato" } }));
   const response = await queryAPI({ options });
   expect(response).toEqual({ foodMenu: { title: "potato" } });
