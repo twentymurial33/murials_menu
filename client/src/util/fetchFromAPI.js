@@ -13,17 +13,15 @@ export const queryAPI = async (options) => {
     throw new Error("onError is not provided");
   }
   const result = {
-    data: null,
-    error: null,
+    data: "",
+    error: "",
   };
   const response = await fetch(url, method);
   if (response.ok) {
     result.data = await response.json();
   } else {
     result.error = await response.text();
-    //onError(result);
     console.warn(result.error);
   }
-  return response;
-  //console.log(result.data);
+  return result;
 };
