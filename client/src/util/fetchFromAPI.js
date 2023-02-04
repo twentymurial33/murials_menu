@@ -19,11 +19,11 @@ export const queryAPI = async (options) => {
   const response = await fetch(url, method);
   if (response.ok) {
     result.data = await response.json();
-    //make sure onSuccess is there
-    onSuccess(result);
   } else {
     result.error = await response.text();
-    onError(result);
+    //onError(result);
+    console.warn(result.error);
   }
-  console.log(result.data);
+  return response;
+  //console.log(result.data);
 };
