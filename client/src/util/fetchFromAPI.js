@@ -13,14 +13,13 @@ export const queryAPI = async (options, toast) => {
     throw new Error("onError is not provided");
   }
   const result = {
-    data: "",
-    error: "",
+    data: null,
+    error: null,
   };
   const response = await fetch(url, method);
   if (response.ok) {
     return (result.data = await response.json());
   } else {
-    result.error = await response.text();
     toast.error(`Food item not saved.  Error: ${result.error}`);
   }
 };
