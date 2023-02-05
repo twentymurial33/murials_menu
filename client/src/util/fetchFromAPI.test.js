@@ -6,7 +6,7 @@ beforeEach(() => {
 });
 
 it("mocks the fetch request", async () => {
-  fetch.mockResponseOnce(JSON.stringify({ foodMenu: { title: "potato" } }));
+  fetch.mockResponseOnce(JSON.stringify({ title: "potato" }));
   const response = await queryAPI({
     url: "/",
     onSuccess: jest.fn(),
