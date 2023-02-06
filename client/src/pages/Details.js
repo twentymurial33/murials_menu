@@ -187,6 +187,14 @@ const Container = styled.div`
     display: flex;
     flex-wrap: wrap;
   }
+  Button{
+     align-items: center,
+    justify-content: center,
+    padding-vertical: 12,
+    padding-horizontal: 32,
+    border-radius: 4,
+    elevation: 3,
+  }
 `;
 
 export default Details;

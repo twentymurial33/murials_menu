@@ -1,4 +1,4 @@
-export const queryAPI = async (options) => {
+export const queryAPI = async (options, toast) => {
   if (options === undefined) {
     throw new Error("options parameter is not defined");
   }
@@ -18,12 +18,8 @@ export const queryAPI = async (options) => {
   };
   const response = await fetch(url, method);
   if (response.ok) {
-    result.data = await response.json();
-    //make sure onSuccess is there
-    onSuccess(result);
+    return (result.data = await response.json());
   } else {
-    result.error = await response.text();
-    onError(result);
+    toast.error(`Food item not saved.  Error: ${result.error}`);
   }
-  console.log(result.data);
 };
