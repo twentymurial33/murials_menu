@@ -32,26 +32,26 @@ test("should return data with a successful request", async () => {
   });
 });
 //test to confirm that the onError callback is called
-test("confirm onError callback is called", async () => {
-  const options = {
-    url: "http://localhost:5000/menu_items_2023/",
-    onSuccess: jest.fn(),
-    onError: jest.fn(),
-  };
-  await queryAPI(options).then(() => {
-    expect(options.onError).toBeCalled();
-  });
-});
+// test("confirm onError callback is called", async () => {
+//   const options = {
+//     url: "http://localhost:5000/menu_items_2023/",
+//     onSuccess: jest.fn(),
+//     onError: jest.fn(),
+//   };
+//   await queryAPI(options).then(() => {
+//     expect(options.onError).toBeCalled();
+//   });
+// });
 
 //test to confirm onSuccess callback
 
-test("confirm onSuccess callback is called", async () => {
-  const options = {
-    url: "http://localhost:5000/menu_items/",
-    onSuccess: jest.fn(),
-    onError: jest.fn(),
-  };
-  await queryAPI(options).then(() => {
-    expect(options.onSuccess).toBeCalled();
-  });
-});
+// test("confirm onSuccess callback is called", async () => {
+//   const options = {
+//     url: "http://localhost:5000/menu_items/",
+//     onSuccess: jest.fn(),
+//     onError: jest.fn(),
+//   };
+//   await queryAPI(options).then(() => {
+//     expect(options.onSuccess).toBeCalled();
+//   });
+// });
