@@ -21,6 +21,6 @@ export const queryAPI = async (options, toast) => {
     return (result.data = await response.json());
   } else {
     toast.error(`Food item not saved.  Error: ${result.error}`);
+    return response;
   }
-  return result;
 };
