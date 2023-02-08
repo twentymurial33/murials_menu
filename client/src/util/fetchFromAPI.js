@@ -16,7 +16,7 @@ export const queryAPI = async (options, toast) => {
   };
   const response = await fetch(url, method);
   if (response.ok) {
-    return (result.data = await response.json());
+    result.data = await response.json();
   } else {
     result.error(`Food item not saved.  Error: ${result.error}`);
   }
