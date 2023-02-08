@@ -7,7 +7,10 @@ function Header() {
   return (
     <AppBar style={{ height: "90px", backgroundColor: "black" }}>
       <Container maxWidth="xl">
-        <h1 className="u-text--center">Murial's Restaurant</h1>
+        <h1 className="u-text--center">
+          <a href="/">Murial's Restaurant</a>
+        </h1>
+
         <section>
           <Link to="/add">AddFood | </Link>
           <Link to="/details">Details </Link>
