@@ -9,9 +9,8 @@ function Header() {
       <Container maxWidth="xl">
         <h1 className="u-text--center">Murial's Restaurant</h1>
         <section>
-          <Link to="/home">Landing |</Link>
-          <Link to="/add">AddFood |</Link>
-          <Link to="/details">Details |</Link>
+          <Link to="/add">AddFood | </Link>
+          <Link to="/details">Details </Link>
         </section>
       </Container>
     </AppBar>
