@@ -6,7 +6,6 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import Dialog from "@mui/material/Dialog";
-import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
@@ -130,10 +129,10 @@ function Details() {
                   </button>
                   <button
                     className="editBtn"
-                    variant="outlined"
+                    variant="contained"
                     onClick={() => navigateToEdit(data.id)}
                   >
-                    <EditIcon />
+                    Modify
                   </button>
                   <Dialog
                     onClose={handleClose}
