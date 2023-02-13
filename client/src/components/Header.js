@@ -12,7 +12,8 @@ function Header() {
         </h1>
 
         <section>
-          <Link to="/add">AddFood | </Link>
+          <button>+</button>
+
           <Link to="/details">Details </Link>
         </section>
       </Container>
@@ -30,6 +31,12 @@ const Container = styled.div`
     color: white;
     text-align: center;
     align: center;
+  }
+
+  button{
+     background-color: grey,
+              border-radius: 8px,
+              padding: 6px,
   }
 
   a {
