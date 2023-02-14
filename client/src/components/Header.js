@@ -10,9 +10,10 @@ function Header() {
         <h1 className="u-text--center">
           <a href="/">Murial's Restaurant</a>
         </h1>
-
         <section>
-          <button>+</button>
+          <button style={{ backgroundColor: "#2c70de" }}>
+            <a href="/add"> + </a>
+          </button>
 
           <Link to="/details">Details </Link>
         </section>
@@ -28,15 +29,9 @@ const Container = styled.div`
     color: white;
   }
   section {
-    color: white;
+    color: #2c70de;
     text-align: center;
     align: center;
-  }
-
-  button{
-     background-color: grey,
-              border-radius: 8px,
-              padding: 6px,
   }
 
   a {
