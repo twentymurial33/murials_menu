@@ -80,13 +80,15 @@ const Form = styled.form`
   input {
     display: block;
     box-sizing: border-box;
-    background: #1e081a;
-    width: 60%;
+    background: white;
+    width: 70%;
     border-radius: 4px;
     border: 1px solid white;
     padding: 28px 10px;
     margin-bottom: 0px;
     font-size: 14px;
+    z-index: 1;
+    position: absolute;
   }
   h2 {
     font-size: 20px;
