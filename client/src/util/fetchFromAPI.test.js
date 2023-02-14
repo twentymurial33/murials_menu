@@ -1,6 +1,6 @@
 import { expect, test, it } from "@jest/globals";
 import { queryAPI } from "./fetchFromAPI";
-//reset the fetch mock so the previous tests fon't interfere with current tests
+
 beforeEach(() => {
   fetch.resetMocks();
 });
@@ -16,7 +16,6 @@ it("mocks the fetch request", async () => {
   expect(fetch).toHaveBeenCalledTimes(1);
 });
 
-// fetch call results in a 200 response, the onSuccess callback is fired
 test("should return data with a successful request", async () => {
   queryAPI().catch((e) => {
     expect(e.message).toBe("options parameter is not defined");
@@ -31,9 +30,17 @@ test("should return data with a successful request", async () => {
     expect(e.message).toBe("onError is not provided");
   });
 });
-test("queryAPI()", async () => {
-  fetch = mockFetch({});
-  const response = await queryAPI("id");
-  expect(response).toEqual({});
-  expect(fetch).toHaveBeenCalledTimes(1);
+
+describe("testing the fetch condition", () => {
+  test("should test the conditional statement", () => {
+    const result = {
+      data: null,
+      error: null,
+    };
+    const response = { json: jest.fn().mockResolvedValueOnce(result) };
+    global.fetch = jest.fn().mockResolvedValueOnce(response);
+    return queryAPI().then((data) => {
+      expect(data).toEqual(result);
+    });
+  });
 });
