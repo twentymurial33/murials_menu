@@ -89,9 +89,9 @@ function Details() {
             return (
               <div key={data.id}>
                 <img src={data.img} alt="images" />
-                <h4>Food Calories</h4>
-                <span className="counter__output">{counter}</span>
-                <div className="btn__container">
+                <h4>Food Calories : </h4>
+                {/* <span className="counter__output">{counter}</span> */}
+                {/* <div className="btn__container">
                   <button className="control__btn" onClick={increaseCounter}>
                     +
                   </button>
@@ -101,7 +101,7 @@ function Details() {
                   <button className="reset" onClick={reset}>
                     Reset
                   </button>
-                </div>
+                </div> */}
                 <Box
                   className="boxMenu"
                   lg={{
