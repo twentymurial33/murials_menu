@@ -4,6 +4,7 @@ import { useQuery } from "react-query";
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Layout from "../components/Layout";
 import styled from "styled-components";
 import Dialog from "@mui/material/Dialog";
 import Divider from "@mui/material/Divider";
@@ -77,6 +78,7 @@ function Details() {
 
   return (
     <div>
+      <Layout />
       <Container>
         <input
           className="search"
