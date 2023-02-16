@@ -11,11 +11,17 @@ function Header() {
           <a href="/">Murial's Restaurant</a>
         </h1>
         <section>
-          <button style={{ backgroundColor: "#2c70de" }}>
+          <button
+            style={{
+              backgroundColor: "#de34eb",
+              borderRadius: "100%",
+              padding: "10px",
+              margin: "0px 0px",
+              bottom: "0px",
+            }}
+          >
             <a href="/add"> + </a>
           </button>
-
-          <Link to="/details">Details </Link>
         </section>
       </Container>
     </AppBar>
@@ -35,7 +41,7 @@ const Container = styled.div`
   }
 
   a {
-    color: hotpink;
+    color: white;
   }
 `;
 
