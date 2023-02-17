@@ -58,7 +58,10 @@ function AddFood() {
   return (
     <div className="form">
       <Layout />
-      <Form onSubmit={handleSubmit((data) => handleForm(data))}>
+      <Form
+        onSubmit={handleSubmit((data) => handleForm(data))}
+        style={{ marginTop: "90px", marginLeft: "400px" }}
+      >
         <label>Food Title</label>
         <input type="text" {...register("title")} />
         <label>Food Author</label>
@@ -81,14 +84,13 @@ const Form = styled.form`
     display: block;
     box-sizing: border-box;
     background: white;
-    width: 70%;
-    border-radius: 4px;
+    width: 50%;
+    border-radius: 3px;
     border: 1px solid white;
-    padding: 28px 10px;
+    padding: 16px 8px;
     margin-bottom: 0px;
     font-size: 14px;
     z-index: 1;
-    position: absolute;
   }
   h2 {
     font-size: 20px;
@@ -108,14 +110,12 @@ const Form = styled.form`
   }
   label {
     line-height: 2;
-    text-align: left;
+    align-items: center;
     display: block;
-    margin-bottom: 13px;
     margin-top: 60px;
     color: white;
     font-size: 14px;
     font-weight: 200;
-    text-align: center;
   }
 `;
 
