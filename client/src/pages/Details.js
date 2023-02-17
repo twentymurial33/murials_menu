@@ -99,7 +99,7 @@ function Details() {
                     -
                   </button>
                   <button className="reset" onClick={reset}>
-                    Reset
+                    Reset Button
                   </button>
                 </div>
                 <Box
