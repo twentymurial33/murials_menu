@@ -13,7 +13,7 @@ function Header() {
           <button
             variant="outline"
             style={{
-              borderRadius: "40px",
+              borderRadius: "90px",
               padding: "30px",
               backgroundColor: "hotpink",
             }}
