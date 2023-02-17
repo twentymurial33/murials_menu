@@ -32,15 +32,16 @@ it("mocks the fetch request", async () => {
 // });
 
 describe("test should return a failed response", () => {
-  it("testing the fetch condition", async () => {
+  it("testing fetch condition", () => {
     fetch.mockReject(new Error("error message"));
-    const result = { data: null, error: null };
-    return await queryAPI({
-      url: "/",
-      onSuccess: jest.fn(),
-      onError: jest.fn(),
-    }).then(() => {
-      expect(fetch).toEqual(result.error);
-    });
+    const onSuccess = jest.fn();
+    const onError = jest.fn();
+    return queryAPI("/")
+      .then(onSuccess)
+      .catch(onError)
+      .finally(() => {
+        expect(onSuccess).not.toHaveBeenCalled();
+        expect(onError).toHaveBeenCalled();
+      });
   });
 });
