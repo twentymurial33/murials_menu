@@ -1,7 +1,6 @@
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 function Header() {
   return (
@@ -10,34 +9,32 @@ function Header() {
         <h1 className="u-text--center">
           <a href="/">Murial's Restaurant</a>
         </h1>
-        <section>
+        <div>
           <button
+            variant="outline"
             style={{
-              backgroundColor: "#de34eb",
-              borderRadius: "100%",
-              padding: "10px",
-              margin: "0px 0px",
-              bottom: "0px",
+              borderRadius: "40px",
+              padding: "30px",
+              backgroundColor: "hotpink",
             }}
           >
             <a href="/add"> + </a>
           </button>
-        </section>
+        </div>
       </Container>
     </AppBar>
   );
 }
 
 const Container = styled.div`
+  display: flex;
+
   h1 {
     font-size: 1.5em;
     text-align: center;
     color: white;
-  }
-  section {
-    color: #2c70de;
-    text-align: center;
-    align: center;
+    margin-right: 40px;
+    margin-left: 560px;
   }
 
   a {
