@@ -9,16 +9,28 @@ function Header() {
         <h1 className="u-text--center">
           <a href="/">Murial's Restaurant</a>
         </h1>
-        <div>
+        <div
+          style={{
+            position: "fixed",
+            right: "20px",
+            bottom: "20px",
+          }}
+        >
           <button
             variant="outline"
-            style={{
-              borderRadius: "90px",
-              padding: "30px",
-              backgroundColor: "hotpink",
-            }}
+            // style={{
+            //   display: "flex",
+            //   alignItems: "center",
+            //   justifyContent: "center",
+            //   borderRadius: "50%",
+            //   width: "70px",
+            //   height: "70px",
+            //   backgroundColor: "#ff00ff",
+            // }}
           >
-            <a href="/add"> + </a>
+            <a href="/add" style={{ zoom: "2", underlining: "none" }}>
+              +
+            </a>
           </button>
         </div>
       </Container>
@@ -28,7 +40,6 @@ function Header() {
 
 const Container = styled.div`
   display: flex;
-
   h1 {
     font-size: 1.5em;
     text-align: center;
@@ -36,9 +47,19 @@ const Container = styled.div`
     margin-right: 40px;
     margin-left: 560px;
   }
-
   a {
     color: white;
+  }
+
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    text-decoration: none;
+    background-color: #ff00ff;
   }
 `;
 
