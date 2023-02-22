@@ -36,7 +36,7 @@ describe("test should return a failed response", () => {
     fetch.mockReject(new Error("error message"));
     const onSuccess = jest.fn();
     const onError = jest.fn();
-    return queryAPI("/")
+    return queryAPI({ url: "/" })
       .then(onSuccess)
       .catch(onError)
       .finally(() => {
