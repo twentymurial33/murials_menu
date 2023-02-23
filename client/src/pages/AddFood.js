@@ -65,28 +65,28 @@ function AddFood() {
         <input type="text" {...register("author")} />
         <label>Food Image</label>
         <input type="text" {...register("img")} />
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
-        <Button type="button" onClick={() => reset()}>
-          Reset
-        </Button>
+        <div>
+          <Button variant="contained" type="submit">
+            Submit
+          </Button>
+          <Button type="button" onClick={() => reset()}>
+            Reset
+          </Button>
+        </div>
       </Form>
     </div>
   );
 }
 
 const Form = styled.form`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-49%, -49%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   input {
-    display: block;
     box-sizing: border-box;
     background: white;
-    width: 100%;
+    width: 40%;
     border-radius: 3px;
     border: 1px solid white;
     padding: 16px 8px;
@@ -105,16 +105,16 @@ const Form = styled.form`
     margin: 5px;
     background: #f1356d;
     color: #fff;
-    border: 0;
     padding: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
+    float: left;
   }
   label {
     line-height: 2;
     align-items: center;
     display: block;
-    margin-top: 60px;
+    margin-top: 85px;
     color: white;
     font-size: 14px;
     font-weight: 200;
