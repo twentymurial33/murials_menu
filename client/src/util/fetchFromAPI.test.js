@@ -42,6 +42,7 @@ describe("test should return a failed response", () => {
       .finally(() => {
         expect(onSuccess).not.toHaveBeenCalled();
         expect(onError).toHaveBeenCalled();
+        expect(onError.mock.calls[0][0]).toEqual({ onError: "error message" });
       });
   });
 });
