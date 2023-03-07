@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
-import { Cloudinary } from "@cloudinary/url-gen";
+import cloudinary from "cloudinary-core";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
@@ -34,15 +34,11 @@ function Details() {
     : data.data.filter((data) =>
         data.title.toLowerCase().includes(search.toLowerCase())
       );
-  //cloudinary logic
 
-  function getCloudinaryURL() {
-    Cloudinary.image("http://localhost:5000/menu_items", {
-      width: 200,
-      height: 200,
-      g: "center",
-    });
-  }
+  //cloudinary logic
+  const getCloudinaryURL = (data) => {
+    return cloudinary.image`http://localhost:5000/menu_items/w_200,h_200,g_center`;
+  };
 
   const handleDelete = async (id) => {
     try {
@@ -98,8 +94,7 @@ function Details() {
           {filteredMenuItems.map((data) => {
             return (
               <div key={data.id}>
-                <img src={data.img} alt="images" />
-
+                <img src={data.img} alt="images" transform={getCloudinaryURL} />
                 <h4>Food Calories</h4>
                 <span className="counter__output">{counter}</span>
                 <div className="btn__container">
