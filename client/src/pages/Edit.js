@@ -69,6 +69,7 @@ function Edit() {
           <form onSubmit={FormHandle}>
             <div>
               <label>Food Title</label>
+              <img></img>
               <input
                 type="text"
                 name="title"
