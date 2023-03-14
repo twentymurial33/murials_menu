@@ -2,11 +2,6 @@ import { expect, it } from "@jest/globals";
 import { queryAPI } from "./fetchFromAPI";
 
 describe("testing api", () => {
-  //   beforeEach(() => {
-  //     fetch.resetMocks();
-  //   });
-  // });
-  //mocking fetch request
   it("it calls and returns mocked data", async () => {
     fetch.mockResponseOnce(JSON.stringify({ data: "potato" }));
     const response = await queryAPI({
@@ -42,18 +37,14 @@ describe("test should return a failed response", () => {
   it("testing fetch condition", () => {
     fetch.mockReject(new Error("error message"));
     const onSuccess = jest.fn();
-    const onError = jest.fn();
-    const handleError = {
-      onError: error,
-    };
+    const onError = new Error();
     return queryAPI({ url: "/", onError })
       .then(onSuccess)
-      .catch(() => {
-        expect(handleError).toBe("error message");
+      .catch((e) => {
+        expect(e.message).toBe("error message");
       })
       .finally(() => {
         expect(onSuccess).not.toHaveBeenCalled();
-        // expect(handleError).toHaveBeenCalled();
       });
   });
 });
