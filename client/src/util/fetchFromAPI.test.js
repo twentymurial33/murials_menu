@@ -1,20 +1,25 @@
 import { expect, it } from "@jest/globals";
 import { queryAPI } from "./fetchFromAPI";
 
-beforeEach(() => {
-  fetch.resetMocks();
+describe("testing api", () => {
+  //   beforeEach(() => {
+  //     fetch.resetMocks();
+  //   });
+  // });
+  //mocking fetch request
+  it("it calls and returns mocked data", async () => {
+    fetch.mockResponseOnce(JSON.stringify({ data: "potato" }));
+    const response = await queryAPI({
+      url: "/",
+      onSuccess: jest.fn(),
+      onError: jest.fn(),
+    });
+    expect(response.data).toEqual("potato");
+    expect(fetch.mock.calls.length).toEqual(1);
+    expect(fetch).toHaveBeenCalledTimes(1);
+  });
 });
-
-// it("mocks the fetch request", async () => {
-//   fetch.mockResponseOnce(JSON.stringify({ title: "potato" }));
-//   const response = await queryAPI({
-//     url: "/",
-//     onSuccess: jest.fn(),
-//     onError: jest.fn(),
-//   });
-//   expect(response).toEqual({ title: "potato" });
-//   expect(fetch).toHaveBeenCalledTimes(1);
-// });
+//Mocking all fetches
 
 // test("should return data with a successful request", async () => {
 //   queryAPI().catch((e) => {
@@ -31,15 +36,20 @@ beforeEach(() => {
 //   });
 // });
 
+//mocking a failed request
+
 describe("test should return a failed response", () => {
   it("testing fetch condition", () => {
     fetch.mockReject(new Error("error message"));
     const onSuccess = jest.fn();
-    const handleError = jest.fn();
-    return queryAPI({ url: "/", onError: handleError })
+    const onError = jest.fn();
+    const handleError = {
+      onError: error,
+    };
+    return queryAPI({ url: "/", onError })
       .then(onSuccess)
-      .catch((error) => {
-        expect(error.message).toBe("error message");
+      .catch(() => {
+        expect(handleError).toBe("error message");
       })
       .finally(() => {
         expect(onSuccess).not.toHaveBeenCalled();
