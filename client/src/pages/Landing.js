@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
@@ -7,26 +7,22 @@ import Layout from "../components/Layout";
 
 const images = [
   {
-    url:
-      "https://res.cloudinary.com/dac1at79b/image/upload/v1663773423/joseph-gonzalez-zcUgjyqEwe8-unsplash_nqplbi.jpg",
+    url: "https://res.cloudinary.com/dac1at79b/image/upload/v1663773423/joseph-gonzalez-zcUgjyqEwe8-unsplash_nqplbi.jpg",
     title: "Breakfast",
     width: "50%",
   },
   {
-    url:
-      "https://res.cloudinary.com/dac1at79b/image/upload/v1664214354/lidye-1Shk_PkNkNw-unsplash_hbeq0v.jpg",
+    url: "https://res.cloudinary.com/dac1at79b/image/upload/v1664214354/lidye-1Shk_PkNkNw-unsplash_hbeq0v.jpg",
     title: "Burgers",
     width: "50%",
   },
   {
-    url:
-      "https://res.cloudinary.com/dac1at79b/image/upload/v1664214328/anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash_mq6vml.jpg",
+    url: "https://res.cloudinary.com/dac1at79b/image/upload/v1664214328/anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash_mq6vml.jpg",
     title: "Dessert",
     width: "50%",
   },
   {
-    url:
-      "https://res.cloudinary.com/dac1at79b/image/upload/v1664214337/eiliv-aceron-ZuIDLSz3XLg-unsplash_vntgpn.jpg",
+    url: "https://res.cloudinary.com/dac1at79b/image/upload/v1664214337/eiliv-aceron-ZuIDLSz3XLg-unsplash_vntgpn.jpg",
     title: "Salad",
     width: "50%",
   },
@@ -37,6 +33,17 @@ function onClick(e) {
 }
 
 function Landing() {
+  const [searchInput, setSearchInput] = useState("");
+
+  const searchItems = (searchValue) => {
+    setSearchInput(searchValue);
+    images.filter((image) => {
+      return Object.values(image)
+        .join("")
+        .toLowerCase()
+        .includes(searchInput.toLowerCase());
+    });
+  };
   return (
     <>
       <Layout />
@@ -59,6 +66,11 @@ function Landing() {
             }}
           >
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+            <input
+              icon="search"
+              placeholder="Search...."
+              onChange={(e) => searchItems(e.target.value)}
+            />
             <ImageBackdrop className="MuiImageBackdrop-root" />
             <Image>
               <Typography
@@ -75,6 +87,11 @@ function Landing() {
                 {image.title}
                 <ImageMarked className="MuiImageMarked-root" />
               </Typography>
+              <input
+                icon="search"
+                placeholder="Search...."
+                onChange={(e) => searchItems(e.target.value)}
+              />
             </Image>
           </ImageButton>
         ))}

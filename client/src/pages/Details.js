@@ -148,28 +148,27 @@ function Details() {
 }
 
 const Container = styled.div`
-  input{
-  font-size: 18px;
-  padding:10px;
-  margin: 10px;
-  background: white;
-  border: none;
-  border-radius: 3px;
-  ::placeholder {
-    color: black;
+  input {
+    font-size: 18px;
+    padding: 0px;
+    margin: 0px;
+    background: white;
+    border: none;
+    border-radius: 3px;
+    ::placeholder {
+      color: black;
+    }
   }
-
   ul {
     display: flex;
     flex-wrap: wrap;
   }
-  Button{
-     align-items: center,
-    justify-content: center,
-    padding-vertical: 12,
-    padding-horizontal: 32,
-    border-radius: 4,
-    elevation: 3,
+  Button {
+    align-items: center;
+    justify-content: center;
+    padding-vertical: 12;
+    padding-horizontal: 32;
+    border-radius: 4;
   }
 `;
 
