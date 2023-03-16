@@ -78,13 +78,12 @@ function Details() {
             return (
               <div key={data.id}>
                 <img src={data.img} alt="images" />
-
+                <h1> {data.title}</h1>
                 <Box
                   className="boxMenu"
                   lg={{
                     display: "flex",
 
-                    flexWrap: "wrap",
                     "& > :not(style)": {
                       m: 1,
                       width: 128,
@@ -148,28 +147,29 @@ function Details() {
 }
 
 const Container = styled.div`
-  input{
-  font-size: 18px;
-  padding:10px;
-  margin: 10px;
-  background: white;
-  border: none;
-  border-radius: 3px;
-  ::placeholder {
-    color: black;
+  input {
+    font-size: 18px;
+    padding: 10px;
+    margin: 10px;
+    background: white;
+    border: none;
+    border-radius: 3px;
+    ::placeholder {
+      color: black;
+    }
   }
-
   ul {
     display: flex;
     flex-wrap: wrap;
+    flex-direction: row-reverse;
   }
-  Button{
-     align-items: center,
-    justify-content: center,
-    padding-vertical: 12,
-    padding-horizontal: 32,
-    border-radius: 4,
-    elevation: 3,
+  Button {
+    align-items: center;
+    justify-content: center;
+    padding-vertical: 12;
+    padding-horizontal: 32;
+    border-radius: 4;
+    elevation: 3;
   }
 `;
 
