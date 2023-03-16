@@ -47,7 +47,11 @@ function Landing() {
   return (
     <>
       <Layout />
-
+      <input
+        icon="search"
+        placeholder="Search...."
+        onChange={(e) => searchItems(e.target.value)}
+      />
       <Box
         sx={{
           display: "flex",
@@ -58,6 +62,7 @@ function Landing() {
       >
         {images.map((image) => (
           <ImageButton
+            placeholder="Search...."
             focusRipple
             onClick={onClick}
             key={image.title}
@@ -66,11 +71,7 @@ function Landing() {
             }}
           >
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
-            <input
-              icon="search"
-              placeholder="Search...."
-              onChange={(e) => searchItems(e.target.value)}
-            />
+
             <ImageBackdrop className="MuiImageBackdrop-root" />
             <Image>
               <Typography
@@ -83,10 +84,8 @@ function Landing() {
                   pt: 2,
                   pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                 }}
-              >
-                {image.title}
-                <ImageMarked className="MuiImageMarked-root" />
-              </Typography>
+              ></Typography>
+              {image.title}
               <input
                 icon="search"
                 placeholder="Search...."
