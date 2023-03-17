@@ -67,12 +67,6 @@ function Details() {
     <div>
       <Layout />
       <Container>
-        <input
-          className="search"
-          placeholder="Search..."
-          value={search}
-          onChange={handleSetSearch}
-        />
         <ul className="list">
           {filteredMenuItems.map((data) => {
             return (
@@ -86,15 +80,13 @@ function Details() {
 
                     "& > :not(style)": {
                       m: 1,
-                      width: 128,
-                      height: 128,
+                      width: 80,
+                      height: 100,
                     },
                   }}
                 >
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
                   </p>{" "}
                   <button
                     className="deleteBtn"
@@ -147,10 +139,12 @@ function Details() {
 }
 
 const Container = styled.div`
+  display: flex;
+  justify-content: center;
   input {
     font-size: 18px;
     padding: 10px;
-    margin: 10px;
+    margin: 30px;
     background: white;
     border: none;
     border-radius: 3px;
@@ -158,16 +152,10 @@ const Container = styled.div`
       color: black;
     }
   }
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row-reverse;
-  }
+
   Button {
     align-items: center;
     justify-content: center;
-    padding-vertical: 12;
-    padding-horizontal: 32;
     border-radius: 4;
     elevation: 3;
   }
