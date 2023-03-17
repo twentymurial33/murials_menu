@@ -1,36 +1,65 @@
 import React from "react";
 import AppBar from "@mui/material/AppBar";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 function Header() {
   return (
     <AppBar style={{ height: "90px", backgroundColor: "black" }}>
       <Container maxWidth="xl">
-        <h1 className="u-text--center">Murial's Restaurant</h1>
-        <section>
-          <Link to="/add">AddFood | </Link>
-          <Link to="/details">Details </Link>
-        </section>
+        <h1 className="u-text--center">
+          <a href="/">Murial's Restaurant</a>
+        </h1>
+        <div
+          style={{
+            position: "fixed",
+            right: "20px",
+            bottom: "20px",
+          }}
+        >
+          <button
+            variant="outline"
+            // style={{
+            //   display: "flex",
+            //   alignItems: "center",
+            //   justifyContent: "center",
+            //   borderRadius: "50%",
+            //   width: "70px",
+            //   height: "70px",
+            //   backgroundColor: "#ff00ff",
+            // }}
+          >
+            <a href="/add" style={{ zoom: "2", underlining: "none" }}>
+              +
+            </a>
+          </button>
+        </div>
       </Container>
     </AppBar>
   );
 }
 
 const Container = styled.div`
+  display: flex;
   h1 {
     font-size: 1.5em;
     text-align: center;
     color: white;
+    margin-right: 40px;
+    margin-left: 560px;
   }
-  section {
+  a {
     color: white;
-    text-align: center;
-    align: center;
   }
 
-  a {
-    color: hotpink;
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    text-decoration: none;
+    background-color: #ff00ff;
   }
 `;
 

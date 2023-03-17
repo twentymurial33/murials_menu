@@ -4,9 +4,9 @@ import { useQuery } from "react-query";
 import { useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Layout from "../components/Layout";
 import styled from "styled-components";
 import Dialog from "@mui/material/Dialog";
-import EditIcon from "@mui/icons-material/Edit";
 import Divider from "@mui/material/Divider";
 import DialogContent from "@mui/material/DialogContent";
 import DialogActions from "@mui/material/DialogActions";
@@ -17,7 +17,6 @@ import "../index.css";
 function Details() {
   const navigate = useNavigate();
   const [search, setNewSearch] = useState("");
-  const [counter, setCounter] = useState(0);
   const [open, setOpen] = useState(false);
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
@@ -64,62 +63,30 @@ function Details() {
     handleDelete(id);
   }
 
-  const increaseCounter = () => {
-    setCounter((count) => count + 1);
-  };
-
-  const decreaseCounter = () => {
-    setCounter((count) => count - 1);
-  };
-
-  const reset = () => {
-    setCounter(0);
-  };
-
   return (
     <div>
+      <Layout />
       <Container>
-        <input
-          className="search"
-          placeholder="Search..."
-          value={search}
-          onChange={handleSetSearch}
-        />
         <ul className="list">
           {filteredMenuItems.map((data) => {
             return (
-              <div key={data.id}>
+              <div key={data.id} style={{ display: "flex" }}>
                 <img src={data.img} alt="images" />
-                <h4>Food Calories</h4>
-                <span className="counter__output">{counter}</span>
-                <div className="btn__container">
-                  <button className="control__btn" onClick={increaseCounter}>
-                    +
-                  </button>
-                  <button className="control__btn" onClick={decreaseCounter}>
-                    -
-                  </button>
-                  <button className="reset" onClick={reset}>
-                    Reset
-                  </button>
-                </div>
                 <Box
                   className="boxMenu"
                   lg={{
                     display: "flex",
-
-                    flexWrap: "wrap",
                     "& > :not(style)": {
                       m: 1,
-                      width: 128,
-                      height: 128,
+                      width: 80,
+                      background: "#cfd4d1",
+                      height: 100,
                     },
                   }}
                 >
+                  <h1 style={{ color: "white" }}> {data.title}</h1>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
                   </p>{" "}
                   <button
                     className="deleteBtn"
@@ -130,10 +97,10 @@ function Details() {
                   </button>
                   <button
                     className="editBtn"
-                    variant="outlined"
+                    variant="contained"
                     onClick={() => navigateToEdit(data.id)}
                   >
-                    <EditIcon />
+                    Modify
                   </button>
                   <Dialog
                     onClose={handleClose}
@@ -172,28 +139,14 @@ function Details() {
 }
 
 const Container = styled.div`
-  input{
-  font-size: 18px;
-  padding:10px;
-  margin: 10px;
-  background: white;
-  border: none;
-  border-radius: 3px;
-  ::placeholder {
-    color: black;
-  }
+  display: grid;
+  column-gap: 5px;
 
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  Button{
-     align-items: center,
-    justify-content: center,
-    padding-vertical: 12,
-    padding-horizontal: 32,
-    border-radius: 4,
-    elevation: 3,
+  Button {
+    align-items: center;
+    justify-content: center;
+    border-radius: 4;
+    elevation: 3;
   }
 `;
 
