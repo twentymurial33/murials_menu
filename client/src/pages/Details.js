@@ -70,21 +70,21 @@ function Details() {
         <ul className="list">
           {filteredMenuItems.map((data) => {
             return (
-              <div key={data.id}>
+              <div key={data.id} style={{ display: "flex" }}>
                 <img src={data.img} alt="images" />
-                <h1> {data.title}</h1>
                 <Box
                   className="boxMenu"
                   lg={{
                     display: "flex",
-
                     "& > :not(style)": {
                       m: 1,
                       width: 80,
+                      background: "#cfd4d1",
                       height: 100,
                     },
                   }}
                 >
+                  <h1 style={{ color: "white" }}> {data.title}</h1>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   </p>{" "}
@@ -139,19 +139,8 @@ function Details() {
 }
 
 const Container = styled.div`
-  display: flex;
-  justify-content: center;
-  input {
-    font-size: 18px;
-    padding: 10px;
-    margin: 30px;
-    background: white;
-    border: none;
-    border-radius: 3px;
-    ::placeholder {
-      color: black;
-    }
-  }
+  display: grid;
+  column-gap: 5px;
 
   Button {
     align-items: center;
