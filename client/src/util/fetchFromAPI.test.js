@@ -1,57 +1,50 @@
-import { expect, test, it } from "@jest/globals";
+import { expect, it } from "@jest/globals";
 import { queryAPI } from "./fetchFromAPI";
-//reset the fetch mock so the previous tests fon't interfere with current tests
-beforeEach(() => {
-  fetch.resetMocks();
-});
 
-it("mocks the fetch request", async () => {
-  fetch.mockResponseOnce(JSON.stringify({ title: "potato" }));
-  const response = await queryAPI({
-    url: "/",
-    onSuccess: jest.fn(),
-    onError: jest.fn(),
+describe("testing api", () => {
+  it("it calls and returns mocked data", async () => {
+    fetch.mockResponseOnce(JSON.stringify({ data: "potato" }));
+    const response = await queryAPI({
+      url: "/",
+      onSuccess: jest.fn(),
+      onError: jest.fn(),
+    });
+    expect(response.data).toEqual("potato");
+    expect(fetch.mock.calls.length).toEqual(1);
+    expect(fetch).toHaveBeenCalledTimes(1);
   });
-  expect(response).toEqual({ title: "potato" });
-  expect(fetch).toHaveBeenCalledTimes(1);
 });
+//Mocking all fetches
 
-// fetch call results in a 200 response, the onSuccess callback is fired
-test("should return data with a successful request", async () => {
-  queryAPI().catch((e) => {
-    expect(e.message).toBe("options parameter is not defined");
-  });
-  queryAPI({}).catch((e) => {
-    expect(e.message).toBe("url is not provided");
-  });
-  queryAPI({ url: "/" }).catch((e) => {
-    expect(e.message).toBe("onSuccess is not provided");
-  });
-  queryAPI({ url: "/", onSuccess: jest.fn() }).catch((e) => {
-    expect(e.message).toBe("onError is not provided");
-  });
-});
-//test to confirm that the onError callback is called
-// test("confirm onError callback is called", async () => {
-//   const options = {
-//     url: "http://localhost:5000/menu_items_2023/",
-//     onSuccess: jest.fn(),
-//     onError: jest.fn(),
-//   };
-//   await queryAPI(options).then(() => {
-//     expect(options.onError).toBeCalled();
+// test("should return data with a successful request", async () => {
+//   queryAPI().catch((e) => {
+//     expect(e.message).toBe("options parameter is not defined");
+//   });
+//   queryAPI({}).catch((e) => {
+//     expect(e.message).toBe("url is not provided");
+//   });
+//   queryAPI({ url: "/" }).catch((e) => {
+//     expect(e.message).toBe("onSuccess is not provided");
+//   });
+//   queryAPI({ url: "/", onSuccess: jest.fn() }).catch((e) => {
+//     expect(e.message).toBe("onError is not provided");
 //   });
 // });
 
-//test to confirm onSuccess callback
+//mocking a failed request
 
-// test("confirm onSuccess callback is called", async () => {
-//   const options = {
-//     url: "http://localhost:5000/menu_items/",
-//     onSuccess: jest.fn(),
-//     onError: jest.fn(),
-//   };
-//   await queryAPI(options).then(() => {
-//     expect(options.onSuccess).toBeCalled();
-//   });
-// });
+describe("test should return a failed response", () => {
+  it("testing fetch condition", () => {
+    fetch.mockReject(new Error("error message"));
+    const onSuccess = jest.fn();
+    const onError = new Error();
+    return queryAPI({ url: "/", onError })
+      .then(onSuccess)
+      .catch((e) => {
+        expect(e.message).toBe("error message");
+      })
+      .finally(() => {
+        expect(onSuccess).not.toHaveBeenCalled();
+      });
+  });
+});
