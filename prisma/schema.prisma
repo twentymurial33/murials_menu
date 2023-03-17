@@ -12,5 +12,6 @@ model Food {
     title      String
     img        String
     author     String
+    calories   Int       @default(0)
     created_at DateTime? @default(now())
 }
