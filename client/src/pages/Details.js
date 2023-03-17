@@ -67,35 +67,26 @@ function Details() {
     <div>
       <Layout />
       <Container>
-        <input
-          className="search"
-          placeholder="Search..."
-          value={search}
-          onChange={handleSetSearch}
-        />
         <ul className="list">
           {filteredMenuItems.map((data) => {
             return (
-              <div key={data.id}>
+              <div key={data.id} style={{ display: "flex" }}>
                 <img src={data.img} alt="images" />
-
                 <Box
                   className="boxMenu"
                   lg={{
                     display: "flex",
-
-                    flexWrap: "wrap",
                     "& > :not(style)": {
                       m: 1,
-                      width: 128,
-                      height: 128,
+                      width: 80,
+                      background: "#cfd4d1",
+                      height: 100,
                     },
                   }}
                 >
+                  <h1 style={{ color: "white" }}> {data.title}</h1>
                   <p>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua.
                   </p>{" "}
                   <button
                     className="deleteBtn"
@@ -148,28 +139,14 @@ function Details() {
 }
 
 const Container = styled.div`
-  input{
-  font-size: 18px;
-  padding:10px;
-  margin: 10px;
-  background: white;
-  border: none;
-  border-radius: 3px;
-  ::placeholder {
-    color: black;
-  }
+  display: grid;
+  column-gap: 5px;
 
-  ul {
-    display: flex;
-    flex-wrap: wrap;
-  }
-  Button{
-     align-items: center,
-    justify-content: center,
-    padding-vertical: 12,
-    padding-horizontal: 32,
-    border-radius: 4,
-    elevation: 3,
+  Button {
+    align-items: center;
+    justify-content: center;
+    border-radius: 4;
+    elevation: 3;
   }
 `;
 
