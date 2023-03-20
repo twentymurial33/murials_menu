@@ -36,7 +36,7 @@ function Details() {
 
   //cloudinary logic
   const getCloudinaryURL = (imgname) => {
-    return `https://res.cloudinary.com/dac1at79b/image/upload/c_fill,w_1200/${imgname}`;
+    return `https://res.cloudinary.com/dac1at79b/image/upload/c_fill,w_600/${imgname}`;
   };
 
   const handleDelete = async (id) => {
@@ -76,6 +76,7 @@ function Details() {
           {filteredMenuItems.map((data) => {
             return (
               <div key={data.id} style={{ display: "flex" }}>
+                <img src={getCloudinaryURL} alt="cloudinary" />
                 <img src={data.img} alt="images" />
                 <Box
                   className="boxMenu"
@@ -83,7 +84,7 @@ function Details() {
                     display: "flex",
                     "& > :not(style)": {
                       m: 1,
-                      width: 80,
+                      width: 100,
                       background: "#cfd4d1",
                       height: 100,
                     },
