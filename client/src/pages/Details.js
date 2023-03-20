@@ -35,8 +35,8 @@ function Details() {
       );
 
   //cloudinary logic
-  const getCloudinaryURL = (imgname) => {
-    return `https://res.cloudinary.com/dac1at79b/image/upload/c_fill,w_600/${imgname}`;
+  const getCloudinaryURL = (img) => {
+    return `https://res.cloudinary.com/dac1at79b/image/upload/c_fill,w_600/${img}`;
   };
 
   const handleDelete = async (id) => {
