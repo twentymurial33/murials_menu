@@ -72,6 +72,7 @@ function Details() {
             return (
               <div key={data.id} style={{ display: "flex" }}>
                 <img src={data.img} alt="images" />
+
                 <Box
                   className="boxMenu"
                   lg={{

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
@@ -23,23 +24,29 @@ const images = [
   },
   {
     url: "https://res.cloudinary.com/dac1at79b/image/upload/v1664214337/eiliv-aceron-ZuIDLSz3XLg-unsplash_vntgpn.jpg",
-    title: "Dinner",
+    title: "Dessert",
     width: "50%",
   },
 ];
 
 function Landing() {
-  const [searchInput, setSearchInput] = useState("");
+  const [allData, setAllData] = useState([]);
+  const [filteredData, setFilteredData] = useState(allData);
 
-  const searchItems = (searchValue) => {
-    setSearchInput(searchValue);
-    images.filter((image) => {
-      return Object.values(image)
-        .join("")
-        .toLowerCase()
-        .includes(searchInput.toLowerCase());
-    });
-  };
+  const handleSearch = (event) => {};
+
+  useEffect(() => {
+    axios("http://localhost:5000/menu_items")
+      .then((response) => {
+        console.log(response.data);
+        setAllData(response.data);
+        setFilteredData(response.data);
+      })
+      .catch((error) => {
+        console.log("Error getting fake data: " + error);
+      });
+  }, []);
+
   return (
     <>
       <Layout />
@@ -53,7 +60,6 @@ function Landing() {
       >
         {images.map((image) => (
           <ImageButton
-            // onClick={onClick}
             key={image.title}
             style={{
               width: image.width,
@@ -78,7 +84,7 @@ function Landing() {
               <input
                 icon="search"
                 placeholder="Search...."
-                onChange={(e) => searchItems(e.target.value)}
+                onChange={(event) => handleSearch(event)}
               />
             </Image>
           </ImageButton>
