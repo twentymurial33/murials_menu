@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
@@ -13,24 +13,20 @@ const images = [
   },
   {
     url: "https://res.cloudinary.com/dac1at79b/image/upload/v1664214354/lidye-1Shk_PkNkNw-unsplash_hbeq0v.jpg",
-    title: "Burgers",
+    title: "Lunch",
     width: "50%",
   },
   {
     url: "https://res.cloudinary.com/dac1at79b/image/upload/v1664214328/anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash_mq6vml.jpg",
-    title: "Dessert",
+    title: "Dinner",
     width: "50%",
   },
   {
     url: "https://res.cloudinary.com/dac1at79b/image/upload/v1664214337/eiliv-aceron-ZuIDLSz3XLg-unsplash_vntgpn.jpg",
-    title: "Salad",
+    title: "Dinner",
     width: "50%",
   },
 ];
-
-function onClick(e) {
-  window.location.href = "/details";
-}
 
 function Landing() {
   const [searchInput, setSearchInput] = useState("");
@@ -47,11 +43,6 @@ function Landing() {
   return (
     <>
       <Layout />
-      <input
-        icon="search"
-        placeholder="Search...."
-        onChange={(e) => searchItems(e.target.value)}
-      />
       <Box
         sx={{
           display: "flex",
@@ -62,9 +53,7 @@ function Landing() {
       >
         {images.map((image) => (
           <ImageButton
-            placeholder="Search...."
-            focusRipple
-            onClick={onClick}
+            // onClick={onClick}
             key={image.title}
             style={{
               width: image.width,
@@ -122,21 +111,11 @@ const ImageBackdrop = styled("span")(({ theme }) => ({
   transition: theme.transitions.create("opacity"),
 }));
 
-const ImageMarked = styled("span")(({ theme }) => ({
-  height: 3,
-  width: 18,
-  backgroundColor: theme.palette.common.white,
-  position: "absolute",
-  bottom: -2,
-  left: "calc(50% - 9px)",
-  transition: theme.transitions.create("opacity"),
-}));
-
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
   position: "relative",
   height: 400,
   [theme.breakpoints.down("sm")]: {
-    width: "100% !important", // Overrides inline-style
+    width: "100% !important",
     height: 100,
   },
   "&:hover, &.Mui-focusVisible": {
