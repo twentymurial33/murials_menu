@@ -76,7 +76,7 @@ function Details() {
           {filteredMenuItems.map((data) => {
             return (
               <div key={data.id} style={{ display: "flex" }}>
-                <img src={getCloudinaryURL} alt="cloudinary" />
+                <img src={getCloudinaryURL(data.img)} alt="cloudinary" />
                 <img src={data.img} alt="images" />
                 <Box
                   className="boxMenu"
