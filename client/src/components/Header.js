@@ -16,19 +16,8 @@ function Header() {
             bottom: "20px",
           }}
         >
-          <button
-            variant="outline"
-            // style={{
-            //   display: "flex",
-            //   alignItems: "center",
-            //   justifyContent: "center",
-            //   borderRadius: "50%",
-            //   width: "70px",
-            //   height: "70px",
-            //   backgroundColor: "#ff00ff",
-            // }}
-          >
-            <a href="/add" style={{ zoom: "2", underlining: "none" }}>
+          <button>
+            <a href="/add" style={{ zoom: "2" }}>
               +
             </a>
           </button>
@@ -42,6 +31,7 @@ const Container = styled.div`
   display: flex;
   h1 {
     font-size: 1.5em;
+    padding: 10px 0;
     text-align: center;
     color: white;
     margin-right: 40px;
@@ -49,6 +39,7 @@ const Container = styled.div`
   }
   a {
     color: white;
+    text-decoration: none;
   }
 
   button {
