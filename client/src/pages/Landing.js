@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
@@ -30,21 +29,17 @@ const images = [
 ];
 
 function Landing() {
-  const [allData, setAllData] = useState([]);
-  const [filteredData, setFilteredData] = useState(allData);
+  const [menu, setMenu] = useState([]);
+  const [search, setSearch] = useState("");
 
-  const handleSearch = (event) => {};
+  const fetchData = () => {
+    return fetch("http://localhost:5000/menu_items")
+      .then((response) => response.json())
+      .then((data) => setMenu(data));
+  };
 
   useEffect(() => {
-    axios("http://localhost:5000/menu_items")
-      .then((response) => {
-        console.log(response.data);
-        setAllData(response.data);
-        setFilteredData(response.data);
-      })
-      .catch((error) => {
-        console.log("Error getting fake data: " + error);
-      });
+    fetchData();
   }, []);
 
   return (
@@ -83,8 +78,11 @@ function Landing() {
               {image.title}
               <input
                 icon="search"
-                placeholder="Search...."
-                onChange={(event) => handleSearch(event)}
+                type="text"
+                placeholder="enter search term ....."
+                onChange={(event) => {
+                  setSearch(event.target.value);
+                }}
               />
             </Image>
           </ImageButton>

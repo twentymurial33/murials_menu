@@ -27,7 +27,6 @@ function Details() {
   const handleSetSearch = (e) => {
     setNewSearch(e.target.value);
   };
-
   const filteredMenuItems = !search
     ? data.data
     : data.data.filter((data) =>
