@@ -1,22 +1,11 @@
-img {
-  max-width: 50%;
-}
+
 body {
   background-color: grey;
 }
 
-.u-hidden {
-  display: none !important;
-}
-
-.u-text--center {
-  text-align: center !important;
-}
-
 .deleteBtn {
   margin: 2px;
-  background-color: red;
-  color: #fff;
+  background-color: #757ce8;
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;
@@ -24,8 +13,7 @@ body {
 
 .editBtn {
   margin: 0px;
-  background-color:blue;
-  color: #fff;
+  background-color: transparent;
   padding: 20px;
   border-radius: 10px;
   cursor: pointer;

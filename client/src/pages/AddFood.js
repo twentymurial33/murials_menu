@@ -90,34 +90,27 @@ const Form = styled.form`
     border-radius: 3px;
     border: 1px solid white;
     padding: 16px 8px;
-    margin-bottom: 0px;
+    margin-bottom: 10px;
     font-size: 14px;
     z-index: 1;
   }
-  h2 {
-    font-size: 20px;
-    color: white;
-    margin-bottom: 30px;
-    text-align: center;
-  }
 
   Button {
-    margin: 5px;
-    background: #f1356d;
-    color: #fff;
+    display: block;
+    box-sizing: border-box;
+    border-radius: 4px;
     padding: 20px;
-    border-radius: 8px;
+    justify-content: center;
+    color: #fff;
+    margin: 30px;
     cursor: pointer;
-    float: left;
   }
   label {
-    line-height: 2;
-    align-items: center;
+    color: black;
+    font-weight: bold;
     display: block;
-    margin-top: 85px;
-    color: white;
-    font-size: 14px;
-    font-weight: 200;
+    width: 150px;
+    float: left;
   }
 `;
 
