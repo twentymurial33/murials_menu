@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
-//import Image from "@mui/material/Image";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
@@ -70,7 +69,6 @@ function Edit() {
           <form onSubmit={FormHandle}>
             <div>
               <label>Food Title</label>
-              {/* <Image></Image> */}
               <input
                 type="text"
                 name="title"
