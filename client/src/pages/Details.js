@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
+import { Image } from "cloudinary-react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
@@ -35,9 +36,10 @@ function Details() {
       );
 
   //cloudinary logic
-  const getCloudinaryURL = (img) => {
-    return `https://res.cloudinary.com/dac1at79b/image/upload/c_fill,w_600/${img}`;
+  const getCloudinaryURL = (data) => {
+    return `https://res.cloudinary.com/dac1at79b/image/upload/c_fill,w_600/${data.img}`;
   };
+  console.log(getCloudinaryURL());
 
   const handleDelete = async (id) => {
     try {
@@ -77,7 +79,8 @@ function Details() {
             return (
               <div key={data.id} style={{ display: "flex" }}>
                 <img src={getCloudinaryURL(data.img)} alt="cloudinary" />
-                <img src={data.img} alt="images" />
+                {/* <Image publicId="sample" width="50" /> */}
+                {/* <img src={data.img} alt="images" /> */}
                 <Box
                   className="boxMenu"
                   lg={{
