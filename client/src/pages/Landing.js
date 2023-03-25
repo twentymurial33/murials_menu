@@ -29,17 +29,13 @@ const images = [
 ];
 
 function Landing() {
-  const [menu, setMenu] = useState([]);
+  const [item, setItem] = useState([]);
   const [search, setSearch] = useState("");
 
-  const fetchData = () => {
-    return fetch("http://localhost:5000/menu_items")
-      .then((response) => response.json())
-      .then((data) => setMenu(data));
-  };
-
   useEffect(() => {
-    fetchData();
+    fetch("http://localhost:5000/menu_items")
+      .then((res) => res.json())
+      .then(setItem);
   }, []);
 
   return (
@@ -80,6 +76,7 @@ function Landing() {
                 icon="search"
                 type="text"
                 placeholder="enter search term ....."
+                value={search}
                 onChange={(event) => {
                   setSearch(event.target.value);
                 }}
