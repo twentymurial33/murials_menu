@@ -28,23 +28,27 @@ const images = [
   },
 ];
 
-function Landing() {
+export default function Landing() {
   const [search, setSearch] = useState("");
-
+  //fetch data
   const fetchMenuItems = async () => {
-    const data = await (await fetch("http://localhost:5000/menu_items")).json();
+    const response = await fetch("http://localhost:5000/menu_items");
+    const data = await response.json();
     console.log(data);
   };
-
-  const handleSetSearch = (e) => {
-    setSearch(e.target.value);
-  };
-
-  const updatedMenu = (data) =>
-    data.title.toLowerCase().includes(search.toLowerCase());
   useEffect(() => {
     fetchMenuItems();
   }, []);
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+  };
+  //Tried to filter it here:
+
+  // const updatedMenuItems = (data) => {
+  //   data.data.filter((data) =>
+  //     data.title.toLowerCase().includes(search.toLowerCase())
+  //   );
 
   return (
     <>
@@ -65,7 +69,6 @@ function Landing() {
             }}
           >
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
-
             <ImageBackdrop className="MuiImageBackdrop-root" />
             <Image>
               <Typography
@@ -79,13 +82,12 @@ function Landing() {
                   pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                 }}
               ></Typography>
-              {image.title}
               <input
                 icon="search"
                 type="text"
                 placeholder="enter search term ....."
                 value={search}
-                onChange={updatedMenu}
+                onChange={handleSearch}
               />
             </Image>
           </ImageButton>
@@ -148,5 +150,3 @@ const ImageSrc = styled("span")({
   backgroundSize: "cover",
   backgroundPosition: "center 40%",
 });
-
-export default Landing;
