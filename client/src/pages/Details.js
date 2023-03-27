@@ -24,6 +24,7 @@ function Details() {
   if (error) return <h2>Error </h2>;
   if (isLoading) return <h2> isLoading </h2>;
   console.log(data);
+
   const handleSetSearch = (e) => {
     setNewSearch(e.target.value);
   };
@@ -67,11 +68,16 @@ function Details() {
       <Layout />
       <Container>
         <ul className="list">
+          <input
+            className="search"
+            placeholder="Search Food Item"
+            value={search}
+            onChange={handleSetSearch}
+          />
           {filteredMenuItems.map((data) => {
             return (
               <div key={data.id} style={{ display: "flex" }}>
                 <img src={data.img} alt="images" />
-
                 <Box
                   className="boxMenu"
                   lg={{
@@ -141,6 +147,19 @@ function Details() {
 const Container = styled.div`
   display: grid;
   column-gap: 5px;
+
+  input {
+    padding: 25px;
+    width: 400px;
+    margin-left: 20%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    font-size: 14px;
+    position: relative;
+    background: #ffddf4;
+    border-radius: 20px;
+  }
 
   button {
     align-items: center;

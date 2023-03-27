@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
@@ -29,27 +28,6 @@ const images = [
 ];
 
 export default function Landing() {
-  const [search, setSearch] = useState("");
-  //fetch data
-  const fetchMenuItems = async () => {
-    const response = await fetch("http://localhost:5000/menu_items");
-    const data = await response.json();
-    console.log(data);
-  };
-  useEffect(() => {
-    fetchMenuItems();
-  }, []);
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
-  //Tried to filter it here:
-
-  // const updatedMenuItems = (data) => {
-  //   data.data.filter((data) =>
-  //     data.title.toLowerCase().includes(search.toLowerCase())
-  //   );
-
   return (
     <>
       <Layout />
@@ -82,13 +60,6 @@ export default function Landing() {
                   pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                 }}
               ></Typography>
-              <input
-                icon="search"
-                type="text"
-                placeholder="enter search term ....."
-                value={search}
-                onChange={handleSearch}
-              />
             </Image>
           </ImageButton>
         ))}
