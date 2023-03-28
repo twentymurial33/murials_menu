@@ -150,7 +150,7 @@ const Container = styled.div`
   display: grid;
   column-gap: 5px;
 
-  Button {
+  button {
     align-items: center;
     justify-content: center;
     border-radius: 4;
