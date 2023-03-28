@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
+import Select from "react-select";
 import ButtonBase from "@mui/material/ButtonBase";
 import Typography from "@mui/material/Typography";
 import Layout from "../components/Layout";
@@ -28,6 +29,12 @@ const images = [
 ];
 
 export default function Landing() {
+  const fetchMenuItems = async () => {
+    const response = await fetch("http://localhost:5000/menu_items");
+    const data = await response.json();
+    console.log(data);
+  };
+
   return (
     <>
       <Layout />
@@ -47,7 +54,6 @@ export default function Landing() {
             }}
           >
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
-            <ImageBackdrop className="MuiImageBackdrop-root" />
             <Image>
               <Typography
                 component="span"
@@ -60,6 +66,11 @@ export default function Landing() {
                   pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                 }}
               ></Typography>
+              <Select
+                className="input-cont"
+                placeholder="Select a menu item"
+                options={images}
+              />
             </Image>
           </ImageButton>
         ))}
@@ -78,17 +89,6 @@ const Image = styled("span")(({ theme }) => ({
   alignItems: "center",
   justifyContent: "center",
   color: theme.palette.common.white,
-}));
-
-const ImageBackdrop = styled("span")(({ theme }) => ({
-  position: "absolute",
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0,
-  backgroundColor: theme.palette.common.black,
-  opacity: 0.4,
-  transition: theme.transitions.create("opacity"),
 }));
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({
