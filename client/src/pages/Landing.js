@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
@@ -29,18 +30,31 @@ const images = [
 ];
 
 export default function Landing() {
-  const url = "http://localhost:5000/menu_items?q=title";
+  const url = "http://localhost:5000/menu_items";
   const [data, setData] = useState([]);
-
-  const fetchInfo = () => {
-    return fetch(url)
-      .then((res) => res.json())
-      .then((d) => setData(d));
-  };
+  const [filteredData, setFilteredData] = useState(data);
 
   useEffect(() => {
-    fetchInfo();
+    axios(url)
+      .then((response) => {
+        console.log(response.data);
+        setData(response.data);
+        setFilteredData(response.data);
+      })
+      .catch((error) => {
+        console.log("Error getting fake data: " + error);
+      });
   }, []);
+
+  const handleSearch = (event) => {
+    let value = event.target.value.toLowerCase();
+    let result = [];
+    console.log(value);
+    result = data.filter((data) => {
+      return data.title.search(value);
+    });
+    setFilteredData(result);
+  };
 
   return (
     <>
@@ -62,23 +76,12 @@ export default function Landing() {
           >
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
             <Image>
-              <Typography
-                component="span"
-                variant="subtitle1"
-                color="inherit"
-                sx={{
-                  position: "relative",
-                  p: 3,
-                  pt: 2,
-                  pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
-                }}
-              ></Typography>
               <div className="App">
-                {data.map((data) => {
+                {filteredData.map((data) => {
                   return (
                     <>
-                      <select>
-                        <option value="fruit">{data.title}</option>
+                      <select onChange={(event) => handleSearch(event)}>
+                        <option value="menuItem">{data.title}</option>
                       </select>
                     </>
                   );
