@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from "react";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
-import Select from "react-select";
 import ButtonBase from "@mui/material/ButtonBase";
 import Typography from "@mui/material/Typography";
 import Layout from "../components/Layout";
@@ -29,11 +29,18 @@ const images = [
 ];
 
 export default function Landing() {
-  const fetchMenuItems = async () => {
-    const response = await fetch("http://localhost:5000/menu_items");
-    const data = await response.json();
-    console.log(data);
+  const url = "http://localhost:5000/menu_items?q=title";
+  const [data, setData] = useState([]);
+
+  const fetchInfo = () => {
+    return fetch(url)
+      .then((res) => res.json())
+      .then((d) => setData(d));
   };
+
+  useEffect(() => {
+    fetchInfo();
+  }, []);
 
   return (
     <>
@@ -66,11 +73,17 @@ export default function Landing() {
                   pb: (theme) => `calc(${theme.spacing(1)} + 6px)`,
                 }}
               ></Typography>
-              <Select
-                className="input-cont"
-                placeholder="Select a menu item"
-                options={images}
-              />
+              <div className="App">
+                {data.map((data) => {
+                  return (
+                    <>
+                      <select>
+                        <option value="fruit">{data.title}</option>
+                      </select>
+                    </>
+                  );
+                })}
+              </div>
             </Image>
           </ImageButton>
         ))}
