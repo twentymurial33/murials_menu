@@ -1,4 +1,6 @@
-
+img {
+  max-width: 100%;
+}
 body {
   background-color: grey;
   margin:0px;
