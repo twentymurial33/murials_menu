@@ -3,7 +3,7 @@ import axios from "axios";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
-import Typography from "@mui/material/Typography";
+// import Typography from "@mui/material/Typography";
 import Layout from "../components/Layout";
 
 const images = [
@@ -31,8 +31,8 @@ const images = [
 
 export default function Landing() {
   const url = "http://localhost:5000/menu_items";
-  const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState(data);
+  const [data, setData] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     axios(url)
@@ -48,9 +48,8 @@ export default function Landing() {
 
   const handleSearch = (event) => {
     let value = event.target.value.toLowerCase();
-    let result = [];
-    console.log(value);
-    result = data.filter((data) => {
+    let result = "";
+    result = data.data.filter((data) => {
       return data.title.search(value);
     });
     setFilteredData(result);
