@@ -19,7 +19,6 @@ function Edit() {
     const editFoodId = async () => {
       queryAPI({
         url: `http://localhost:5000/menu_items/${id}`,
-        //more functionality with onSuccess Callback
         onSuccess: (result) => toast.success(result.data, { timeout: 2000 }),
         onError: (result) => toast.error(result.error),
         method: "GET",
@@ -60,6 +59,10 @@ function Edit() {
   const navigateToEdit = () => {
     navigate("/details");
   };
+
+  useEffect(() => {
+    console.log(editFood);
+  });
 
   return (
     <>
