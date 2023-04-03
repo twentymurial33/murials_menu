@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import { createSearchParams, useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
-// import Typography from "@mui/material/Typography";
 import Layout from "../components/Layout";
 
 const images = [
@@ -30,29 +28,15 @@ const images = [
 ];
 
 export default function Landing() {
-  const url = "http://localhost:5000/menu_items";
-  const [data, setData] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
+  const navigate = useNavigate();
 
-  useEffect(() => {
-    axios(url)
-      .then((response) => {
-        console.log(response.data);
-        setData(response.data);
-        setFilteredData(response.data);
-      })
-      .catch((error) => {
-        console.log("Error getting fake data: " + error);
-      });
-  }, []);
-
-  const handleSearch = (event) => {
-    let value = event.target.value.toLowerCase();
-    let result = "";
-    result = data.data.filter((data) => {
-      return data.title.search(value);
+  const openMenuItem = (q) => {
+    navigate({
+      pathname: `/Details`,
+      search: createSearchParams({
+        q: "lunch",
+      }).toString(),
     });
-    setFilteredData(result);
   };
 
   return (
@@ -75,17 +59,7 @@ export default function Landing() {
           >
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
             <Image>
-              <div className="App">
-                {filteredData.map((data) => {
-                  return (
-                    <>
-                      <select onChange={(event) => handleSearch(event)}>
-                        <option value="menuItem">{data.title}</option>
-                      </select>
-                    </>
-                  );
-                })}
-              </div>
+              <button onClick={openMenuItem}>Menu Item</button>
             </Image>
           </ImageButton>
         ))}

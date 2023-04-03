@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
-//import { Image } from "cloudinary-react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
@@ -17,7 +16,9 @@ import "../index.css";
 
 function Details() {
   const navigate = useNavigate();
-  const [search, setNewSearch] = useState("");
+  const params = new URLSearchParams(window.location.search);
+
+  const [search, setNewSearch] = useState(params.get("q"));
   const [open, setOpen] = useState(false);
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
@@ -29,11 +30,13 @@ function Details() {
   const handleSetSearch = (e) => {
     setNewSearch(e.target.value);
   };
+
   const filteredMenuItems = !search
     ? data.data
-    : data.data.filter((data) =>
-        data.title.toLowerCase().includes(search.toLowerCase())
-      );
+    : data.data.filter((data) => {
+        console.log(data.title);
+        return data.title.toLowerCase().includes(search.toLowerCase());
+      });
 
   //cloudinary logic
   const getCloudinaryURL = (img) => {
@@ -49,6 +52,12 @@ function Details() {
       console.error(error);
     }
   };
+
+  //get search term from URL
+  // http://localhost:3000/details?q=lunch
+
+  //set the search term as search value
+  //populate input box with search term
 
   //using URL as state
   const navigateToEdit = (id) => {
