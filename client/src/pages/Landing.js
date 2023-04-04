@@ -59,7 +59,9 @@ export default function Landing() {
           >
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
             <Image>
-              <a href={`/Details?q=${image.title}`}>Menu Item</a>
+              <button>
+                <a href={`/Details?q=${image.title}`}>Menu Item</a>
+              </button>
             </Image>
           </ImageButton>
         ))}
