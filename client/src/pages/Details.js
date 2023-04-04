@@ -17,7 +17,6 @@ import "../index.css";
 function Details() {
   const navigate = useNavigate();
   const params = new URLSearchParams(window.location.search);
-
   const [search, setNewSearch] = useState(params.get("q"));
   const [open, setOpen] = useState(false);
   const { isLoading, data, error } = useQuery(["posts"], () =>
@@ -53,13 +52,6 @@ function Details() {
     }
   };
 
-  //get search term from URL
-  // http://localhost:3000/details?q=lunch
-
-  //set the search term as search value
-  //populate input box with search term
-
-  //using URL as state
   const navigateToEdit = (id) => {
     navigate(`/edit/${id}`);
   };

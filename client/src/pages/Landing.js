@@ -1,4 +1,4 @@
-import { createSearchParams, useNavigate } from "react-router-dom";
+// import { createSearchParams, useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
@@ -28,16 +28,16 @@ const images = [
 ];
 
 export default function Landing() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const openMenuItem = (q) => {
-    navigate({
-      pathname: `/Details`,
-      search: createSearchParams({
-        q: "lunch",
-      }).toString(),
-    });
-  };
+  // const openMenuItem = (q) => {
+  //   navigate({
+  //     pathname: `/Details`,
+  //     search: createSearchParams({
+  //       q: "lunch",
+  //     }).toString(),
+  //   });
+  // };
 
   return (
     <>
@@ -59,7 +59,7 @@ export default function Landing() {
           >
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
             <Image>
-              <button onClick={openMenuItem}>Menu Item</button>
+              <a href={`/Details?q=${image.title}`}>Menu Item</a>
             </Image>
           </ImageButton>
         ))}
