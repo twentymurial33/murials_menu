@@ -35,11 +35,10 @@ function Details() {
         data.title.toLowerCase().includes(search.toLowerCase())
       );
 
-  //cloudinary logic
-  const getCloudinaryURL = (img) => {
-    return `https://res.cloudinary.com/dac1at79b/image/upload/c_fill,w_600/${img}`;
+  const generateImageURL = (img) => {
+    return `https://res.cloudinary.com/dac1at79b/image/upload/c_fill,w_200/`;
   };
-  console.log(getCloudinaryURL());
+  console.log(generateImageURL());
 
   const handleDelete = async (id) => {
     try {
@@ -50,7 +49,6 @@ function Details() {
     }
   };
 
-  //using URL as state
   const navigateToEdit = (id) => {
     navigate(`/edit/${id}`);
   };
@@ -78,8 +76,8 @@ function Details() {
           {filteredMenuItems.map((data) => {
             return (
               <div key={data.id} style={{ display: "flex" }}>
-                <img src={getCloudinaryURL(data.img)} alt="cloudinary" />
-                <img src={data.img} alt="images" />
+                <img src={data.img} alt="cloudinary" />
+                {/* <img src={data.img} alt="images" /> */}
                 <Box
                   className="boxMenu"
                   lg={{
