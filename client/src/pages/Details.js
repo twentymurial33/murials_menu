@@ -2,7 +2,6 @@ import React from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
-//import { Image } from "cloudinary-react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
@@ -17,7 +16,8 @@ import "../index.css";
 
 function Details() {
   const navigate = useNavigate();
-  const [search, setNewSearch] = useState("");
+  const params = new URLSearchParams(window.location.search);
+  const [search, setNewSearch] = useState(params.get("q"));
   const [open, setOpen] = useState(false);
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
@@ -25,15 +25,17 @@ function Details() {
   if (error) return <h2>Error </h2>;
   if (isLoading) return <h2> isLoading </h2>;
   console.log(data);
+
   const handleSetSearch = (e) => {
     setNewSearch(e.target.value);
   };
 
   const filteredMenuItems = !search
     ? data.data
-    : data.data.filter((data) =>
-        data.title.toLowerCase().includes(search.toLowerCase())
-      );
+    : data.data.filter((data) => {
+        console.log(data.title);
+        return data.title.toLowerCase().includes(search.toLowerCase());
+      });
 
   //cloudinary logic
   const getCloudinaryURL = (img) => {
@@ -50,7 +52,6 @@ function Details() {
     }
   };
 
-  //using URL as state
   const navigateToEdit = (id) => {
     navigate(`/edit/${id}`);
   };
@@ -75,6 +76,12 @@ function Details() {
       <Layout />
       <Container>
         <ul className="list">
+          <input
+            className="search"
+            placeholder="Search Food Item"
+            value={search}
+            onChange={handleSetSearch}
+          />
           {filteredMenuItems.map((data) => {
             return (
               <div key={data.id} style={{ display: "flex" }}>
@@ -149,6 +156,19 @@ function Details() {
 const Container = styled.div`
   display: grid;
   column-gap: 5px;
+
+  input {
+    padding: 25px;
+    width: 400px;
+    margin-left: 20%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    font-size: 14px;
+    position: relative;
+    background: #ffddf4;
+    border-radius: 20px;
+  }
 
   button {
     align-items: center;
