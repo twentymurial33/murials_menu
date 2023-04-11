@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,6 +8,7 @@ import { queryAPI } from "../util/fetchFromAPI";
 
 function Edit() {
   const navigate = useNavigate();
+  const inputRef = useRef(null);
   const { id } = useParams();
   const [editFood, setEditFood] = useState({
     title: "",
@@ -61,11 +62,8 @@ function Edit() {
   };
 
   useEffect(() => {
-    onInputChange("https://piyushsthr.netlify.app");
+    inputRef.current.focus();
   }, []);
-  useEffect(() => {
-    console.log(editFood);
-  });
 
   return (
     <>
@@ -77,6 +75,7 @@ function Edit() {
               <label>Food Title</label>
               <input
                 type="text"
+                ref={inputRef}
                 name="title"
                 value={editFood.title}
                 onChange={onInputChange}
@@ -86,6 +85,7 @@ function Edit() {
               <label>Food Author</label>
               <input
                 type="text"
+                ref={inputRef}
                 name="author"
                 value={editFood.author}
                 onChange={onInputChange}
@@ -95,6 +95,7 @@ function Edit() {
               <label>Food Image</label>
               <input
                 type="text"
+                ref={inputRef}
                 name="img"
                 value={editFood.img}
                 onChange={onInputChange}
