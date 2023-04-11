@@ -16,7 +16,8 @@ import "../index.css";
 
 function Details() {
   const navigate = useNavigate();
-  const [search, setNewSearch] = useState("");
+  const params = new URLSearchParams(window.location.search);
+  const [search, setNewSearch] = useState(params.get("q"));
   const [open, setOpen] = useState(false);
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios("http://localhost:5000/menu_items")
@@ -24,15 +25,23 @@ function Details() {
   if (error) return <h2>Error </h2>;
   if (isLoading) return <h2> isLoading </h2>;
   console.log(data);
+
   const handleSetSearch = (e) => {
     setNewSearch(e.target.value);
   };
 
   const filteredMenuItems = !search
     ? data.data
-    : data.data.filter((data) =>
-        data.title.toLowerCase().includes(search.toLowerCase())
-      );
+    : data.data.filter((data) => {
+        console.log(data.title);
+        return data.title.toLowerCase().includes(search.toLowerCase());
+      });
+
+  //cloudinary logic
+  const getCloudinaryURL = (img) => {
+    return `https://res.cloudinary.com/dac1at79b/image/upload/c_fill,w_600/${img}`;
+  };
+  console.log(getCloudinaryURL());
 
   const handleDelete = async (id) => {
     try {
@@ -43,7 +52,6 @@ function Details() {
     }
   };
 
-  //using URL as state
   const navigateToEdit = (id) => {
     navigate(`/edit/${id}`);
   };
@@ -68,9 +76,16 @@ function Details() {
       <Layout />
       <Container>
         <ul className="list">
+          <input
+            className="search"
+            placeholder="Search Food Item"
+            value={search}
+            onChange={handleSetSearch}
+          />
           {filteredMenuItems.map((data) => {
             return (
               <div key={data.id} style={{ display: "flex" }}>
+                <img src={getCloudinaryURL(data.img)} alt="cloudinary" />
                 <img src={data.img} alt="images" />
                 <Box
                   className="boxMenu"
@@ -78,7 +93,7 @@ function Details() {
                     display: "flex",
                     "& > :not(style)": {
                       m: 1,
-                      width: 80,
+                      width: 100,
                       background: "#cfd4d1",
                       height: 100,
                     },
@@ -141,6 +156,19 @@ function Details() {
 const Container = styled.div`
   display: grid;
   column-gap: 5px;
+
+  input {
+    padding: 25px;
+    width: 400px;
+    margin-left: 20%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    font-size: 14px;
+    position: relative;
+    background: #ffddf4;
+    border-radius: 20px;
+  }
 
   button {
     align-items: center;

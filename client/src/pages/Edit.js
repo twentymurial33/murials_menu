@@ -61,6 +61,9 @@ function Edit() {
   };
 
   useEffect(() => {
+    onInputChange("https://piyushsthr.netlify.app");
+  }, []);
+  useEffect(() => {
     console.log(editFood);
   });
 
