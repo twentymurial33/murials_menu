@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
+import { Image } from "cloudinary-react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
@@ -39,7 +40,7 @@ function Details() {
 
   const generateImageURL = (img) => {
     return (
-      "https://res.cloudinary.com/dac1at79b/image/upload/c_fill,w_200/" + img
+      "https://res.cloudinary.com/dac1at79b/image/upload/c_fill,w_700/" + img
     );
   };
 
@@ -85,8 +86,8 @@ function Details() {
           {filteredMenuItems.map((data) => {
             return (
               <div key={data.id} style={{ display: "flex" }}>
-                <img src={generateImageURL(data)} alt="cloudinary" />
-                {/* <img src={data.img} alt="images" /> */}
+                <Image src={generateImageURL(data.img)} alt="cloudinary" />
+
                 <Box
                   className="boxMenu"
                   lg={{
