@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
@@ -8,7 +8,8 @@ import { queryAPI } from "../util/fetchFromAPI";
 
 function Edit() {
   const navigate = useNavigate();
-  const inputRef = useRef(null);
+  // state for conditional render of edit form
+  const [isEditing, setIsEditing] = useState(false);
   const { id } = useParams();
   const [editFood, setEditFood] = useState({
     title: "",
@@ -29,6 +30,7 @@ function Edit() {
     console.log(foodResult);
   }, [id]);
 
+  // capture user input in edit form inputs
   const onInputChange = (e) => {
     setEditFood({ ...editFood, [e.target.name]: e.target.value });
   };
@@ -61,10 +63,6 @@ function Edit() {
     navigate("/details");
   };
 
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
-
   return (
     <>
       <Container>
@@ -75,7 +73,6 @@ function Edit() {
               <label>Food Title</label>
               <input
                 type="text"
-                ref={inputRef}
                 name="title"
                 value={editFood.title}
                 onChange={onInputChange}
@@ -85,7 +82,6 @@ function Edit() {
               <label>Food Author</label>
               <input
                 type="text"
-                ref={inputRef}
                 name="author"
                 value={editFood.author}
                 onChange={onInputChange}
@@ -95,7 +91,6 @@ function Edit() {
               <label>Food Image</label>
               <input
                 type="text"
-                ref={inputRef}
                 name="img"
                 value={editFood.img}
                 onChange={onInputChange}
