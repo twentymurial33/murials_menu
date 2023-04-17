@@ -8,8 +8,6 @@ import { queryAPI } from "../util/fetchFromAPI";
 
 function Edit() {
   const navigate = useNavigate();
-  // state for conditional render of edit form
-  const [isEditing, setIsEditing] = useState(false);
   const { id } = useParams();
   const [editFood, setEditFood] = useState({
     title: "",
@@ -20,7 +18,7 @@ function Edit() {
   useEffect(() => {
     const editFoodId = async () => {
       queryAPI({
-        url: `http://localhost:5000/menu_items/${id}`,
+        url: `http://localhost:5000/menu_items/${id}/edit`,
         onSuccess: (result) => toast.success(result.data, { timeout: 2000 }),
         onError: (result) => toast.error(result.error),
         method: "GET",
@@ -30,14 +28,13 @@ function Edit() {
     console.log(foodResult);
   }, [id]);
 
-  // capture user input in edit form inputs
   const onInputChange = (e) => {
     setEditFood({ ...editFood, [e.target.name]: e.target.value });
   };
 
   const FormHandle = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:5000/food/${id}`, {
+    const response = await fetch(`http://localhost:5000/food/${id}/edit`, {
       method: "PUT",
       body: JSON.stringify(editFood),
       headers: {
@@ -53,14 +50,11 @@ function Edit() {
       toast.success("Success!", { timeout: 2000 });
     } else {
       console.log(response);
+      navigate("/details");
       result.error = await response.text();
       toast.error(`Food item not saved.  Error: ${result.error}`);
     }
     return result;
-  };
-
-  const navigateToEdit = () => {
-    navigate("/details");
   };
 
   return (
@@ -100,7 +94,7 @@ function Edit() {
               Update Item
             </Button>
             <ToastContainer />
-            <Button variant="outlined" onClick={navigateToEdit}>
+            <Button variant="outlined" onClick={navigate}>
               Back To Menu
             </Button>
           </form>
