@@ -17,16 +17,18 @@ function Edit() {
 
   useEffect(() => {
     const editFoodId = async () => {
-      queryAPI({
-        url: `http://localhost:5000/menu_items/${id}/edit`,
-        onSuccess: (result) => toast.success(result.data, { timeout: 2000 }),
+      const foodResult = await queryAPI({
+        url: `http://localhost:5000/menu_items/${id}`,
         onError: (result) => toast.error(result.error),
         method: "GET",
       });
+      console.log(foodResult);
+      return foodResult;
     };
-    const foodResult = editFoodId();
-    console.log(foodResult);
+    editFoodId();
   }, [id]);
+
+  //map through foodResult
 
   const onInputChange = (e) => {
     setEditFood({ ...editFood, [e.target.name]: e.target.value });
@@ -34,7 +36,7 @@ function Edit() {
 
   const FormHandle = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:5000/food/${id}/edit`, {
+    const response = await fetch(`http://localhost:5000/food/${id}`, {
       method: "PUT",
       body: JSON.stringify(editFood),
       headers: {
@@ -50,19 +52,25 @@ function Edit() {
       toast.success("Success!", { timeout: 2000 });
     } else {
       console.log(response);
-      navigate("/details");
+
       result.error = await response.text();
       toast.error(`Food item not saved.  Error: ${result.error}`);
     }
     return result;
   };
 
+  const HandleNavigate = () => {
+    navigate("/details");
+  };
   return (
     <>
       <Container>
         <h1>Updated Food Items!</h1>
         <div>
           <form onSubmit={FormHandle}>
+            {/* {editFoodId.map((data) => {
+              return <div>{data.img}</div>;
+            })} */}
             <div>
               <label>Food Title</label>
               <input
@@ -94,7 +102,7 @@ function Edit() {
               Update Item
             </Button>
             <ToastContainer />
-            <Button variant="outlined" onClick={navigate}>
+            <Button variant="outlined" onClick={HandleNavigate}>
               Back To Menu
             </Button>
           </form>

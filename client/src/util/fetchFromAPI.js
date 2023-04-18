@@ -14,7 +14,7 @@ export const queryAPI = async (options, toast) => {
     data: null,
     error: null,
   };
-  const response = await fetch(url, method);
+  const response = await fetch(url, { method });
   if (response.ok) {
     result.data = await response.json();
   } else {
