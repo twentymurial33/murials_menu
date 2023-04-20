@@ -8,6 +8,7 @@ import { queryAPI } from "../util/fetchFromAPI";
 
 function Edit() {
   const navigate = useNavigate();
+  const [data, dataSet] = useState("");
   const { id } = useParams();
   const [editFood, setEditFood] = useState({
     title: "",
@@ -23,12 +24,10 @@ function Edit() {
         method: "GET",
       });
       console.log(foodResult);
-      return foodResult;
+      dataSet(foodResult);
     };
     editFoodId();
   }, [id]);
-
-  //map through foodResult
 
   const onInputChange = (e) => {
     setEditFood({ ...editFood, [e.target.name]: e.target.value });
@@ -65,13 +64,11 @@ function Edit() {
   return (
     <>
       <Container>
-        <h1>Updated Food Items!</h1>
+        <h1>Edit Food Items!</h1>
         <div>
           <form onSubmit={FormHandle}>
-            {/* {editFoodId.map((data) => {
-              return <div>{data.img}</div>;
-            })} */}
             <div>
+              <h2 style={{ textAlign: "center" }}>{data.data.title}</h2>
               <label>Food Title</label>
               <input
                 type="text"
@@ -81,6 +78,7 @@ function Edit() {
               />
             </div>
             <div>
+              <h2 style={{ textAlign: "center" }}>{data.data.author}</h2>
               <label>Food Author</label>
               <input
                 type="text"
@@ -90,6 +88,7 @@ function Edit() {
               />
             </div>
             <div>
+              <div>{data.data.img}</div>
               <label>Food Image</label>
               <input
                 type="text"
