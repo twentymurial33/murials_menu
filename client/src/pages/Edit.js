@@ -23,11 +23,12 @@ function Edit() {
         onError: (result) => toast.error(result.error),
         method: "GET",
       });
-      console.log(foodResult);
+      console.log(data);
+      // console.log(foodResult);
       dataSet(foodResult);
     };
     editFoodId();
-  }, [id]);
+  }, [id, data]);
 
   const onInputChange = (e) => {
     setEditFood({ ...editFood, [e.target.name]: e.target.value });
@@ -68,7 +69,7 @@ function Edit() {
         <div>
           <form onSubmit={FormHandle}>
             <div>
-              <h2 style={{ textAlign: "center" }}>{data.data.title}</h2>
+              <h2>{data.data.title}</h2>
               <label>Food Title</label>
               <input
                 type="text"
@@ -78,7 +79,7 @@ function Edit() {
               />
             </div>
             <div>
-              <h2 style={{ textAlign: "center" }}>{data.data.author}</h2>
+              <h2>{data.data.author}</h2>
               <label>Food Author</label>
               <input
                 type="text"
@@ -88,7 +89,7 @@ function Edit() {
               />
             </div>
             <div>
-              <div>{data.data.img}</div>
+              <img src={data.data.img} alt="editimage" />
               <label>Food Image</label>
               <input
                 type="text"

@@ -87,7 +87,6 @@ function Details() {
             return (
               <div key={data.id} style={{ display: "flex" }}>
                 <Image src={generateImageURL(data.img)} alt="cloudinary" />
-
                 <Box
                   className="boxMenu"
                   lg={{
