@@ -8,6 +8,7 @@ import { queryAPI } from "../util/fetchFromAPI";
 
 function Edit() {
   const navigate = useNavigate();
+  const [data, dataSet] = useState("");
   const { id } = useParams();
   const [editFood, setEditFood] = useState({
     title: "",
@@ -17,16 +18,14 @@ function Edit() {
 
   useEffect(() => {
     const editFoodId = async () => {
-      queryAPI({
+      const foodResult = await queryAPI({
         url: `http://localhost:5000/menu_items/${id}`,
-        //more functionality with onSuccess Callback
-        onSuccess: (result) => toast.success(result.data, { timeout: 2000 }),
         onError: (result) => toast.error(result.error),
         method: "GET",
       });
+      dataSet(...foodResult);
     };
-    const foodResult = editFoodId();
-    console.log(foodResult);
+    editFoodId();
   }, [id]);
 
   const onInputChange = (e) => {
@@ -51,23 +50,24 @@ function Edit() {
       toast.success("Success!", { timeout: 2000 });
     } else {
       console.log(response);
+
       result.error = await response.text();
       toast.error(`Food item not saved.  Error: ${result.error}`);
     }
     return result;
   };
 
-  const navigateToEdit = () => {
+  const handleNavigate = () => {
     navigate("/details");
   };
-
   return (
     <>
       <Container>
-        <h1>Updated Food Items!</h1>
+        <h1>Edit Food Items!</h1>
         <div>
           <form onSubmit={FormHandle}>
             <div>
+              <h2>{data.data.title}</h2>
               <label>Food Title</label>
               <input
                 type="text"
@@ -77,6 +77,7 @@ function Edit() {
               />
             </div>
             <div>
+              <h2>{data.data.author}</h2>
               <label>Food Author</label>
               <input
                 type="text"
@@ -86,6 +87,7 @@ function Edit() {
               />
             </div>
             <div>
+              <img src={data.data.img} alt="editimage" />
               <label>Food Image</label>
               <input
                 type="text"
@@ -98,7 +100,7 @@ function Edit() {
               Update Item
             </Button>
             <ToastContainer />
-            <Button variant="outlined" onClick={navigateToEdit}>
+            <Button variant="outlined" onClick={handleNavigate}>
               Back To Menu
             </Button>
           </form>
