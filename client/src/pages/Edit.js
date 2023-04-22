@@ -23,12 +23,10 @@ function Edit() {
         onError: (result) => toast.error(result.error),
         method: "GET",
       });
-      console.log(data);
-      // console.log(foodResult);
       dataSet(...foodResult);
     };
     editFoodId();
-  }, [id, data]);
+  }, [id]);
 
   const onInputChange = (e) => {
     setEditFood({ ...editFood, [e.target.name]: e.target.value });
@@ -59,7 +57,7 @@ function Edit() {
     return result;
   };
 
-  const HandleNavigate = () => {
+  const handleNavigate = () => {
     navigate("/details");
   };
   return (
@@ -102,7 +100,7 @@ function Edit() {
               Update Item
             </Button>
             <ToastContainer />
-            <Button variant="outlined" onClick={HandleNavigate}>
+            <Button variant="outlined" onClick={handleNavigate}>
               Back To Menu
             </Button>
           </form>
