@@ -25,7 +25,7 @@ function Edit() {
       });
       console.log(data);
       // console.log(foodResult);
-      dataSet(foodResult);
+      dataSet(...foodResult);
     };
     editFoodId();
   }, [id, data]);
