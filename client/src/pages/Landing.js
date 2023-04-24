@@ -48,7 +48,9 @@ export default function Landing() {
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
             <Image>
               <Button>
-                <a href={`/Details?q=${image.title}`}>Menu Item</a>
+                <Link>
+                  <a href={`/Details?q=${image.title}`}>Menu Item</a>
+                </Link>
               </Button>
             </Image>
           </ImageButton>
@@ -71,13 +73,20 @@ const Image = styled("span")(({ theme }) => ({
 }));
 
 const Button = styled(ButtonBase)(({ theme }) => ({
-  backgroundColor: "white",
+  backgroundColor: "grey",
+  borderRadius: "10px",
   border: "none",
   color: "white",
   padding: "10px 22px",
   textAlign: "center",
   textDecoration: "none",
   fontSize: "12px",
+}));
+
+const Link = styled(ButtonBase)(({ theme }) => ({
+  color: "black",
+  textDecoration: "none",
+  backgroundColor: "white",
 }));
 
 const ImageButton = styled(ButtonBase)(({ theme }) => ({

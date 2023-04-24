@@ -48,7 +48,6 @@ const Container = styled.div`
     border-radius: 100%;
     width: 70px;
     height: 70px;
-    /* text-decoration: none; */
     background-color: #ff00ff;
   }
 `;
