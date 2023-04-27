@@ -23,7 +23,7 @@ function Edit() {
         onError: (result) => toast.error(result.error),
         method: "GET",
       });
-      dataSet(...foodResult);
+      dataSet(foodResult);
     };
     editFoodId();
   }, [id]);
