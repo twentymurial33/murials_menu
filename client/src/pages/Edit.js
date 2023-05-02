@@ -68,7 +68,7 @@ function Edit() {
           <form onSubmit={FormHandle}>
             <div>
               <h2>{data.data.title}</h2>
-              <label>Food Title</label>
+              <label>Title</label>
               <input
                 type="text"
                 name="title"
@@ -78,7 +78,7 @@ function Edit() {
             </div>
             <div>
               <h2>{data.data.author}</h2>
-              <label>Food Author</label>
+              <label>Author</label>
               <input
                 type="text"
                 name="author"
@@ -88,7 +88,7 @@ function Edit() {
             </div>
             <div>
               <img src={data.data.img} alt="editimage" />
-              <label>Food Image</label>
+              <label>Image</label>
               <input
                 type="text"
                 name="img"

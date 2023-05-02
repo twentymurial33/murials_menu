@@ -77,15 +77,15 @@ function Details() {
       <Layout />
       <Container>
         <ul className="list">
-          <input
+          {/* <input
             className="search"
             placeholder="Search Food Item"
             value={search}
             onChange={handleSetSearch}
-          />
+          /> */}
           {filteredMenuItems.map((data) => {
             return (
-              <div key={data.id} style={{ display: "flex" }}>
+              <div key={data.id} style={{ display: "flex", margin: "20px" }}>
                 <Image src={generateImageURL(data.img)} alt="cloudinary" />
                 <Box
                   className="boxMenu"
@@ -99,14 +99,24 @@ function Details() {
                     },
                   }}
                 >
-                  <h1 style={{ color: "white" }}> {data.title}</h1>
-                  <p>
+                  <h1 style={{ color: "black", textAlign: "center" }}>
+                    {data.title}
+                  </h1>
+                  <p style={{ padding: "30px" }}>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
                   </p>{" "}
                   <button
                     className="deleteBtn"
                     variant="outlined"
                     onClick={handleClickOpen}
+                    style={{ color: "white" }}
                   >
                     Delete
                   </button>
@@ -155,7 +165,8 @@ function Details() {
 
 const Container = styled.div`
   display: grid;
-  column-gap: 5px;
+  column-gap: 4px;
+  padding-top: 90px;
 
   input {
     padding: 25px;
@@ -175,6 +186,14 @@ const Container = styled.div`
     justify-content: center;
     border-radius: 4;
     elevation: 3;
+    margin-top: 200px;
+    width: 150px;
+    padding: 15px;
+    margin: 40px;
+  }
+
+  Box {
+    margin-top: 60px;
   }
 `;
 

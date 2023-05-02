@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import "../index.css";
@@ -60,57 +61,55 @@ function AddFood() {
       <Layout />
       <Form onSubmit={handleSubmit((data) => handleForm(data))}>
         <div>
-          <label>Food Title</label>
+          <label>Title</label>
           <input type="text" {...register("title")} />
         </div>
         <div>
-          <label>Food Author</label>
+          <label>Author</label>
           <input type="text" {...register("author")} />
         </div>
         <div>
-          <label>Food Image</label>
+          <label>Image</label>
           <input type="text" {...register("img")} />
         </div>
-
-        <div>
-          <Button variant="contained" type="submit">
-            Submit
-          </Button>
-          <Button type="button" onClick={() => reset()}>
-            Reset
-          </Button>
-        </div>
+        <Button variant="contained" type="submit">
+          Submit
+        </Button>
+        <Button type="button" onClick={() => reset()}>
+          Reset
+        </Button>
       </Form>
     </div>
   );
 }
 
 const Form = styled.div`
-  margin-top: 100px;
+  margin-top: 200px;
+  margin-left: 200px;
   input {
     display: block;
     box-sizing: border-box;
-    width: 20%;
+    width: 30%;
     border-radius: 4px;
     border: 1px solid white;
-    padding: 28px 10px;
+    padding: 30px 10px;
     margin-bottom: 5px;
     font-size: 14px;
   }
 
   Button {
-    display: block;
+    display: inline;
     box-sizing: border-box;
     border-radius: 4px;
-    padding: 20px;
+    padding: 10px;
+    width: 150px;
     justify-content: center;
     color: #fff;
-    margin: 30px;
+    margin: 60px;
     cursor: pointer;
   }
   label {
     color: black;
-    font-weight: bold;
     display: block;
     width: 150px;
     float: left;
