@@ -7,7 +7,7 @@ function Header() {
     <AppBar style={{ height: "90px", backgroundColor: "black" }}>
       <Container maxWidth="xl">
         <h1 className="u-text--center">
-          <a href="/">Murial's Restaurant</a>
+          <a href="/">Murial's Menu</a>
         </h1>
         <div
           style={{
@@ -48,7 +48,6 @@ const Container = styled.div`
     border-radius: 100%;
     width: 70px;
     height: 70px;
-    /* text-decoration: none; */
     background-color: #ff00ff;
   }
 `;

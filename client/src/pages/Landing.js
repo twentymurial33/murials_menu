@@ -2,6 +2,8 @@ import { styled } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import Layout from "../components/Layout";
+import Link from "@mui/material/Link";
+// import styled from "styled-components";
 
 const images = [
   {
@@ -48,7 +50,14 @@ export default function Landing() {
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
             <Image>
               <Button>
-                <a href={`/Details?q=${image.title}`}>Menu Item</a>
+                <Link>
+                  <a
+                    href={`/Details?q=${image.title}`}
+                    style={{ color: "black", textDecoration: "none" }}
+                  >
+                    Menu Item
+                  </a>
+                </Link>
               </Button>
             </Image>
           </ImageButton>
@@ -72,11 +81,11 @@ const Image = styled("span")(({ theme }) => ({
 
 const Button = styled(ButtonBase)(({ theme }) => ({
   backgroundColor: "white",
+  borderRadius: "10px",
   border: "none",
-  color: "white",
-  padding: "10px 22px",
+  color: "black",
+  padding: "20px 22px",
   textAlign: "center",
-  textDecoration: "none",
   fontSize: "12px",
 }));
 

@@ -25,7 +25,12 @@ color:black;
   cursor: pointer;
 }
 .boxMenu {
-  color: white;
-  background: black;
-  width: 720px;
+  color: black;
+  background: #eeeee4;
+  width: 520px;
+  
+}
+
+.form{
+  
 }
