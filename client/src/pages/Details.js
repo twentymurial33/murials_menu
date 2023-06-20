@@ -21,7 +21,7 @@ function Details() {
   const [search, setNewSearch] = useState(params.get("q"));
   const [open, setOpen] = useState(false);
   const { isLoading, data, error } = useQuery(["posts"], () =>
-    axios("http://localhost:5000/menu_items")
+    axios(`${process.env.REACT_APP_API_URL}/menu_items`)
   );
   if (error) return <h2>Error </h2>;
   if (isLoading) return <h2> isLoading </h2>;

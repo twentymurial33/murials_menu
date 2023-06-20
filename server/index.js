@@ -65,4 +65,4 @@ app.put("/food/:id", async (req, res) => {
   res.json(foodItem);
 });
 
-app.listen(5000, () => console.log("Server Started..."));
+app.listen(process.env.PORT, () => console.log("Server Started..."));

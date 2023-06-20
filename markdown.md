@@ -10,7 +10,9 @@
 
 
 
+Check if nginx is running `sudo systemctl status nginx`
 
+Install Nginx `sudo apt install nginx`
 
 
 
