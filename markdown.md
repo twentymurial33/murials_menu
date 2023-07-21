@@ -7,9 +7,6 @@
 - Install all the deps-`apt install npm`
 - Run the build command manually-`npm run start`
 
-
-
-
 Check if nginx is running `sudo systemctl status nginx`
 
 Install Nginx `sudo apt install nginx`
