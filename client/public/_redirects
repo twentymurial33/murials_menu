@@ -1,1 +1,5 @@
 /* /index.html 200
+
+# also redirect http to https for your custom domain.
+# Note that netlify automatically redirects to your custom domain from the bare domain (or vice versa), so you only need one rule here.
+http://murialsmenu.netlify.app/* https://murialsmenu.netlify.app/:splat 301!
