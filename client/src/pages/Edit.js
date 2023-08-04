@@ -7,6 +7,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { queryAPI } from "../util/fetchFromAPI";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 function Edit() {
   const navigate = useNavigate();
   const [data, dataSet] = useState("");
@@ -20,7 +22,7 @@ function Edit() {
   useEffect(() => {
     const editFoodId = async () => {
       const foodResult = await queryAPI({
-        url: `http://localhost:5000/menu_items/${id}`,
+        url: `${API_URL}/menu_items/${id}`,
         onError: (result) => toast.error(result.error),
         method: "GET",
       });
@@ -36,7 +38,7 @@ function Edit() {
 
   const FormHandle = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:5000/food/${id}`, {
+    const response = await fetch(`${API_URL}/food/${id}`, {
       method: "PUT",
       body: JSON.stringify(editFood),
       headers: {

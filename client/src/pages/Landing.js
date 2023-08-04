@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import ButtonBase from "@mui/material/ButtonBase";
 import Layout from "../components/Layout";
 import Link from "@mui/material/Link";
-// import styled from "styled-components";
 
 const images = [
   {

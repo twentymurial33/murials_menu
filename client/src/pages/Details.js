@@ -46,7 +46,9 @@ function Details() {
 
   const handleDelete = async (id) => {
     try {
-      const foodItems = await axios.delete("http://localhost:5000/food/" + id);
+      const foodItems = await axios.delete(
+        `${process.env.REACT_APP_API_URL}/food/)` + id
+      );
       console.log(foodItems);
     } catch (error) {
       console.error(error);

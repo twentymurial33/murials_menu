@@ -24,7 +24,7 @@ function AddFood() {
     resolver: null,
   });
 
-  const url = "http://localhost:5000/food";
+  const url = `${process.env.REACT_APP_API_URL}/food/`;
 
   const mutation = useMutation({
     mutationFn: async (newFood) => {
