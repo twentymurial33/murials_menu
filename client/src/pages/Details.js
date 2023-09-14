@@ -79,12 +79,6 @@ function Details() {
       <Layout />
       <Container>
         <ul className="list">
-          {/* <input
-            className="search"
-            placeholder="Search Food Item"
-            value={search}
-            onChange={handleSetSearch}
-          /> */}
           {filteredMenuItems.map((data) => {
             return (
               <div key={data.id} style={{ display: "flex", margin: "20px" }}>
@@ -105,6 +99,7 @@ function Details() {
                     {data.title}
                   </h1>
                   <p style={{ padding: "30px" }}>
+                    {data.text}
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation
