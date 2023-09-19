@@ -1,10 +1,10 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
 datasource db {
     provider = "postgresql"
     url      = env("DATABASE_URL")
-}
-
-generator client {
-    provider = "prisma-client-js"
 }
 
 model Food {
@@ -12,6 +12,7 @@ model Food {
     title      String
     img        String
     author     String
-    calories   Int       @default(0)
+    text       String    @default("TEXT")
     created_at DateTime? @default(now())
+    calories   Int       @default(0)
 }
