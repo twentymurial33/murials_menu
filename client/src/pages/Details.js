@@ -23,6 +23,7 @@ function Details() {
   const { isLoading, data, error } = useQuery(["posts"], () =>
     axios(`${process.env.REACT_APP_API_URL}/menu_items`)
   );
+  console.log(`${process.env.REACT_APP_API_URL}`);
   if (error) return <h2>Error </h2>;
   if (isLoading) return <h2> isLoading </h2>;
   console.log(data);
@@ -100,14 +101,14 @@ function Details() {
                   </h1>
                   <p style={{ padding: "30px" }}>
                     {data.text}
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
                     aliqua. Ut enim ad minim veniam, quis nostrud exercitation
                     ullamco laboris nisi ut aliquip ex ea commodo consequat.
                     Duis aute irure dolor in reprehenderit in voluptate velit
                     esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
                     occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
+                    deserunt mollit anim id est laborum. */}
                   </p>{" "}
                   <button
                     className="deleteBtn"
