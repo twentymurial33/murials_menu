@@ -99,7 +99,7 @@ function Details() {
                   <h1 style={{ color: "black", textAlign: "center" }}>
                     {data.title}
                   </h1>
-                  <p style={{ padding: "30px" }}>
+                  <p style={{ padding: "30px", color: "black" }}>
                     {data.text}
                     {/* Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt ut labore et dolore magna
