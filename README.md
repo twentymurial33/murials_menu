@@ -19,17 +19,18 @@ This project includes
 ---------------------------------------------------
 This is a React App boostrapped with CRA
 
-Add-on packages include:
+### Dev Dependencies
+---------------------------------------------------
+- [ ] React
+- [ ] React-DOM
 
 ### Running The Project
-
-### LIVE LINK   [https://murialsmenu.netlify.app/](https://murialsmenu.netlify.app/)
-
+---------------------------------------------------------
 From the repo
 1. Clone this project locally
 2. Run npm install
 3. Run npm run dev
-
+### LIVE LINK   [https://murialsmenu.netlify.app/](https://murialsmenu.netlify.app/)
 
 
 
