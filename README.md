@@ -4,10 +4,10 @@
 
 This App was developed as part of my portfolio. Using technologies I have been learning and upskilling in the past few years.
 
-Live Link  [https://murialsmenu.netlify.app/](https://murialsmenu.netlify.app/)
+### LIVE LINK  [https://murialsmenu.netlify.app/](https://murialsmenu.netlify.app/)
 
 ### Features
-
+-------------------------------------------------
 This project includes 
 
 - [ ] Landing Page 
@@ -15,10 +15,15 @@ This project includes
 - [ ] Page to view details of menu items
 - [ ] Ability to add food items
 
+### Tech Used 
+---------------------------------------------------
+This is a React App boostrapped with CRA
+
+Add-on packages include:
 
 ### Running The Project
 
-Live Link  [https://murialsmenu.netlify.app/](https://murialsmenu.netlify.app/)
+### LIVE LINK   [https://murialsmenu.netlify.app/](https://murialsmenu.netlify.app/)
 
 From the repo
 1. Clone this project locally
