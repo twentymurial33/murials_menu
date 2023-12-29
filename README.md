@@ -10,10 +10,10 @@ This App was developed as part of my portfolio. Using technologies I have been l
 -------------------------------------------------
 This project includes 
 
-- [ ] Landing Page 
-- [ ] Ability to select food groups that lead to the Details page 
-- [ ] Page to view details of menu items
-- [ ] Ability to add food items
+- [X] Landing Page 
+- [X] Ability to select food groups that lead to the Details page 
+- [X] Page to view details of menu items
+- [X] Ability to add food items
 
 ### Tech Used 
 ---------------------------------------------------
@@ -21,8 +21,13 @@ This is a React App boostrapped with CRA
 
 ### Dev Dependencies
 ---------------------------------------------------
-- [ ] React
-- [ ] React-DOM
+- [X] React
+- [X] React-DOM
+- [X] Prisma
+- [X] Express
+- [X] Cors
+- [X] Jest
+- [X] Netlify
 
 ### Running The Project
 ---------------------------------------------------------
