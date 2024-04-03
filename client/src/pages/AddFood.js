@@ -1,25 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useMutation } from "react-query";
 import Button from "@mui/material/Button";
-import Card from "@mui/material/Card";
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import "../index.css";
 import { useForm } from "react-hook-form";
-import * as yup from "yup";
 
 function AddFood() {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [img, setImg] = useState("");
-
-  const schema = yup
-    .object({
-      title: yup.string().required(),
-      img: yup.string().required(),
-      author: yup.string().required(),
-    })
-    .required();
   const { register, handleSubmit, reset } = useForm({
     resolver: null,
   });

@@ -1,9 +1,10 @@
 import Header from "./Header";
 
-function Layout() {
+function Layout({ children }) {
   return (
     <div>
       <Header />
+      {children}
     </div>
   );
 }

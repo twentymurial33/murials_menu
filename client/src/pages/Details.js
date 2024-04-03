@@ -76,8 +76,7 @@ function Details() {
   }
 
   return (
-    <div>
-      <Layout />
+    <Layout>
       <Container>
         <ul className="list">
           {filteredMenuItems.map((data) => {
@@ -147,7 +146,7 @@ function Details() {
           })}
         </ul>
       </Container>
-    </div>
+    </Layout>
   );
 }
 
