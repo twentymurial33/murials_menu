@@ -11,9 +11,9 @@ This App was developed as part of my portfolio. Using technologies I have been l
 This project includes 
 
 - [X] Landing Page 
-- [X] Ability to select food groups that lead to the Details page 
-- [X] Page to view details of menu items
-- [X] Ability to add food items
+- [X] Page to view details of Menu Items
+- [X] Ability to modify and delete the selected menu item
+- [X] Form for users to add food items
 
 ### Tech Used 
 ---------------------------------------------------
@@ -29,7 +29,7 @@ This is a React App boostrapped with CRA
 - [X] Jest
 - [X] Netlify
 
-### Running The Project
+### Running The Project Locally
 ---------------------------------------------------------
 From the repo
 1. Clone this project locally
