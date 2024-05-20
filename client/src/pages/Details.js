@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
 import styled from "styled-components";
+import { StyledContainer } from "./style";
 import Dialog from "@mui/material/Dialog";
 import Divider from "@mui/material/Divider";
 import DialogContent from "@mui/material/DialogContent";
