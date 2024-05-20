@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import { useNavigate, useParams } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { queryAPI } from "../util/fetchFromAPI";
 
@@ -105,7 +105,6 @@ function Edit() {
             <Button variant="contained" type="submit">
               Update Item
             </Button>
-            {/* <ToastContainer /> */}
             <Button variant="outlined" onClick={handleNavigate}>
               Back To Menu
             </Button>

@@ -14,24 +14,6 @@ describe("testing api", () => {
     expect(fetch).toHaveBeenCalledTimes(1);
   });
 });
-//Mocking all fetches
-
-// test("should return data with a successful request", async () => {
-//   queryAPI().catch((e) => {
-//     expect(e.message).toBe("options parameter is not defined");
-//   });
-//   queryAPI({}).catch((e) => {
-//     expect(e.message).toBe("url is not provided");
-//   });
-//   queryAPI({ url: "/" }).catch((e) => {
-//     expect(e.message).toBe("onSuccess is not provided");
-//   });
-//   queryAPI({ url: "/", onSuccess: jest.fn() }).catch((e) => {
-//     expect(e.message).toBe("onError is not provided");
-//   });
-// });
-
-//mocking a failed request
 
 describe("test should return a failed response", () => {
   it("testing fetch condition", () => {
