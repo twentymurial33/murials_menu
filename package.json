@@ -9,6 +9,7 @@
     "@mui/material": "^5.15.11",
     "@prisma/client": "^4.2.1",
     "cloudinary-react": "^1.8.1",
+    "commandbar": "^1.10.2",
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "jest": "^27.5.1",
