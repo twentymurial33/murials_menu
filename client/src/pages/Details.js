@@ -7,6 +7,7 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
 import styled from "styled-components";
+//import { StyledContainer } from "./style";
 import Dialog from "@mui/material/Dialog";
 import Divider from "@mui/material/Divider";
 import DialogContent from "@mui/material/DialogContent";
@@ -28,9 +29,9 @@ function Details() {
   if (isLoading) return <h2> isLoading </h2>;
   console.log(data);
 
-  const handleSetSearch = (e) => {
-    setNewSearch(e.target.value);
-  };
+  // const handleSetSearch = (e) => {
+  //   setNewSearch(e.target.value);
+  // };
 
   const filteredMenuItems = !search
     ? data.data
