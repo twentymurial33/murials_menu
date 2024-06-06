@@ -1,4 +1,3 @@
-import React from "react";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { useState } from "react";
@@ -6,8 +5,7 @@ import { Image } from "cloudinary-react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
-import styled from "styled-components";
-//import { StyledContainer } from "./style";
+import { StyledDetailsContainer } from "./style";
 import Dialog from "@mui/material/Dialog";
 import Divider from "@mui/material/Divider";
 import DialogContent from "@mui/material/DialogContent";
@@ -28,10 +26,6 @@ function Details() {
   if (error) return <h2>Error </h2>;
   if (isLoading) return <h2> isLoading </h2>;
   console.log(data);
-
-  // const handleSetSearch = (e) => {
-  //   setNewSearch(e.target.value);
-  // };
 
   const filteredMenuItems = !search
     ? data.data
@@ -78,7 +72,7 @@ function Details() {
 
   return (
     <Layout>
-      <Container>
+      <StyledDetailsContainer>
         <ul className="list">
           {filteredMenuItems.map((data) => {
             return (
@@ -146,43 +140,9 @@ function Details() {
             );
           })}
         </ul>
-      </Container>
+      </StyledDetailsContainer>
     </Layout>
   );
 }
-
-const Container = styled.div`
-  display: grid;
-  column-gap: 4px;
-  padding-top: 90px;
-
-  input {
-    padding: 25px;
-    width: 400px;
-    margin-left: 20%;
-    align-items: center;
-    justify-content: center;
-    margin-top: 100px;
-    font-size: 14px;
-    position: relative;
-    background: #ffddf4;
-    border-radius: 20px;
-  }
-
-  button {
-    align-items: center;
-    justify-content: center;
-    border-radius: 4;
-    elevation: 3;
-    margin-top: 200px;
-    width: 150px;
-    padding: 15px;
-    margin: 40px;
-  }
-
-  Box {
-    margin-top: 60px;
-  }
-`;
 
 export default Details;

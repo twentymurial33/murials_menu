@@ -75,3 +75,42 @@ export const StyledForm = styled.form`
   width: 100%;
   padding-top: 160px;
   `
+
+  export const StyledDetailsContainer =styled.div`
+  display: grid;
+  column-gap: 4px;
+  padding-top: 90px;
+
+  input {
+    padding: 25px;
+    width: 400px;
+    margin-left: 20%;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+    font-size: 14px;
+    position: relative;
+    background: #ffddf4;
+    border-radius: 20px;
+  }
+
+  button {
+    align-items: center;
+    justify-content: center;
+    border-radius: 4;
+    elevation: 3;
+    margin-top: 200px;
+    width: 150px;
+    padding: 15px;
+    margin: 40px;
+  }
+
+  Box {
+    margin-top: 60px;
+  }
+`;
+
+
+
+
+  
