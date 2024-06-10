@@ -44,29 +44,32 @@ function AddFood() {
   }, [reset]);
 
   return (
-    <div className="form">
-      <Layout />
-      <Form onSubmit={handleSubmit((data) => handleForm(data))}>
-        <div>
-          <label>Title</label>
-          <input type="text" {...register("title")} />
-        </div>
-        <div>
-          <label>Author</label>
-          <input type="text" {...register("author")} />
-        </div>
-        <div>
-          <label>Image</label>
-          <input type="text" {...register("img")} />
-        </div>
-        <Button variant="contained" type="submit">
-          Submit
-        </Button>
-        <Button type="button" onClick={() => reset()}>
-          Reset
-        </Button>
-      </Form>
-    </div>
+    <>
+      <div className="form">
+        <Layout>
+          <Form onSubmit={handleSubmit((data) => handleForm(data))}>
+            <div>
+              <label>Title</label>
+              <input type="text" {...register("title")} />
+            </div>
+            <div>
+              <label>Author</label>
+              <input type="text" {...register("author")} />
+            </div>
+            <div>
+              <label>Image</label>
+              <input type="text" {...register("img")} />
+            </div>
+            <Button variant="contained" type="submit">
+              Submit
+            </Button>
+            <Button type="button" onClick={() => reset()}>
+              Reset
+            </Button>
+          </Form>
+        </Layout>
+      </div>
+    </>
   );
 }
 

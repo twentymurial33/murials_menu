@@ -4,8 +4,6 @@ import Layout from "../components/Layout";
 import Link from "@mui/material/Link";
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-// import { Link } from "react-router-dom";
-//import ImageButtonPage from "./ImageButtonPage";
 
 const images = [
   {
@@ -72,58 +70,59 @@ export default function Landing() {
   }, []);
   return (
     <>
-      <Layout />
-      <Box
-        sx={{
-          display: "flex",
-          minWidth: 300,
-          width: "100%",
-          paddingTop: "160px",
-        }}
-      >
-        {images.map((image) => (
-          <ImageButton
-            key={image.title}
-            style={{
-              width: image.width,
-            }}
-          >
-            <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
-            <Image>
-              <Button>
-                <button
-                  style={{
-                    display: "inline-block",
-                    padding: "10px",
-                    marginLeft: "30px",
-                    fontSize: 18,
-                    borderRadius: 6,
-                    background: "pink",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => trackEventAndStartTour(setShowTour)}
-                >
-                  Start Product Tour
-                </button>
-                {showTour && (
-                  <ProductTourComponent
-                    steps={productTourSteps}
-                    onFinish={() => setShowTour(false)}
-                  />
-                )}
-                <Link>
-                  <a
-                    href={`/Details?q=${image.title}`}
-                    style={{ color: "black", textDecoration: "none" }}
+      <Layout>
+        <Box
+          sx={{
+            display: "flex",
+            minWidth: 300,
+            width: "100%",
+            paddingTop: "160px",
+          }}
+        >
+          {images.map((image) => (
+            <ImageButton
+              key={image.title}
+              style={{
+                width: image.width,
+              }}
+            >
+              <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
+              <Image>
+                <Button>
+                  <button
+                    style={{
+                      display: "inline-block",
+                      padding: "10px",
+                      marginLeft: "30px",
+                      fontSize: 18,
+                      borderRadius: 6,
+                      background: "pink",
+                      cursor: "pointer",
+                    }}
+                    onClick={() => trackEventAndStartTour(setShowTour)}
                   >
-                    Menu Item
-                  </a>
-                </Link>
-              </Button>
-            </Image>
-          </ImageButton>
-        ))}
-      </Box>
+                    Start Product Tour
+                  </button>
+                  {showTour && (
+                    <ProductTourComponent
+                      steps={productTourSteps}
+                      onFinish={() => setShowTour(false)}
+                    />
+                  )}
+                  <Link>
+                    <a
+                      href={`/Details?q=${image.title}`}
+                      style={{ color: "black", textDecoration: "none" }}
+                    >
+                      Menu Item
+                    </a>
+                  </Link>
+                </Button>
+              </Image>
+            </ImageButton>
+          ))}
+        </Box>
+      </Layout>
     </>
   );
 }

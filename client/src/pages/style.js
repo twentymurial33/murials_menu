@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const StyledForm = styled.form`
   margin-top: 200px;
   margin-left: 200px;
