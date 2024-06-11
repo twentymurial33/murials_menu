@@ -4,7 +4,8 @@
 
 This App was developed as part of my portfolio. Using technologies I have been learning and upskilling in the past few years.
 
-### Added CommandBar for users to searchfor Menu Items (https://www.commandbar.com/)
+### Added CommandBar for users to searchfor Menu Items 
+https://www.commandbar.com
 
 ### Features
 -------------------------------------------------
