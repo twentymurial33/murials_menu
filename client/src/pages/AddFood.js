@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useMutation } from "react-query";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
-import styled from "styled-components";
+import { StyledAddFormContainer } from "./style";
 import "../index.css";
 import { useForm } from "react-hook-form";
 
@@ -47,7 +47,9 @@ function AddFood() {
     <>
       <div className="form">
         <Layout>
-          <Form onSubmit={handleSubmit((data) => handleForm(data))}>
+          <StyledAddFormContainer
+            onSubmit={handleSubmit((data) => handleForm(data))}
+          >
             <div>
               <label>Title</label>
               <input type="text" {...register("title")} />
@@ -66,44 +68,10 @@ function AddFood() {
             <Button type="button" onClick={() => reset()}>
               Reset
             </Button>
-          </Form>
+          </StyledAddFormContainer>
         </Layout>
       </div>
     </>
   );
 }
-
-const Form = styled.div`
-  margin-top: 200px;
-  margin-left: 200px;
-  input {
-    display: block;
-    box-sizing: border-box;
-    width: 30%;
-    border-radius: 4px;
-    border: 1px solid white;
-    padding: 30px 10px;
-    margin-bottom: 5px;
-    font-size: 14px;
-  }
-
-  Button {
-    display: inline;
-    box-sizing: border-box;
-    border-radius: 4px;
-    padding: 10px;
-    width: 150px;
-    justify-content: center;
-    color: #fff;
-    margin: 60px;
-    cursor: pointer;
-  }
-  label {
-    color: black;
-    display: block;
-    width: 150px;
-    float: left;
-  }
-`;
-
 export default AddFood;

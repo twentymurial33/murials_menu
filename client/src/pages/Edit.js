@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Layout from "../components/Layout";
-import styled from "styled-components";
+import { StyledEditContainer } from "./style";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -67,7 +67,7 @@ function Edit() {
   return (
     <>
       <Layout />
-      <Container>
+      <StyledEditContainer>
         <div>
           <form onSubmit={FormHandle}>
             <div>
@@ -110,45 +110,9 @@ function Edit() {
             </Button>
           </form>
         </div>
-      </Container>
+      </StyledEditContainer>
     </>
   );
 }
 
-const Container = styled.div`
-  margin-top: 200px;
-  margin-left: 200px;
-  label {
-    color: black;
-    display: block;
-    width: 150px;
-    float: left;
-  }
-
-  Button {
-    display: inline;
-    box-sizing: border-box;
-    border-radius: 4px;
-    padding: 10px;
-    width: 150px;
-    justify-content: center;
-    color: #fff;
-    margin: 60px;
-    cursor: pointer;
-  }
-  input {
-    display: block;
-    box-sizing: border-box;
-    width: 30%;
-    border-radius: 4px;
-    border: 1px solid white;
-    padding: 30px 10px;
-    margin-bottom: 5px;
-    font-size: 14px;
-  }
-
-  p {
-    color: white;
-  }
-`;
 export default Edit;
