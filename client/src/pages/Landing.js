@@ -1,11 +1,9 @@
 import { styled } from "@mui/material/styles";
 import ButtonBase from "@mui/material/ButtonBase";
 import Layout from "../components/Layout";
-import Link from "@mui/material/Link";
 import { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
-// import { Link } from "react-router-dom";
-//import ImageButtonPage from "./ImageButtonPage";
+import Link from "@mui/material/Link";
 
 const images = [
   {
@@ -91,26 +89,6 @@ export default function Landing() {
             <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
             <Image>
               <Button>
-                <button
-                  style={{
-                    display: "inline-block",
-                    padding: "10px",
-                    marginLeft: "30px",
-                    fontSize: 18,
-                    borderRadius: 6,
-                    background: "pink",
-                    cursor: "pointer",
-                  }}
-                  onClick={() => trackEventAndStartTour(setShowTour)}
-                >
-                  Start Product Tour
-                </button>
-                {showTour && (
-                  <ProductTourComponent
-                    steps={productTourSteps}
-                    onFinish={() => setShowTour(false)}
-                  />
-                )}
                 <Link>
                   <a
                     href={`/Details?q=${image.title}`}
