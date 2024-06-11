@@ -4,7 +4,7 @@
 
 This App was developed as part of my portfolio. Using technologies I have been learning and upskilling in the past few years.
 
-### LIVE LINK  [https://murialsmenu.netlify.app/](https://murialsmenu.netlify.app/)
+### Added CommandBar for users to searchfor Menu Items (https://www.commandbar.com/)
 
 ### Features
 -------------------------------------------------
@@ -35,7 +35,7 @@ From the repo
 1. Clone this project locally
 2. Run npm install
 3. Run npm run dev
-### LIVE LINK   [https://murialsmenu.netlify.app/](https://murialsmenu.netlify.app/)
+
 
 
 
