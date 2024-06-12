@@ -2,31 +2,9 @@ import { styled } from "@mui/material/styles";
 import ButtonBase from "@mui/material/ButtonBase";
 import Layout from "../components/Layout";
 import { useState, useEffect } from "react";
+import ImageButtonPage from "./ImageButtonPage";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
-
-const images = [
-  {
-    url: "https://res.cloudinary.com/dac1at79b/image/upload/v1663773423/joseph-gonzalez-zcUgjyqEwe8-unsplash_nqplbi.jpg",
-    title: "Breakfast",
-    width: "50%",
-  },
-  {
-    url: "https://res.cloudinary.com/dac1at79b/image/upload/v1664214354/lidye-1Shk_PkNkNw-unsplash_hbeq0v.jpg",
-    title: "Lunch",
-    width: "50%",
-  },
-  {
-    url: "https://res.cloudinary.com/dac1at79b/image/upload/v1664214328/anna-tukhfatullina-food-photographer-stylist-Mzy-OjtCI70-unsplash_mq6vml.jpg",
-    title: "Dinner",
-    width: "50%",
-  },
-  {
-    url: "https://res.cloudinary.com/dac1at79b/image/upload/v1664214337/eiliv-aceron-ZuIDLSz3XLg-unsplash_vntgpn.jpg",
-    title: "Dessert",
-    width: "50%",
-  },
-];
 
 const productTourSteps = [
   {
@@ -79,28 +57,7 @@ export default function Landing() {
           paddingTop: "160px",
         }}
       >
-        {images.map((image) => (
-          <ImageButton
-            key={image.title}
-            style={{
-              width: image.width,
-            }}
-          >
-            <ImageSrc style={{ backgroundImage: `url(${image.url})` }} />
-            <Image>
-              <Button>
-                <Link>
-                  <a
-                    href={`/Details?q=${image.title}`}
-                    style={{ color: "black", textDecoration: "none" }}
-                  >
-                    Menu Item
-                  </a>
-                </Link>
-              </Button>
-            </Image>
-          </ImageButton>
-        ))}
+        <ImageButtonPage />
       </Box>
     </>
   );
