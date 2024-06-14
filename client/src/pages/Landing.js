@@ -3,7 +3,6 @@ import ButtonBase from "@mui/material/ButtonBase";
 import Layout from "../components/Layout";
 import { useState, useEffect } from "react";
 import ImageButtonPage from "./ImageButtonPage";
-import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 
 const productTourSteps = [
@@ -49,16 +48,8 @@ export default function Landing() {
   return (
     <>
       <Layout />
-      <Box
-        sx={{
-          display: "flex",
-          minWidth: 300,
-          width: "100%",
-          paddingTop: "160px",
-        }}
-      >
-        <ImageButtonPage />
-      </Box>
+
+      <ImageButtonPage />
     </>
   );
 }

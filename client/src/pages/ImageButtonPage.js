@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import ButtonBase from "@mui/material/ButtonBase";
+import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 
 const images = [
@@ -27,7 +28,14 @@ const images = [
 
 function ImageButtonPage() {
   return (
-    <div>
+    <Box
+      sx={{
+        display: "flex",
+        minWidth: 300,
+        width: "100%",
+        paddingTop: "160px",
+      }}
+    >
       {images.map((image) => (
         <ImageButton
           key={image.title}
@@ -50,7 +58,7 @@ function ImageButtonPage() {
           </Image>
         </ImageButton>
       ))}
-    </div>
+    </Box>
   );
 }
 
