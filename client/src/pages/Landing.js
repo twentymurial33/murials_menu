@@ -2,6 +2,7 @@ import { styled } from "@mui/material/styles";
 import ButtonBase from "@mui/material/ButtonBase";
 import Layout from "../components/Layout";
 import { useState, useEffect } from "react";
+import AskChatAI from "../components/AskChatAI";
 import ImageButtonPage from "./ImageButtonPage";
 import Link from "@mui/material/Link";
 
@@ -48,7 +49,7 @@ export default function Landing() {
   return (
     <>
       <Layout />
-
+      <AskChatAI />
       <ImageButtonPage />
     </>
   );

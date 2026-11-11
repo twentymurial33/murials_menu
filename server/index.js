@@ -72,4 +72,15 @@ app.put("/food/:id", async (req, res) => {
   res.json(foodItem);
 });
 
+app.get("/api/chat", (req, res) => {
+  res.json({ message: "Hello from the server!" });
+});
+
+app.post("/api/chat", async (req, res) => {
+  const { message, history } = req.body;
+  const reply = `You said: ${message}`;
+
+  res.json({ reply });
+});
+
 app.listen(process.env.PORT, () => console.log("Server Started..."));
